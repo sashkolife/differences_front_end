@@ -1,0 +1,11 @@
+//mouse and touch events
+export const MOUSE_DOWN = "mousedown"
+export const MOUSE_UP = "mouseup"
+export const MOUSE_OVER = "mouseover"
+export const MOUSE_OUT = "mouseout"
+export const MOUSE_OUT_OUTSIDE = "mouseoutoutside"
+export const MOUSE_MOVE = "mousemove"
+export const TOUCH_START = "touchstart"
+export const TOUCH_END = "touchend"
+export const TOUCH_END_OUTSIDE = "touchendoutside"
+export const TOUCH_MOVE = "touchmove"

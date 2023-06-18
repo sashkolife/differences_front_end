@@ -1,0 +1,235 @@
+{
+  "loaderAssets": [
+    {
+      "data": {
+        "weights": ["normal","bold"]
+      },
+      "src": "./res/web/fonts/MyriadPro-Regular.woff"
+    },
+    {
+      "name": "atlas1",
+      "src": "./res/pixi/atlases/atlas1.json"
+    },
+    {
+      "name": "gregor_1",
+      "src": "./res/pixi/personajes/gregor_1.png"
+    },
+    {
+      "name": "gregor_2",
+      "src": "./res/pixi/personajes/gregor_2.png"
+    },
+    {
+      "name": "gregor_3",
+      "src": "./res/pixi/personajes/gregor_3.png"
+    },
+    {
+      "name": "gregor_4",
+      "src": "./res/pixi/personajes/gregor_5.png"
+    },
+    {
+      "name": "gregor_6",
+      "src": "./res/pixi/personajes/gregor_6.png"
+    },
+    {
+      "name": "gregor_7",
+      "src": "./res/pixi/personajes/gregor_7.png"
+    },
+    {
+      "name": "holmes_1",
+      "src": "./res/pixi/personajes/holmes_1.png"
+    },
+    {
+      "name": "holmes_2",
+      "src": "./res/pixi/personajes/holmes_2.png"
+    },
+    {
+      "name": "holmes_3",
+      "src": "./res/pixi/personajes/holmes_3.png"
+    },
+    {
+      "name": "holmes_4",
+      "src": "./res/pixi/personajes/holmes_4.png"
+    },
+    {
+      "name": "holmes_5",
+      "src": "./res/pixi/personajes/holmes_5.png"
+    },
+    {
+      "name": "holmes_6",
+      "src": "./res/pixi/personajes/holmes_6.png"
+    },
+    {
+      "name": "holmes_7",
+      "src": "./res/pixi/personajes/holmes_7.png"
+    },
+    {
+      "name": "holmes_8",
+      "src": "./res/pixi/personajes/holmes_8.png"
+    },
+    {
+      "name": "holmes_10",
+      "src": "./res/pixi/personajes/holmes_10.png"
+    },
+    {
+      "name": "holmes_11",
+      "src": "./res/pixi/personajes/holmes_11.png"
+    },
+    {
+      "name": "holmes_12",
+      "src": "./res/pixi/personajes/holmes_12.png"
+    },
+    {
+      "name": "holmes_13",
+      "src": "./res/pixi/personajes/holmes_13.png"
+    },
+    {
+      "name": "holmes_14",
+      "src": "./res/pixi/personajes/holmes_14.png"
+    },
+    {
+      "name": "holmes_15",
+      "src": "./res/pixi/personajes/holmes_15.png"
+    },
+    {
+      "name": "martin_1",
+      "src": "./res/pixi/personajes/martin_1.png"
+    },
+    {
+      "name": "martin_2",
+      "src": "./res/pixi/personajes/martin_2.png"
+    },
+    {
+      "name": "martin_3",
+      "src": "./res/pixi/personajes/martin_3.png"
+    },
+    {
+      "name": "martin_4",
+      "src": "./res/pixi/personajes/martin_4.png"
+    },
+    {
+      "name": "martin_5",
+      "src": "./res/pixi/personajes/martin_5.png"
+    },
+    {
+      "name": "martin_6",
+      "src": "./res/pixi/personajes/martin_6.png"
+    },
+    {
+      "name": "martin_7",
+      "src": "./res/pixi/personajes/martin_7.png"
+    },
+    {
+      "name": "molly_1",
+      "src": "./res/pixi/personajes/molly_1.png"
+    },
+    {
+      "name": "molly_2",
+      "src": "./res/pixi/personajes/molly_2.png"
+    },
+    {
+      "name": "molly_3",
+      "src": "./res/pixi/personajes/molly_3.png"
+    },
+    {
+      "name": "molly_4",
+      "src": "./res/pixi/personajes/molly_4.png"
+    },
+    {
+      "name": "molly_5",
+      "src": "./res/pixi/personajes/molly_5.png"
+    },
+    {
+      "name": "molly_6",
+      "src": "./res/pixi/personajes/molly_6.png"
+    },
+    {
+      "name": "molly_7",
+      "src": "./res/pixi/personajes/molly_7.png"
+    },
+    {
+      "name": "moriarty_1",
+      "src": "./res/pixi/personajes/moriarty_1.png"
+    },
+    {
+      "name": "moriarty_2",
+      "src": "./res/pixi/personajes/moriarty_2.png"
+    },
+    {
+      "name": "moriarty_3",
+      "src": "./res/pixi/personajes/moriarty_3.png"
+    },
+    {
+      "name": "moriarty_4",
+      "src": "./res/pixi/personajes/moriarty_4.png"
+    },
+    {
+      "name": "moriarty_5",
+      "src": "./res/pixi/personajes/moriarty_5.png"
+    },
+    {
+      "name": "moriarty_6",
+      "src": "./res/pixi/personajes/moriarty_6.png"
+    },
+    {
+      "name": "moriarty_7",
+      "src": "./res/pixi/personajes/moriarty_7.png"
+    },
+    {
+      "name": "sebastian_1",
+      "src": "./res/pixi/personajes/sebastian_1.png"
+    },
+    {
+      "name": "sebastian_2",
+      "src": "./res/pixi/personajes/sebastian_2.png"
+    },
+    {
+      "name": "sebastian_3",
+      "src": "./res/pixi/personajes/sebastian_3.png"
+    },
+    {
+      "name": "sebastian_4",
+      "src": "./res/pixi/personajes/sebastian_4.png"
+    },
+    {
+      "name": "sebastian_5",
+      "src": "./res/pixi/personajes/sebastian_5.png"
+    },
+    {
+      "name": "sebastian_6",
+      "src": "./res/pixi/personajes/sebastian_6.png"
+    },
+    {
+      "name": "sebastian_7",
+      "src": "./res/pixi/personajes/sebastian_7.png"
+    },
+    {
+      "name": "tobias_1",
+      "src": "./res/pixi/personajes/tobias_1.png"
+    },
+    {
+      "name": "tobias_2",
+      "src": "./res/pixi/personajes/tobias_2.png"
+    },
+    {
+      "name": "tobias_3",
+      "src": "./res/pixi/personajes/tobias_3.png"
+    },
+    {
+      "name": "tobias_4",
+      "src": "./res/pixi/personajes/tobias_4.png"
+    },
+    {
+      "name": "tobias_5",
+      "src": "./res/pixi/personajes/tobias_5.png"
+    },
+    {
+      "name": "tobias_6",
+      "src": "./res/pixi/personajes/tobias_6.png"
+    },
+    {
+      "name": "tobias_7",
+      "src": "./res/pixi/personajes/tobias_7.png"
+    }
+  ],
+  "soundSpritePath": "./res/sounds/soundsprite.json"
+}
