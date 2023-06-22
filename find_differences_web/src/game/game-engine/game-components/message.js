@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import * as constants from "../../../constants/constants.js";
 import ContainerBase from "../../../components/container-base.js";
-import * as check from "../../../utils/check.js";
+import * as check from "../../../utils/Check.ts";
 
 class Message extends ContainerBase {
     constructor( stage, descriptor, callback ) {

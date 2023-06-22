@@ -1,12 +1,12 @@
 import { gsap } from 'gsap';
 import ContainerBase from "../../../components/container-base.js";
-import * as sender from "../../../events/event-bus.js";
+import * as sender from "../../../utils/Sender.js";
 import * as events from "../../../constants/events.js";
-import * as check from "../../../utils/check.js";
+import * as check from "../../../utils/Check.ts";
 import LabelTextBase from "../../../components/label-text-base.js";
 import * as constants from "../../../constants/constants.js";
-import * as gameTexts from "../../../utils/game-texts.js";
-import * as sounds from "../../../utils/sound-engine.js";
+import * as gameTexts from "../../../data/Localization.ts";
+import * as sounds from "../../../data/Sounds.ts";
 
 export class MiniGameWheel extends ContainerBase {
     constructor(stage, descriptor, mgColorsConfig) {

@@ -1,9 +1,9 @@
 import * as constants from "../../../constants/constants.js";
-import * as sounds from "../../../utils/sound-engine.js";
-import * as sender from '../../../events/event-bus.js';
-import * as check from "../../../utils/check.js";
-import * as app from "../../../app.js";
-import * as gameTexts from "../../../utils/game-texts.js";
+import * as sounds from "../../../data/Sounds.ts";
+import * as sender from '../../../utils/Sender.js';
+import * as check from "../../../utils/Check.ts";
+import * as app from "../../../App.ts";
+import * as gameTexts from "../../../data/Localization.ts";
 import * as events from "../../../constants/events.js";
 import ContainerBase from "../../../components/container-base.js";
 

@@ -1,13 +1,13 @@
 import { gsap } from 'gsap';
 import ContainerBase from "../../../components/container-base.js";
-import * as check from "../../../utils/check.js";
+import * as check from "../../../utils/Check.ts";
 import * as constants from "../../../constants/constants.js";
-import * as gameTexts from "../../../utils/game-texts.js";
+import * as gameTexts from "../../../data/Localization.ts";
 import * as input from "../../../constants/input.js";
 import {isPort} from "../../../utils/orientation.js";
-import * as sender from "../../../events/event-bus.js";
+import * as sender from "../../../utils/Sender.js";
 import * as events from "../../../constants/events.js";
-import * as sounds from "../../../utils/sound-engine.js";
+import * as sounds from "../../../data/Sounds.ts";
 
 export class MiniGamePick extends ContainerBase {
     constructor( stage, descriptor, mgColorsConfig ) {

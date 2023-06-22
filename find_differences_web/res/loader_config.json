@@ -1,0 +1,22 @@
+[
+  {
+    "name": "settings",
+    "url": "./res/settings.json",
+    "value": 0.2
+  },
+  {
+    "name": "localization",
+    "url": "./res/localization.json",
+    "value": 0.2
+  },
+  {
+    "name": "assetsManifest",
+    "url": ,
+    "value": 0.93
+  },
+  {
+    "name": "soundSprite",
+    "url": "./res/sounds/soundsprite.json",
+    "value": 0.1
+  }
+]

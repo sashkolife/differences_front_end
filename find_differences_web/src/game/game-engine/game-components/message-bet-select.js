@@ -1,9 +1,9 @@
 import ContainerBase from "../../../components/container-base.js";
-import * as check from "../../../utils/check.js";
+import * as check from "../../../utils/Check.ts";
 import * as constants from "../../../constants/constants.js";
-import * as sender from "../../../events/event-bus.js";
+import * as sender from "../../../utils/Sender.js";
 import * as events from "../../../constants/events.js";
-import {getCurrencyFormat} from "../../../utils/game-texts.js";
+import {getCurrencyFormat} from "../../../data/Localization.ts";
 
 export class MessageBetSelect extends ContainerBase {
     constructor( stage, descriptor, betLimits ) {

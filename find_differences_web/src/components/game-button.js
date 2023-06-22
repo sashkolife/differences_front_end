@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import * as input from '../constants/input.js'
-import * as check from '../utils/check.js'
-import * as sounds from "../utils/sound-engine.js";
+import * as check from '../utils/Check.ts'
+import * as sounds from "../data/Sounds.ts";
 import * as constants from "../constants/constants.js";
 import * as PIXI from "pixi.js";
 

@@ -40,42 +40,6 @@
         </div>
     </div>
 
-    <script>
-
-        var APP_WIDTH = 1280;
-        var APP_HEIGHT = 720;
-
-        var mainContainer = document.getElementById("main-container");
-        var gameContainer = document.getElementById("game-container");
-        var preloaderContainer = document.getElementById("preloader-container");
-
-        var blockBackground = document.getElementById("block-background");
-        var messageError = document.getElementById("message-error");
-
-        function showMessageError() {
-            removePreloader();
-            blockBackground.style.display = "flex";
-            messageError.style.display = "flex";
-        }
-
-        function removePreloader() {
-            if ( preloaderContainer ) {
-                preloaderContainer.remove();
-            }
-        }
-
-        function onResize() {
-            var ratio = Math.min(window.innerWidth / APP_WIDTH, window.innerHeight / APP_HEIGHT );
-            mainContainer.style.transform = "scale(" + ratio + ")";
-
-        }
-
-        window.onresize = onResize;
-
-        onResize();
-
-    </script>
-
     <script src="./dist/main.bundle.js"></script>
 
 </body>

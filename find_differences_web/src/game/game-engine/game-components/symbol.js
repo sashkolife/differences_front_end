@@ -1,14 +1,14 @@
 import * as constants from "../../../constants/constants.js";
 import SpineAnimation from "../../../components/spine-animation.js";
-import * as check from "../../../utils/check.js";
-import * as sender from "../../../events/event-bus.js";
-import * as sounds from "../../../utils/sound-engine.js";
+import * as check from "../../../utils/Check.ts";
+import * as sender from "../../../utils/Sender.js";
+import * as sounds from "../../../data/Sounds.ts";
 import {Spine} from "pixi-spine";
 import * as events from "../../../constants/events.js";
 import * as input from "../../../constants/input.js";
 import LabelTextBase from "../../../components/label-text-base.js";
-import * as gameTexts from "../../../utils/game-texts.js";
-import {app} from "../../../app.js";
+import * as gameTexts from "../../../data/Localization.ts";
+import {app} from "../../../App.ts";
 import {gsap} from "gsap";
 
 export class Symbol extends SpineAnimation {

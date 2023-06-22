@@ -1,7 +1,7 @@
 import ContainerBase from "../../../components/container-base.js";
 import * as constants from "../../../constants/constants.js";
-import * as check from "../../../utils/check.js";
-import * as sounds from "../../../utils/sound-engine.js";
+import * as check from "../../../utils/Check.ts";
+import * as sounds from "../../../data/Sounds.ts";
 
 export class MessageWin extends ContainerBase {
     constructor(stage, descriptor) {

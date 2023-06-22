@@ -1,14 +1,14 @@
 import ContainerBase from "../../../components/container-base.js";
-import * as sender from "../../../events/event-bus.js";
+import * as sender from "../../../utils/Sender.js";
 import * as events from "../../../constants/events.js";
-import {getCurrencyFormat} from "../../../utils/game-texts.js";
-import * as check from "../../../utils/check.js";
+import {getCurrencyFormat} from "../../../data/Localization.ts";
+import * as check from "../../../utils/Check.ts";
 import {isPort} from "../../../utils/orientation.js";
 import * as constants from "../../../constants/constants.js";
 import {ParticleAnimation} from "../../../components/particle-animation.js";
 import {gsap} from "gsap";
 import * as PIXI from "pixi.js";
-import * as sounds from "../../../utils/sound-engine.js";
+import * as sounds from "../../../data/Sounds.ts";
 
 export class TableWinBlocks extends ContainerBase {
     constructor( stage, descriptor, blocksWins ) {
