@@ -1,8 +1,10 @@
 import Sounds from "./data/Sounds";
-import Settings from "./data/Settings";
+import Properties from "./data/Properties";
 import Localization from "./data/Localization";
 import User from "./data/User";
 import Resource from "./data/Resource";
+import Levels from "./data/Levels";
+import Shop from "./data/Shop";
 
 export const load = () => {
 
@@ -16,7 +18,7 @@ export const load = () => {
     const PROGRESS_STEP_USER_DATA : string = "user_data";
     const PROGRESS_STEP_LEVELS : string = "levels";
     const PROGRESS_STEP_SHOP : string = "shop";
-    const PROGRESS_STEP_SETTINGS : string = "settings";
+    const PROGRESS_STEP_PROPERTIES : string = "settings";
     const PROGRESS_STEP_LOCALIZATION : string = "localization";
     const PROGRESS_STEP_GRAPHICS : string = "graphics";
     const PROGRESS_STEP_MAP : string = "map";
@@ -30,7 +32,7 @@ export const load = () => {
         [PROGRESS_STEP_USER_DATA]: 0.02,
         [PROGRESS_STEP_LEVELS]: 0.01,
         [PROGRESS_STEP_SHOP]: 0.01,
-        [PROGRESS_STEP_SETTINGS]: 0.01,
+        [PROGRESS_STEP_PROPERTIES]: 0.01,
         [PROGRESS_STEP_LOCALIZATION]: 0.01,
         [PROGRESS_STEP_GRAPHICS]: 0.85,
         [PROGRESS_STEP_MAP]: 0.06,
@@ -54,19 +56,19 @@ export const load = () => {
     return new Promise( async ( resolve : Function, reject : Function ) => {
         try {
 
-            await User.loadUserData();
+            await User.load();
 
             updateProgressBar( progressStep, PROGRESS_STEP_LEVELS );
 
-            await User.loadLevels();
+            await Levels.load();
 
             updateProgressBar( progressStep, PROGRESS_STEP_SHOP );
 
-            await User.loadShop();
+            await Shop.load();
 
-            updateProgressBar( progressStep, PROGRESS_STEP_SETTINGS );
+            updateProgressBar( progressStep, PROGRESS_STEP_PROPERTIES );
 
-            await Settings.load();
+            await Properties.load();
 
             updateProgressBar( progressStep, PROGRESS_STEP_LOCALIZATION );
 

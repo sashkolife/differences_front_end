@@ -1,7 +1,7 @@
 import { Howl, Howler } from 'howler';
-import * as sender from "../utils/Sender.js";
-import * as events from "../constants/events.js";
-import {URL_JSON_SOUND_SPRITE} from "../constants/Urls";
+import EventBus from "../utils/EventBus";
+import * as events from "../constants/events";
+import {URL_JSON_SOUND_SPRITE} from "../constants/urls";
 
 export default class Sounds {
     private static _soundsJson:any = null;
@@ -11,7 +11,8 @@ export default class Sounds {
     private static _fadeTimeout:any = {};
 
     public static async loadSoundsJson() {
-        this._soundsJson = await fetch( URL_JSON_SOUND_SPRITE );
+        const data : any = await fetch( URL_JSON_SOUND_SPRITE );
+        this._soundsJson = await data.json();
     }
 
     public static async loadSounds() {
@@ -140,7 +141,7 @@ const onPageHidden = () => {
     }
 };
 
-sender.subscribe(events.EVENT_ON_PAGE_HIDDEN, onPageVisible);
-sender.subscribe(events.EVENT_ON_PAGE_VISIBLE, onPageHidden);
+EventBus.subscribe(events.EVENT_ON_PAGE_HIDDEN, onPageVisible);
+EventBus.subscribe(events.EVENT_ON_PAGE_VISIBLE, onPageHidden);
 
 Sounds.getAudioSettings();

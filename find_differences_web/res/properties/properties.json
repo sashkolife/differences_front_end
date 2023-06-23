@@ -1,0 +1,12 @@
+{
+  "lobby_top_bar": {
+    "type": "sprite",
+    "parameters": {
+      "texture": "lobby_top_line",
+      "width": 200
+    }
+  },
+  "level": {
+
+  }
+}

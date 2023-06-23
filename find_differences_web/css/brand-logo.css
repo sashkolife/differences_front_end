@@ -1,26 +1,9 @@
-#preloader-container {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    top: 200px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#preloader-logo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
 
 #progress-box {
     border: 2px solid #80c9fb;
     height: 8px;
     width: 820px;
     margin-top: 30px;
-    position: relative;
 }
 
 #progress-bar {

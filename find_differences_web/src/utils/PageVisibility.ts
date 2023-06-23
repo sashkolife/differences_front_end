@@ -1,5 +1,5 @@
-// import * as sender from './Sender.js';
-// import * as events from "../constants/events.js";
+// import * as sender from './GameEvents.ts';
+// import * as events from "../constants/events.ts";
 //
 // const testPageVisibilityApi = () => {
 //

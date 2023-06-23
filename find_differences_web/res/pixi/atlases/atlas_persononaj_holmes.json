@@ -1,0 +1,85 @@
+{
+"frames": {
+	"holmes_1": {
+		"frame": {"x":403, "y":509, "w":367, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":367,"h":512},
+		"sourceSize": {"w":367,"h":512}
+	},
+	"holmes_10": {
+		"frame": {"x":0, "y":1520, "w":380, "h":509},
+		"spriteSourceSize": {"x":0,"y":3,"w":380,"h":512},
+		"sourceSize": {"w":380,"h":512}
+	},
+	"holmes_11": {
+		"frame": {"x":0, "y":0, "w":422, "h":508},
+		"spriteSourceSize": {"x":0,"y":4,"w":422,"h":512},
+		"sourceSize": {"w":422,"h":512}
+	},
+	"holmes_12": {
+		"frame": {"x":752, "y":1022, "w":354, "h":504},
+		"spriteSourceSize": {"x":0,"y":8,"w":356,"h":512},
+		"sourceSize": {"w":356,"h":512}
+	},
+	"holmes_13": {
+		"frame": {"x":752, "y":1527, "w":354, "h":504},
+		"spriteSourceSize": {"x":0,"y":8,"w":356,"h":512},
+		"sourceSize": {"w":356,"h":512}
+	},
+	"holmes_14": {
+		"frame": {"x":423, "y":0, "w":354, "h":504},
+		"spriteSourceSize": {"x":0,"y":8,"w":356,"h":512},
+		"sourceSize": {"w":356,"h":512}
+	},
+	"holmes_15": {
+		"frame": {"x":1107, "y":1010, "w":348, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":349,"h":512},
+		"sourceSize": {"w":349,"h":512}
+	},
+	"holmes_2": {
+		"frame": {"x":1126, "y":0, "w":336, "h":509},
+		"spriteSourceSize": {"x":0,"y":3,"w":336,"h":512},
+		"sourceSize": {"w":336,"h":512}
+	},
+	"holmes_3": {
+		"frame": {"x":381, "y":1520, "w":370, "h":507},
+		"spriteSourceSize": {"x":0,"y":5,"w":370,"h":512},
+		"sourceSize": {"w":370,"h":512}
+	},
+	"holmes_4": {
+		"frame": {"x":1107, "y":1523, "w":341, "h":509},
+		"spriteSourceSize": {"x":0,"y":3,"w":341,"h":512},
+		"sourceSize": {"w":341,"h":512}
+	},
+	"holmes_5": {
+		"frame": {"x":771, "y":505, "w":354, "h":504},
+		"spriteSourceSize": {"x":0,"y":8,"w":356,"h":512},
+		"sourceSize": {"w":356,"h":512}
+	},
+	"holmes_6": {
+		"frame": {"x":1449, "y":1523, "w":333, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":333,"h":512},
+		"sourceSize": {"w":333,"h":512}
+	},
+	"holmes_7": {
+		"frame": {"x":1456, "y":510, "w":333, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":333,"h":512},
+		"sourceSize": {"w":333,"h":512}
+	},
+	"holmes_8": {
+		"frame": {"x":0, "y":1019, "w":383, "h":500},
+		"spriteSourceSize": {"x":0,"y":12,"w":383,"h":512},
+		"sourceSize": {"w":383,"h":512}
+	},
+	"holmes_9": {
+		"frame": {"x":0, "y":509, "w":402, "h":509},
+		"spriteSourceSize": {"x":0,"y":3,"w":402,"h":512},
+		"sourceSize": {"w":402,"h":512}
+	}
+
+},
+"meta": {
+	"image": "atlas_persononaj_holmes.png",
+	"size": {"w": 2048, "h": 2048},
+	"scale": "1"
+}
+}

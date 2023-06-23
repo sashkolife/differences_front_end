@@ -1,0 +1,45 @@
+{
+"frames": {
+	"sebastian_1": {
+		"frame": {"x":0, "y":1002, "w":459, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":459,"h":500},
+		"sourceSize": {"w":459,"h":500}
+	},
+	"sebastian_2": {
+		"frame": {"x":460, "y":501, "w":335, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":335,"h":500},
+		"sourceSize": {"w":335,"h":500}
+	},
+	"sebastian_3": {
+		"frame": {"x":0, "y":0, "w":499, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":499,"h":500},
+		"sourceSize": {"w":499,"h":500}
+	},
+	"sebastian_4": {
+		"frame": {"x":460, "y":1002, "w":328, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":328,"h":500},
+		"sourceSize": {"w":328,"h":500}
+	},
+	"sebastian_5": {
+		"frame": {"x":409, "y":1503, "w":372, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":372,"h":500},
+		"sourceSize": {"w":372,"h":500}
+	},
+	"sebastian_6": {
+		"frame": {"x":0, "y":1503, "w":408, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":408,"h":500},
+		"sourceSize": {"w":408,"h":500}
+	},
+	"sebastian_7": {
+		"frame": {"x":0, "y":501, "w":459, "h":500},
+		"spriteSourceSize": {"x":0,"y":0,"w":459,"h":500},
+		"sourceSize": {"w":459,"h":500}
+	}
+
+},
+"meta": {
+	"image": "atlas_persononaj_sebastian.png",
+	"size": {"w": 2048, "h": 2048},
+	"scale": "1"
+}
+}

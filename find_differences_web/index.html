@@ -20,9 +20,9 @@
 
     <div id="main-container">
 
-        <div id="game-container"></div>
+        <div id="game-container" class="main-container-child"></div>
 
-        <div id="preloader-container">
+        <div id="preloader-container" class="main-container-child">
             <div id="preloader-logo">
                 <img id="game-logo-img" src="res/web/images/logo.png">
             </div>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div id="block-background" hidden></div>
+        <div id="block-background" class="main-container-child" hidden></div>
 
         <div class="message" id="message-error" hidden>
             <p class="message-title" id="error-title-label">ERROR</p>
@@ -40,6 +40,20 @@
         </div>
     </div>
 
+    <script>
+        var APP_WIDTH = 1280;
+        var APP_HEIGHT = 720;
+        var mainContainer = document.getElementById("main-container");
+
+        function onResize() {
+            var ratio = Math.min(window.innerWidth / APP_WIDTH, window.innerHeight / APP_HEIGHT );
+            mainContainer.style.transform = "scale(" + ratio + ")";
+        }
+
+        window.onresize = onResize;
+
+        onResize();
+    </script>
     <script src="./dist/main.bundle.js"></script>
 
 </body>

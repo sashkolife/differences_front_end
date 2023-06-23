@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import * as urls from "../constants/Urls";
+import * as urls from "../constants/urls";
 
 export default class Resource {
 
@@ -13,7 +13,7 @@ export default class Resource {
 
     public static getTexture( key: string ) : PIXI.Texture {
         const asset : any = PIXI.Assets.get(key);
-        return PIXI.Texture.from(asset);
+        return PIXI.Texture.from(key);
     }
 
     public static getSpineData( key: string ) : any {

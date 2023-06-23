@@ -1,0 +1,45 @@
+{
+"frames": {
+	"moriarty_1": {
+		"frame": {"x":0, "y":1050, "w":324, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":324,"h":512},
+		"sourceSize": {"w":324,"h":512}
+	},
+	"moriarty_2": {
+		"frame": {"x":641, "y":1026, "w":312, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":312,"h":512},
+		"sourceSize": {"w":312,"h":512}
+	},
+	"moriarty_3": {
+		"frame": {"x":0, "y":513, "w":326, "h":536},
+		"spriteSourceSize": {"x":0,"y":0,"w":326,"h":536},
+		"sourceSize": {"w":326,"h":536}
+	},
+	"moriarty_4": {
+		"frame": {"x":325, "y":1050, "w":315, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":315,"h":512},
+		"sourceSize": {"w":315,"h":512}
+	},
+	"moriarty_5": {
+		"frame": {"x":333, "y":0, "w":314, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":314,"h":512},
+		"sourceSize": {"w":314,"h":512}
+	},
+	"moriarty_6": {
+		"frame": {"x":327, "y":513, "w":314, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":314,"h":512},
+		"sourceSize": {"w":314,"h":512}
+	},
+	"moriarty_7": {
+		"frame": {"x":0, "y":0, "w":332, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":332,"h":512},
+		"sourceSize": {"w":332,"h":512}
+	}
+
+},
+"meta": {
+	"image": "atlas_persononaj_moriarty.png",
+	"size": {"w": 2048, "h": 2048},
+	"scale": "1"
+}
+}

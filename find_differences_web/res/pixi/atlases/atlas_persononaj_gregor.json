@@ -1,0 +1,45 @@
+{
+"frames": {
+	"gregor_1": {
+		"frame": {"x":349, "y":1026, "w":348, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":348,"h":512},
+		"sourceSize": {"w":348,"h":512}
+	},
+	"gregor_2": {
+		"frame": {"x":358, "y":0, "w":348, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":348,"h":512},
+		"sourceSize": {"w":348,"h":512}
+	},
+	"gregor_3": {
+		"frame": {"x":0, "y":0, "w":357, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":357,"h":512},
+		"sourceSize": {"w":357,"h":512}
+	},
+	"gregor_4": {
+		"frame": {"x":698, "y":1026, "w":348, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":348,"h":512},
+		"sourceSize": {"w":348,"h":512}
+	},
+	"gregor_5": {
+		"frame": {"x":0, "y":513, "w":351, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":351,"h":512},
+		"sourceSize": {"w":351,"h":512}
+	},
+	"gregor_6": {
+		"frame": {"x":352, "y":513, "w":348, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":348,"h":512},
+		"sourceSize": {"w":348,"h":512}
+	},
+	"gregor_7": {
+		"frame": {"x":0, "y":1026, "w":348, "h":512},
+		"spriteSourceSize": {"x":0,"y":0,"w":348,"h":512},
+		"sourceSize": {"w":348,"h":512}
+	}
+
+},
+"meta": {
+	"image": "atlas_persononaj_gregor.png",
+	"size": {"w": 2048, "h": 2048},
+	"scale": "1"
+}
+}

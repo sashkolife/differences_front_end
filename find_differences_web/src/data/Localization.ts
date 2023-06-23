@@ -1,10 +1,11 @@
-import {URL_JSON_LOCALIZATION_EN} from "../constants/Urls";
+import {URL_JSON_LOCALIZATION_EN, URL_JSON_PROPERTIES} from "../constants/urls";
 
 export default class Localization {
     private static _data : any = null;
 
     public static async load() {
-        this._data = await fetch(URL_JSON_LOCALIZATION_EN);
+        const loader: any = await fetch(URL_JSON_LOCALIZATION_EN);
+        this._data = await loader.json();
     }
 
     public static get( key: string ) : string {

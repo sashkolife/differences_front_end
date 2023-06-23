@@ -1,0 +1,45 @@
+{
+"frames": {
+	"tobias_1": {
+		"frame": {"x":0, "y":1485, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	},
+	"tobias_2": {
+		"frame": {"x":336, "y":495, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	},
+	"tobias_3": {
+		"frame": {"x":336, "y":0, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	},
+	"tobias_4": {
+		"frame": {"x":336, "y":990, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	},
+	"tobias_5": {
+		"frame": {"x":0, "y":990, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	},
+	"tobias_6": {
+		"frame": {"x":0, "y":495, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	},
+	"tobias_7": {
+		"frame": {"x":0, "y":0, "w":335, "h":494},
+		"spriteSourceSize": {"x":10,"y":18,"w":363,"h":512},
+		"sourceSize": {"w":363,"h":512}
+	}
+
+},
+"meta": {
+	"image": "atlas_persononaj_tobias.png",
+	"size": {"w": 2048, "h": 2048},
+	"scale": "1"
+}
+}

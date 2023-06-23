@@ -1,10 +1,8 @@
 import {Game} from "./game/Game";
 import {load} from "./Preloader";
 
-export const APP_WIDTH = 1280;
-export const APP_HEIGHT = 720;
+export const screenOrientation : "landscape"|"portrait" = "landscape";
 
-export const mainContainer = document.getElementById("main-container");
 export const gameContainer = document.getElementById("game-container");
 
 let preloaderContainer = document.getElementById("preloader-container");
@@ -13,19 +11,23 @@ const blockBackground = document.getElementById("block-background");
 const messageError = document.getElementById("message-error");
 
 export const game = new Game( {
-    width: APP_WIDTH,
-    height: APP_HEIGHT,
+    width: (window as any).APP_WIDTH,
+    height: (window as any).APP_HEIGHT,
     backgroundColor: 0xfff5e7
 } );
+
+// gameContainer.appendChild( game.view );
 
 const onResourcesLoadComplete = () => {
     removePreloader();
 
     gameContainer.appendChild( game.view );
+
     game.init();
 }
 
-const onResourcesLoadError = () => {
+const onResourcesLoadError = (err:Error) => {
+    console.error(err);
     showMessageError();
 }
 
@@ -42,14 +44,5 @@ function removePreloader() {
     }
 }
 
-function onResize() {
-    var ratio = Math.min(window.innerWidth / APP_WIDTH, window.innerHeight / APP_HEIGHT );
-    mainContainer.style.transform = "scale(" + ratio + ")";
-
-}
-
-window.onresize = onResize;
-
-onResize();
 
 load().then( onResourcesLoadComplete ).catch( onResourcesLoadError );
