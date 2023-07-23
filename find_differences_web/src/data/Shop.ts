@@ -1,11 +1,6 @@
 import {URL_LEVELS} from "../constants/urls";
 import * as urls from "../constants/urls";
-
-export class ShopModel {
-    constructor(){}
-    androidProductId: string;
-    coins: number;
-}
+import {ShopModel} from "./models";
 
 export default class Shop {
     private static _shop : Array<ShopModel> = null;

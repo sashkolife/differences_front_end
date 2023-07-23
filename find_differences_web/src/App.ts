@@ -19,11 +19,9 @@ export const game = new Game( {
 // gameContainer.appendChild( game.view );
 
 const onResourcesLoadComplete = () => {
-    removePreloader();
-
     gameContainer.appendChild( game.view );
-
     game.init();
+    setTimeout(removePreloader, 500);
 }
 
 const onResourcesLoadError = (err:Error) => {
@@ -42,6 +40,7 @@ function removePreloader() {
         preloaderContainer.remove();
         preloaderContainer = null;
     }
+    gameContainer.style.display = "flex";
 }
 
 

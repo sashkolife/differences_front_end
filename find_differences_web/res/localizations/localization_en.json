@@ -1,3 +1,14 @@
 {
-  "lobby_top_bar": ""
+  "lobby_play_now": "PLAY",
+  "lobby_level": "Level",
+  "lobby_pictures": "Pictures",
+  "lobby_differences": "Differences",
+  "window_play_btn": "PLAY",
+  "window_play_header": "LEVEL",
+  "window_play_pictures": "PICTURES:",
+  "window_play_differences": "DIFFERENCES:",
+  "window_play_description": "Solve all the pictures in the\nspecified time to get the stars",
+  "level_current_level": "LEVEL:",
+  "level_picture": "Picture:",
+  "level_differences": "Differences:"
 }

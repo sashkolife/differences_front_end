@@ -2,18 +2,41 @@ import * as PIXI from 'pixi.js';
 import {SceneLobby} from "./SceneLobby";
 import {SceneLevel} from "./SceneLevel";
 import {SceneTrophyRoom} from "./SceneTrophyRoom";
+import EventBus from "../../utils/EventBus";
+import * as events from "../../constants/events";
+import {URL_LEVEL_START, URL_LEVELS} from "../../constants/urls";
+import {LevelStartModel} from "../../data/models";
+import User from "../../data/User";
+import ScreenBlock from "../components/ScreenBlock";
+import Resource from "../../data/Resource";
 
 export default class SceneController {
+
+    private static _instance: SceneController;
+
+    public static instance(): SceneController {
+        return this._instance;
+    }
+
     private _sceneLobby : SceneLobby;
     private _sceneLevel : SceneLevel;
     private _sceneTrophyRoom: SceneTrophyRoom;
 
+    private _levelStartSubscription: any;
+    private _levelLeaveSubscription: any;
+
+
     constructor( private _stage: PIXI.Container ) {
+        if ( !SceneController._instance ) {
+            SceneController._instance = this;
+            this._levelStartSubscription = EventBus.subscribe(events.EVENT_ON_LEVEL_START, this.gotoLevel.bind(this));
+            this._levelLeaveSubscription = EventBus.subscribe(events.EVENT_ON_LEVEL_LEAVE, this.gotoLobby.bind(this));
+        }
     }
 
-    public showSceneLevel( levelId : number ) : void {
+    public showSceneLevel( levelData : LevelStartModel ) : void {
         this.removeSceneLevel();
-        this._sceneLevel = new SceneLevel( levelId );
+        this._sceneLevel = new SceneLevel( levelData );
         this._stage.addChild( this._sceneLevel );
         this._sceneLevel.init();
     }
@@ -54,9 +77,18 @@ export default class SceneController {
     }
 
     public gotoLevel( levelId : number ) : void {
-        this.removeSceneLobby();
-        this.removeSceneTrophyRoom();
-        this.showSceneLevel( levelId );
+        ScreenBlock.show();
+        fetch(URL_LEVEL_START+levelId,{headers: {'Authorization': User.token }}).then( async ( loader: Response ) => {
+            const obj: any = await loader.json();
+            const data:LevelStartModel = obj as LevelStartModel;
+
+            Resource.loadPicture(data.picture, (p:number) => {}).then( () => {
+                this.removeSceneLobby();
+                this.removeSceneTrophyRoom();
+                this.showSceneLevel( data );
+                ScreenBlock.hide();
+            } );
+        } );
     }
 
     public gotoLobby() : void {

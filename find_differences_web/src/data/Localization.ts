@@ -20,4 +20,28 @@ export default class Localization {
         }
         return str;
     }
+
+    public static convertToHHMMSS(seconds:number):string {
+        const s = seconds % 60;
+        const m = Math.floor((seconds % 3600) / 60);
+        const h = Math.floor(seconds / (60 * 60));
+        const d = Math.floor(seconds / (24 * 60 * 60));
+
+        if (d > 0) {
+            return d + "d";
+        }
+
+        const hourStr = (h == 0) ? "" : this.doubleDigitFormat(h) + ":";
+        const minuteStr = this.doubleDigitFormat(m) + ":";
+        const secondsStr = this.doubleDigitFormat(s);
+
+        return hourStr + minuteStr + secondsStr;
+    }
+
+    private static doubleDigitFormat(num:number) {
+        if (num < 10) {
+            return ("0" + num);
+        }
+        return num.toString();
+    }
 }

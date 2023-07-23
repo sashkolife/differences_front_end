@@ -63,6 +63,34 @@ export const URL_ASSETS_MANIFEST : any = [
     {
         "name": "atlas_trophy",
         "src": "./res/pixi/atlases/atlas_trophy.json"
+    },
+    {
+        "name": "atlas_windows",
+        "src": "./res/pixi/atlases/atlas_windows.json"
+    },
+    {
+        "name": "Astachov_brown",
+        "src": "./res/pixi/bmFonts/Astachov_brown.fnt"
+    },
+    {
+        "name": "Astachov_green",
+        "src": "./res/pixi/bmFonts/Astachov_green.fnt"
+    },
+    {
+        "name": "Astachov_blue_shadow",
+        "src": "./res/pixi/bmFonts/Astachov_blue_shadow.fnt"
+    },
+    {
+        "name": "Russia_brown",
+        "src": "./res/pixi/bmFonts/Russia_brown.fnt"
+    },
+    {
+        "name": "Russia_white_shadow",
+        "src": "./res/pixi/bmFonts/Russia_white_shadow.fnt"
+    },
+    {
+        "name": "Russia_cups_nums",
+        "src": "./res/pixi/bmFonts/Russia_cups_nums.fnt"
     }
 ];
 export const URL_MAPS: string = "./res/pixi/maps/";
@@ -71,5 +99,12 @@ export const URL_SERVER : string = "http://localhost:9002/";
 // export const URL_SERVER : string = "http://localhost:9002/";
 export const URL_LEVELS : string = URL_SERVER+"user/levels";
 export const URL_SHOP : string = URL_SERVER+"user/shop";
-export const URL_LOGIN : string = URL_SERVER+"user/login";
+export const URL_LOGIN : string = URL_SERVER+"user/login/?id=";
+
+export const URL_LEVEL_START : string = URL_SERVER+"level/start/?levelId=";
+
+export const MAP_EXTENSION: string = ".jpg";
+
+export const URL_PICTURE_PATH : string = URL_SERVER+"data/";
+
 

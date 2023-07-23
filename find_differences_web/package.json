@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "Find differences on 2 pictures",
   "scripts": {
-    "start": "lite-server",
-    "build": "webpack --mode production --no-watch"
+    "dev": "webpack",
+    "build": "webpack --mode production --no-watch --no-devtool"
   },
   "author": "Olexandr Kuriachyi",
   "license": "ISC",
   "devDependencies": {
+    "@pixi/animate": "^3.0.0",
     "@types/howler": "^2.2.7",
     "gsap": "^3.12.1",
     "howler": "^2.2.3",

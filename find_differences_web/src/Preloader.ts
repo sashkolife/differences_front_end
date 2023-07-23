@@ -80,7 +80,7 @@ export const load = () => {
                 updateProgressBar( loaded * progressStep, loaded === 1 ? PROGRESS_STEP_MAP : null );
             } );
 
-            await Resource.loadCurrentMap( ( loaded : number ) => {
+            await Resource.loadCurrentLocation( (loaded : number ) => {
                 updateProgressBar( loaded * progressStep, loaded === 1 ? PROGRESS_STEP_SOUNDS_JSON : null );
             } );
 
@@ -92,9 +92,7 @@ export const load = () => {
 
             updateProgressBar( progressStep );
 
-            setTimeout( () => {
-                resolve();
-            }, 500 );
+            resolve();
 
         } catch (err) {
 
