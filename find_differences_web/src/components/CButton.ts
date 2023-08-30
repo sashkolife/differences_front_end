@@ -3,15 +3,16 @@ import Resource from "../data/Resource";
 import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
-import CContainer from "./CContainer";
-import CSprite from "./CSprite";
-import CText from "./CText";
 import CFactory from "./CFactory";
-import CBMText from "./CBMText";
+import {
+    ButtonModel,
+    ButtonStateModel,
+    ComponentModel
+} from "../models/PropertiesModels";
 
 export default class CButton extends PIXI.Sprite {
-    properties:any;
-    setProperties( props:any ) {};
+    properties:ButtonModel;
+    setProperties( props:ButtonModel ) {};
     removeOrientationEvent() {};
 
     textureNormal:PIXI.Texture;
@@ -19,15 +20,15 @@ export default class CButton extends PIXI.Sprite {
     textureDown:PIXI.Texture;
     textureDisable:PIXI.Texture;
 
-    scaleNormal:any = null;
-    scaleOver:any = null;
-    scaleDown:any = null;
-    scaleDisable:any = null;
+    scaleNormal:PIXI.IPointData = null;
+    scaleOver:PIXI.IPointData = null;
+    scaleDown:PIXI.IPointData = null;
+    scaleDisable:PIXI.IPointData = null;
 
-    textPropsNormal:any = null;
-    textPropsOver:any = null;
-    textPropsDown:any = null;
-    textPropsDisable:any = null;
+    textPropsNormal:ComponentModel = null;
+    textPropsOver:ComponentModel = null;
+    textPropsDown:ComponentModel = null;
+    textPropsDisable:ComponentModel = null;
 
     state:string = constants.KEY_NORMAL;
 
@@ -38,41 +39,40 @@ export default class CButton extends PIXI.Sprite {
     protected _actionDown: Function = null;
     protected _actionUp: Function = null;
 
-    constructor( props: any ) {
+    constructor( props: ButtonModel ) {
         super();
 
-        const states:any = props[constants.KEY_STATES];
 
-        const stateNorm:any = states[constants.KEY_NORMAL];
-        this.textureNormal = Resource.getTexture( stateNorm[constants.KEY_TEXTURE] );
-        this.scaleNormal = stateNorm[constants.KEY_SCALE];
-        this.textPropsNormal = stateNorm[constants.KEY_BTN_TEXT];
+        const stateNorm:ButtonStateModel = props.states.normal;
+        this.textureNormal = Resource.getTexture( stateNorm.texture );
+        this.scaleNormal = stateNorm.scale;
+        this.textPropsNormal = stateNorm.btnText;
 
-        const stateOver:any = states[constants.KEY_OVER];
+        const stateOver:ButtonStateModel = props.states.over;
         if ( stateOver ) {
-            this.textureOver = Resource.getTexture( stateOver[constants.KEY_TEXTURE] );
-            this.scaleOver = stateOver[constants.KEY_SCALE];
-            this.textPropsOver = stateOver[constants.KEY_BTN_TEXT];
+            this.textureOver = Resource.getTexture( stateOver.texture );
+            this.scaleOver = stateOver.scale;
+            this.textPropsOver = stateOver.btnText;
         }
 
-        const stateDown:any = states[constants.KEY_DOWN];
+        const stateDown:ButtonStateModel = props.states.down;
         if ( stateDown ) {
-            this.textureDown = Resource.getTexture( stateDown[constants.KEY_TEXTURE] );
-            this.scaleDown = stateDown[constants.KEY_SCALE];
-            this.textPropsDown = stateDown[constants.KEY_BTN_TEXT];
+            this.textureDown = Resource.getTexture( stateDown.texture );
+            this.scaleDown = stateDown.scale;
+            this.textPropsDown = stateDown.btnText;
         }
 
-        const stateDisable:any = states[constants.KEY_DISABLE];
+        const stateDisable:ButtonStateModel = props.states.disable;
         if ( stateDisable ) {
-            this.textureDisable = Resource.getTexture( stateDisable[constants.KEY_TEXTURE] );
-            this.scaleDisable = stateDisable[constants.KEY_SCALE];
-            this.textPropsDisable = stateDisable[constants.KEY_BTN_TEXT];
+            this.textureDisable = Resource.getTexture( stateDisable.texture );
+            this.scaleDisable = stateDisable.scale;
+            this.textPropsDisable = stateDisable.btnText;
         }
 
         this.texture = this.textureNormal;
 
-        this.setEnabled( props[constants.KEY_ENABLED] );
-        this.setState( props[constants.KEY_STATE]||constants.KEY_NORMAL );
+        this.setEnabled( props.enabled );
+        this.setState( props.state||constants.KEY_NORMAL );
 
         if ( this.scaleNormal ) {
             this.scale = this.scaleNormal;
@@ -80,8 +80,8 @@ export default class CButton extends PIXI.Sprite {
 
         this.setProperties( props );
 
-        if ( props[constants.KEY_BTN_TEXT] ) {
-            this.btnText = CFactory.getNewComponent(props[constants.KEY_BTN_TEXT]);
+        if ( props.btnText ) {
+            this.btnText = CFactory.getNewComponent(props.btnText);
             this.addChild(this.btnText);
         }
 
@@ -95,13 +95,6 @@ export default class CButton extends PIXI.Sprite {
         self.on("touchstart", this.onStart.bind(this));
         self.on("touchend", this.onEnd.bind(this));
         self.on("touchendoutside", this.onEndOutside.bind(this));
-    }
-
-    destroy(_options?: PIXI.IDestroyOptions | boolean) {
-
-        this.removeOrientationEvent();
-
-        super.destroy(_options);
     }
 
     setEnabled( value: boolean ) : void {
@@ -194,4 +187,4 @@ export default class CButton extends PIXI.Sprite {
     }
 }
 
-Mixin.applyMixins( CButton, [CBase, PIXI.Sprite] );
+Mixin.applyMixins( CButton, [CBase] );

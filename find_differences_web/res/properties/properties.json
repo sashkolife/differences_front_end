@@ -21284,8 +21284,8 @@
             "y": 0
           },
           {
-            "name": "difference0",
-            "type": "level_difference",
+            "name": "progressDiff0",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 140, "y":0},
             "children": [
@@ -21307,8 +21307,8 @@
             "visible":  false
           },
           {
-            "name": "difference1",
-            "type": "level_difference",
+            "name": "progressDiff1",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 170, "y":0},
             "children": [
@@ -21330,8 +21330,8 @@
             "visible":  false
           },
           {
-            "name": "difference2",
-            "type": "level_difference",
+            "name": "progressDiff2",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 200, "y":0},
             "children": [
@@ -21353,8 +21353,8 @@
             "visible":  false
           },
           {
-            "name": "difference3",
-            "type": "level_difference",
+            "name": "progressDiff3",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 230, "y":0},
             "children": [
@@ -21376,8 +21376,8 @@
             "visible":  false
           },
           {
-            "name": "difference4",
-            "type": "level_difference",
+            "name": "progressDiff4",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 260, "y":0},
             "children": [
@@ -21399,8 +21399,8 @@
             "visible":  false
           },
           {
-            "name": "difference5",
-            "type": "level_difference",
+            "name": "progressDiff5",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 290, "y":0},
             "children": [
@@ -21422,8 +21422,8 @@
             "visible":  false
           },
           {
-            "name": "difference6",
-            "type": "level_difference",
+            "name": "progressDiff6",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 320, "y":0},
             "children": [
@@ -21445,8 +21445,8 @@
             "visible":  false
           },
           {
-            "name": "difference7",
-            "type": "level_difference",
+            "name": "progressDiff7",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 350, "y":0},
             "children": [
@@ -21468,8 +21468,8 @@
             "visible":  false
           },
           {
-            "name": "difference8",
-            "type": "level_difference",
+            "name": "progressDiff8",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 380, "y":0},
             "children": [
@@ -21491,8 +21491,8 @@
             "visible":  false
           },
           {
-            "name": "difference9",
-            "type": "level_difference",
+            "name": "progressDiff9",
+            "type": "level_progress_differences",
             "scale": {"x": 0.65, "y":0.65},
             "position": {"x": 410, "y":0},
             "children": [
@@ -21547,7 +21547,7 @@
         },
         {
           "name": "content",
-          "type": "container",
+          "type": "window_content",
           "x": 640,
           "y": -360,
           "show": {

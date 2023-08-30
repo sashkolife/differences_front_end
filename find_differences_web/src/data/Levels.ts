@@ -1,11 +1,12 @@
 import {URL_LEVELS} from "../constants/urls";
-import {LevelModel} from "./models";
+import {LevelModel} from "../models/ApiModels";
+import Api from "../utils/Api";
 
 export default class Levels {
     private static _levels : Array<LevelModel> = null;
 
     public static async load() {
-        const loader: any = await fetch(URL_LEVELS);
+        const loader: any = await Api.request(URL_LEVELS);
         this._levels = await loader.json() as Array<LevelModel>;
     }
 

@@ -1,11 +1,10 @@
 import CSprite from "../../components/CSprite";
-import * as PIXI from "pixi.js";
 import Resource from "../../data/Resource";
-import * as constants from "../../constants/constants";
-
 import * as animate from "@pixi/animate";
+import {LocationBackgroundModel} from "../../models/PropertiesModels";
 
 export default class LocationBackground extends CSprite {
+    properties:LocationBackgroundModel;
 
     private static readonly _scene: animate.Scene = new animate.Scene();
     private static readonly _animationsData: any = {};
@@ -15,7 +14,7 @@ export default class LocationBackground extends CSprite {
 
     private _isAnimationPlayed: boolean = true;
 
-    constructor( props: any ) {
+    constructor( props: LocationBackgroundModel ) {
         super( props );
     }
 
@@ -23,7 +22,7 @@ export default class LocationBackground extends CSprite {
         if ( !this._isLoading ) {
             this._isLoading = true;
 
-            const animName: string = this.properties[constants.KEY_ANIMATION];
+            const animName: string = this.properties.animation;
 
             const loadMovieClip: Function = () => {
                 if ( LocationBackground._animationsData[animName] ) {
@@ -37,8 +36,8 @@ export default class LocationBackground extends CSprite {
                 }
             }
 
-            Resource.loadLocations([this.properties[constants.KEY_TEXTURE_FULL]], null).then(async () => {
-                this.texture = Resource.getTexture(this.properties[constants.KEY_TEXTURE_FULL]);
+            Resource.loadLocations([this.properties.textureFull], null).then(async () => {
+                this.texture = Resource.getTexture(this.properties.textureFull);
 
                 try {
                     if ( !LocationBackground._animationsData[animName] ) {

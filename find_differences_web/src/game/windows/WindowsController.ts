@@ -40,13 +40,11 @@ export default class WindowsController {
     hide( wnd : BaseWindow ) : void {
 
         if ( wnd ) {
+            const wndName:string = wnd.getName();
+            delete this._windows[wndName];
 
-            if ( wnd.parent ) {
-                (wnd.parent as PIXI.Container).removeChild(wnd);
-            }
-            delete this._windows[wnd.getName()];
-
-            wnd.destroy({children:true});
+            wnd.removeFromParent();
+            wnd.destroy( {children:true} );
         }
 
 

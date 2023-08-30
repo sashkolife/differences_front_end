@@ -1,21 +1,20 @@
 import CBase from "./CBase";
-import Resource from "../data/Resource";
 import * as PIXI from "pixi.js";
-import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
 import Localization from "../data/Localization";
+import {TextModel} from "../models/PropertiesModels";
 
 export default class CText extends PIXI.Text {
-    setProperties( props:any ) {}
+    setProperties( props:TextModel ) {}
     removeOrientationEvent() {}
 
-    constructor( props: any ) {
+    constructor( props: TextModel ) {
         super();
 
-        this.style = props[constants.KEY_STYLE];
+        this.style = props.style;
 
-        if ( props[constants.KEY_TEXT_KEY] ) {
-            this.text = Localization.get(props[constants.KEY_TEXT_KEY]);
+        if ( props.textKey ) {
+            this.text = Localization.get(props.textKey);
         }
         this.resolution = 2;
 
@@ -30,4 +29,4 @@ export default class CText extends PIXI.Text {
     }
 }
 
-Mixin.applyMixins( CText, [CBase, PIXI.Text] );
+Mixin.applyMixins( CText, [CBase] );

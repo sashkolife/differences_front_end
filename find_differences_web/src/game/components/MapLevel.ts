@@ -1,4 +1,3 @@
-import * as PIXI from 'pixi.js';
 import CContainer from "../../components/CContainer";
 import CText from "../../components/CText";
 import CSprite from "../../components/CSprite";
@@ -7,7 +6,7 @@ import * as constants from "../../constants/constants";
 import CButton from "../../components/CButton";
 import EventBus from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {LevelModel, UserLevelModel} from "../../data/models";
+import {LevelModel, UserLevelModel} from "../../models/ApiModels";
 
 export default class MapLevel extends CContainer {
     private _availableMarker: CButton;
@@ -68,7 +67,7 @@ export default class MapLevel extends CContainer {
         if ( value ) {
             this._availableMarker.setEnabled(true);
             this._availableMarker.setState(constants.KEY_NORMAL);
-            this._numBg.texture = Resource.getTexture(this._numBg.properties[constants.KEY_TEXTURE_FULL]);
+            this._numBg.texture = Resource.getTexture(this._numBg.properties.textureFull);
             this._ribbon.visible = true;
         }
     }
@@ -89,7 +88,7 @@ export default class MapLevel extends CContainer {
     }
 
     getId(): number {
-        return this.properties[constants.KEY_ID];
+        return this.properties.id;
     }
 
     onLevelClick() : void {
@@ -128,14 +127,12 @@ export default class MapLevel extends CContainer {
             isDrag = false;
             self.parent.interactive = false;
             self.parent.parent.interactive = true;
-            console.log(this.getId(), "{", this.position.x, this.position.y, "}");
         };
         self.onmouseupoutside = () => {
             // console.log(e);
             isDrag = false;
             self.parent.interactive = false;
             self.parent.parent.interactive = true;
-            console.log(this.position);
         };
     }
 

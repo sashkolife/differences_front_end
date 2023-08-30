@@ -4,11 +4,12 @@ import {SceneLevel} from "./SceneLevel";
 import {SceneTrophyRoom} from "./SceneTrophyRoom";
 import EventBus from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {URL_LEVEL_START, URL_LEVELS} from "../../constants/urls";
-import {LevelStartModel} from "../../data/models";
+import {URL_LEVEL_LEAVE, URL_LEVEL_START, URL_LEVELS} from "../../constants/urls";
 import User from "../../data/User";
 import ScreenBlock from "../components/ScreenBlock";
 import Resource from "../../data/Resource";
+import Api from "../../utils/Api";
+import {PlayedLevelModel, StartModel} from "../../models/ApiModels";
 
 export default class SceneController {
 
@@ -34,7 +35,7 @@ export default class SceneController {
         }
     }
 
-    public showSceneLevel( levelData : LevelStartModel ) : void {
+    public showSceneLevel( levelData : PlayedLevelModel ) : void {
         this.removeSceneLevel();
         this._sceneLevel = new SceneLevel( levelData );
         this._stage.addChild( this._sceneLevel );
@@ -43,7 +44,8 @@ export default class SceneController {
 
     public removeSceneLevel() : void {
         if ( this._sceneLevel ) {
-            this._sceneLevel.destroy( { children : true } );
+            this._sceneLevel.removeFromParent();
+            this._sceneLevel.destroy( {children:true}  );
             this._sceneLevel = null;
         }
     }
@@ -57,7 +59,8 @@ export default class SceneController {
 
     private removeSceneLobby() : void {
         if ( this._sceneLobby ) {
-            this._sceneLobby.destroy( { children : true } );
+            this._sceneLobby.removeFromParent();
+            this._sceneLobby.destroy( {children:true}  );
             this._sceneLobby = null;
         }
     }
@@ -78,16 +81,22 @@ export default class SceneController {
 
     public gotoLevel( levelId : number ) : void {
         ScreenBlock.show();
-        fetch(URL_LEVEL_START+levelId,{headers: {'Authorization': User.token }}).then( async ( loader: Response ) => {
+        Api.request(URL_LEVEL_START+levelId).then( async ( loader: Response ) => {
             const obj: any = await loader.json();
-            const data:LevelStartModel = obj as LevelStartModel;
+            const data:StartModel = obj as StartModel;
 
-            Resource.loadPicture(data.picture, (p:number) => {}).then( () => {
-                this.removeSceneLobby();
-                this.removeSceneTrophyRoom();
-                this.showSceneLevel( data );
-                ScreenBlock.hide();
-            } );
+            User.update(data.user);
+
+            this.loadPicture(data.playedLevel);
+        } );
+    }
+
+    private loadPicture( data:PlayedLevelModel ) {
+        Resource.loadPicture(data.picture, (p:number) => {}).then( () => {
+            this.removeSceneLobby();
+            this.removeSceneTrophyRoom();
+            this.showSceneLevel( data );
+            ScreenBlock.hide();
         } );
     }
 
@@ -104,6 +113,11 @@ export default class SceneController {
     }
 
     public gotoStartScene() : void {
-        this.showSceneLobby();
+        if ( User.playedLevel ) {
+            ScreenBlock.show();
+            this.loadPicture(User.playedLevel);
+        } else {
+            this.showSceneLobby();
+        }
     }
 }

@@ -1,9 +1,13 @@
 
+export interface EventModel {
+    unsubscribe():void
+}
+
 export default class EventBus {
 
     private static _subscriptions : any = {};
 
-    public static subscribe( eventType:string, callback:Function ) : any {
+    public static subscribe( eventType:string, callback:Function ) : EventModel {
 
         if ( !this._subscriptions[eventType] ) {
             this._subscriptions[eventType] = new Array<Function>();

@@ -3,13 +3,14 @@ import Resource from "../data/Resource";
 import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
+import {GraphicsModel} from "../models/PropertiesModels";
 
 export default class CGraphics extends PIXI.Graphics {
-    properties: any
-    setProperties( props:any ) {}
+    properties: GraphicsModel;
+    setProperties( props:GraphicsModel ) {}
     removeOrientationEvent() {}
 
-    constructor( props: any ) {
+    constructor( props: GraphicsModel ) {
         super();
 
         this.setProperties( props );
@@ -25,17 +26,16 @@ export default class CGraphics extends PIXI.Graphics {
     }
 
     drawFigure() {
-        const figureProps:any = this.properties[constants.KEY_FIGURE];
 
         this.clear();
 
-        if ( figureProps ) {
-            if ( figureProps[constants.KEY_FILL_COLOR] ) {
-                this.beginFill(figureProps[constants.KEY_FILL_COLOR]);
+        if ( this.properties.figure ) {
+            if ( this.properties.figure.fillColor ) {
+                this.beginFill(this.properties.figure.fillColor);
             }
 
-            if ( figureProps[constants.KEY_RECT] ) {
-                const r:any = figureProps[constants.KEY_RECT];
+            if ( this.properties.figure.rect ) {
+                const r:any = this.properties.figure.rect;
                 this.drawRect( r.x, r.y, r.width, r.height );
             }
 
@@ -44,4 +44,4 @@ export default class CGraphics extends PIXI.Graphics {
     }
 }
 
-Mixin.applyMixins( CGraphics, [CBase, PIXI.Graphics] );
+Mixin.applyMixins( CGraphics, [CBase] );

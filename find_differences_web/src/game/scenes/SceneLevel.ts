@@ -10,8 +10,13 @@ import DifferencesProgressBar from "../components/DifferencesProgressBar";
 import CBMText from "../../components/CBMText";
 import EventBus from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {LevelStartModel} from "../../data/models";
+import {Errors, LevelFindDiffModel, PlayedLevelModel, UserModel} from "../../models/ApiModels";
 import LevelPicturesContainer from "../components/LevelPicturesContainer";
+import ScreenBlock from "../components/ScreenBlock";
+import {URL_LEVEL_FIND, URL_LEVEL_LEAVE} from "../../constants/urls";
+import Resource from "../../data/Resource";
+import Api from "../../utils/Api";
+import User from "../../data/User";
 
 export class SceneLevel extends CContainer {
 
@@ -26,7 +31,9 @@ export class SceneLevel extends CContainer {
 
     private _levelId:number;
 
-    constructor(private _levelData: LevelStartModel ) {
+    private _pictureTouchSubscription:any;
+
+    constructor(private _levelData: PlayedLevelModel ) {
 
         super(Properties.get("sceneLevel"));
 
@@ -42,12 +49,31 @@ export class SceneLevel extends CContainer {
         this._levelText = this.getComponentByName("levelText");
 
         this._leaveBtn = this.getComponentByName("leaveBtn");
-        this._leaveBtn.setActionUp( this.onLeaveClick.bind(this) );
+        this._leaveBtn.setActionUp( this.onLeaveTouch.bind(this) );
 
-        this._differencesProgressBar.setCount(6);
-        this._picturesProgressBar.setCount(6);
+        this.setInitialViews();
 
-        this._levelPicturesContainer.init( _levelData.picture );
+        this._pictureTouchSubscription = EventBus.subscribe(events.EVENT_ON_PICTURE_TOUCH, this.onPictureTouch.bind(this));
+    }
+
+    setInitialViews() : void {
+
+        this._levelText.text += " "+ this._levelId;
+
+        this._differencesProgressBar.setCount(this._levelData.level.differencesCount);
+        this._picturesProgressBar.setCurrent(User.playedPictureNum);
+        this._picturesProgressBar.setCount(this._levelData.level.picturesCount);
+
+        this._levelPicturesContainer.init( this._levelData.picture, this._levelData.foundDifferences );
+        this._levelData.foundDifferences?.forEach( (diffId:number) => {
+            this._differencesProgressBar.setFound( diffId );
+        } );
+    }
+
+    destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        super.destroy(_options);
+        this._pictureTouchSubscription.unsubscribe();
+        this._pictureTouchSubscription = null;
     }
 
     init() : void {
@@ -87,7 +113,59 @@ export class SceneLevel extends CContainer {
         this.updateSoundBtn();
     }
 
-    onLeaveClick(): void {
+    private onLeaveTouch(): void {
+        Api.request(URL_LEVEL_LEAVE).then(async ( loader: Response ) => {
+            const obj: any = await loader.json();
+            const data: UserModel = obj as UserModel;
+
+            User.update(data);
+        });
         EventBus.publish( events.EVENT_ON_LEVEL_LEAVE );
+    }
+
+    private onPictureTouch( data:any ): void {
+        ScreenBlock.show();
+        Api.request(URL_LEVEL_FIND+"x="+Math.ceil(data.touchPos.x)+"&y="+Math.ceil(data.touchPos.y)).then( async (loader: Response ) => {
+
+            const obj: any = await loader.json();
+
+            if ( !obj ) {
+                ScreenBlock.hide();
+                return;
+            }
+
+            const findData:LevelFindDiffModel = obj as LevelFindDiffModel;
+
+            if ( findData.user && Object.keys(findData.user).length > 0 ) {
+                User.update(findData.user);
+            }
+
+            if ( findData.error ) {
+                if ( findData.error == Errors.DIFFERENCE_IS_OUT ) {
+
+                }
+                ScreenBlock.hide();
+                return;
+            }
+
+            this._differencesProgressBar.setFound(findData.diffId);
+
+            if ( findData.picture ) {
+                Resource.loadPicture(findData.picture, (p: number) => {}).then(() => {
+                    this._picturesProgressBar.setCurrent(findData.user.playedPictureNum);
+                    this._differencesProgressBar.reset();
+                    this._levelPicturesContainer.setNewPicture( findData.picture );
+                    ScreenBlock.hide();
+                });
+            } else {
+                ScreenBlock.hide();
+                if ( findData.isWin === true ) {
+                    window.setTimeout( () => {
+                        EventBus.publish( events.EVENT_ON_LEVEL_LEAVE );
+                    }, 2000 );
+                }
+            }
+
+        });
     }
 }

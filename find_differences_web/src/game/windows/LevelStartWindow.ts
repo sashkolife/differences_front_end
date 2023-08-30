@@ -5,7 +5,7 @@ import CBMText from "../../components/CBMText";
 import Localization from "../../data/Localization";
 import EventBus from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {LevelModel, UserLevelModel} from "../../data/models";
+import {LevelModel, UserLevelModel} from "../../models/ApiModels";
 
 export default class LevelStartWindow extends BaseWindow {
 
@@ -55,9 +55,9 @@ export default class LevelStartWindow extends BaseWindow {
     }
 
     onPlayClick() : void {
+        this.hide();
         const levelData:LevelModel = this._params["levelData"];
         EventBus.publish( events.EVENT_ON_LEVEL_START, levelData.id );
-        this.hide();
     }
 
     show(params?: any) {

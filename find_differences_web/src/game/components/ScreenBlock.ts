@@ -5,6 +5,7 @@ import CSprite from "../../components/CSprite";
 import Properties from "../../data/Properties";
 import {game} from "../../App";
 import * as constants from "../../constants/constants";
+import * as PIXI from "pixi.js";
 
 export default class ScreenBlock extends CContainer {
 
@@ -31,6 +32,8 @@ export default class ScreenBlock extends CContainer {
 
     private _boxesTween: any = null;
 
+    private _showTimer:number = null;
+
     constructor() {
         super( Properties.get("screenBlock") );
 
@@ -47,9 +50,16 @@ export default class ScreenBlock extends CContainer {
         this._boxesTween.to(this._boxes[2], {duration:0.6,alpha:1}, "-=0.8");
         this._boxesTween.to(this._boxes[2], {duration:0.8,alpha:0.2});
 
+        this.alpha = 0.05;
+
+        this._showTimer = window.setTimeout( () => {
+            this.alpha = 1;
+        }, 2000 );
     }
 
-    destroy(_options?: IDestroyOptions | boolean) {
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        window.clearTimeout( this._showTimer );
+
         if ( this._boxesTween ) {
             this._boxesTween.kill();
             this._boxesTween = null;

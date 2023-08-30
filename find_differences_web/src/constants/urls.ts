@@ -102,9 +102,14 @@ export const URL_SHOP : string = URL_SERVER+"user/shop";
 export const URL_LOGIN : string = URL_SERVER+"user/login/?id=";
 
 export const URL_LEVEL_START : string = URL_SERVER+"level/start/?levelId=";
+export const URL_LEVEL_LEAVE : string = URL_SERVER+"level/leave";
+export const URL_LEVEL_FIND : string = URL_SERVER+"level/find/?";
 
 export const MAP_EXTENSION: string = ".jpg";
 
 export const URL_PICTURE_PATH : string = URL_SERVER+"data/";
+export const URL_PICTURE_0_NAME : string = "i0.jpg";
+export const URL_PICTURE_1_NAME : string = "i1.jpg";
+export const URL_PICTURE_JSON : string = "j.json";
 
 

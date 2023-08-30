@@ -4,13 +4,14 @@ import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
 import CFactory from "./CFactory";
+import {ContainerModel} from "../models/PropertiesModels";
 
 export default class CContainer extends PIXI.Container {
-    properties:any;
-    setProperties( props:any ) {}
+    properties:ContainerModel;
+    setProperties( props:ContainerModel ) {}
     removeOrientationEvent() {}
 
-    constructor( props?: any ) {
+    constructor( props?: ContainerModel ) {
         super();
 
         this.setProperties(props);
@@ -20,17 +21,15 @@ export default class CContainer extends PIXI.Container {
         this.addMask();
     }
 
-    destroy(_options?: PIXI.IDestroyOptions | boolean) {
-
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
         this.removeOrientationEvent();
-
         super.destroy(_options);
     }
 
     addChildren() : void {
-        if ( this.properties && this.properties[constants.KEY_CHILDREN] ) {
+        if ( this.properties && this.properties.children ) {
 
-            this.properties[constants.KEY_CHILDREN].forEach( (props:any) => {
+            this.properties.children.forEach( (props:any) => {
 
                 let component: any = this.getNewComponentByType( props );
 
@@ -59,22 +58,21 @@ export default class CContainer extends PIXI.Container {
 
     getComponentByName( name: string ) : any {
         return this.children.find( (component:any) => {
-            return (component.hasOwnProperty(constants.KEY_PROPERTIES) && component[constants.KEY_PROPERTIES][constants.KEY_NAME] == name) ||
-                (component.hasOwnProperty(constants.KEY_NAME) && component[constants.KEY_NAME] == name);
+            return (component.properties && component.properties.name == name) || (component.name && component.name == name);
         });
     }
 
     getComponentsByType( type: string ): Array<any> {
         return this.children.filter((component:any) => {
-            return component.hasOwnProperty(constants.KEY_PROPERTIES) && component[constants.KEY_PROPERTIES][constants.KEY_TYPE] == type;
+            return component.properties && component.properties.type == type;
         });
     }
 
     addMask() : void {
-        if ( this.properties[constants.KEY_MASK] ) {
-            this.mask = this.getComponentByName( this.properties[constants.KEY_MASK]);
+        if ( this.properties.mask ) {
+            this.mask = this.getComponentByName( this.properties.mask);
         }
     }
 }
 
-Mixin.applyMixins( CContainer, [CBase, PIXI.Container] );
+Mixin.applyMixins( CContainer, [CBase] );

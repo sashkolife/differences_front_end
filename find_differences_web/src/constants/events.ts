@@ -6,3 +6,4 @@ export const EVENT_ON_MAP_LEVEL_OVER = "eventOnMapLevelOver";
 export const EVENT_ON_MAP_LEVEL_OUT = "eventOnMapLevelOut";
 export const EVENT_ON_LEVEL_START = "eventOnLevelStart";
 export const EVENT_ON_LEVEL_LEAVE = "eventOnLevelLeave";
+export const EVENT_ON_PICTURE_TOUCH = "eventOnPictureTouch";

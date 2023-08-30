@@ -3,17 +3,18 @@ import Resource from "../data/Resource";
 import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
+import {SpriteModel} from "../models/PropertiesModels";
 
 export default class CSprite extends PIXI.Sprite {
-    properties:any;
-    setProperties( props:any ) {}
+    properties:SpriteModel;
+    setProperties( props:SpriteModel ) {}
     removeOrientationEvent() {}
 
-    constructor( props: any ) {
+    constructor( props: SpriteModel ) {
         super();
 
-        if ( props[constants.KEY_TEXTURE] ) {
-            this.texture = Resource.getTexture(props[constants.KEY_TEXTURE]);
+        if ( props.texture ) {
+            this.texture = Resource.getTexture(props.texture);
         }
 
         this.setProperties( props );
@@ -27,4 +28,4 @@ export default class CSprite extends PIXI.Sprite {
     }
 }
 
-Mixin.applyMixins( CSprite, [CBase, PIXI.Sprite] );
+Mixin.applyMixins( CSprite, [CBase] );

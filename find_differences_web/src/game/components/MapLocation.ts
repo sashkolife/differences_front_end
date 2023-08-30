@@ -6,6 +6,7 @@ import MapLevel from "./MapLevel";
 import LocationBackground from "./LocationBackground";
 import Fence from "./Fence";
 import gsap from "gsap";
+import {ContainerModel} from "../../models/PropertiesModels";
 
 export default class MapLocation extends CContainer {
 
@@ -15,7 +16,7 @@ export default class MapLocation extends CContainer {
     private _fence: Fence;
     private _arrow: CSprite;
 
-    constructor( props: any ) {
+    constructor( props: ContainerModel ) {
         super( props );
 
         this._background = this.getComponentByName("background");
@@ -25,6 +26,11 @@ export default class MapLocation extends CContainer {
 
         this._fence = this.getComponentByName("fence");
         this._arrow = this.getComponentByName("arrow");
+    }
+
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        gsap.killTweensOf(this._arrow);
+        super.destroy(_options);
     }
 
     getNewComponentByType( props:any ) : any {
@@ -64,7 +70,7 @@ export default class MapLocation extends CContainer {
         this._arrow.visible = true;
         gsap.killTweensOf(this._arrow);
         this._arrow.x = mapLevel.x;
-        this._arrow.y = mapLevel.y + this._arrow.properties[constants.KEY_Y];
+        this._arrow.y = mapLevel.y + this._arrow.properties.y;
         gsap.to( this._arrow.position, { duration:0.5, "y": "+=10", yoyo: true, repeat: -1 } );
     }
 

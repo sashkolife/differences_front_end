@@ -13,6 +13,7 @@ import * as events from "../../constants/events";
 import Levels from "../../data/Levels";
 import WindowsController from "../windows/WindowsController";
 import LevelStartWindow from "../windows/LevelStartWindow";
+import {MapModel} from "../../models/PropertiesModels";
 
 export default class Map extends CContainer {
 
@@ -39,7 +40,7 @@ export default class Map extends CContainer {
     private _levelOutSubscription:any = null;
     private _levelClickSubscription:any = null;
 
-    constructor( props: any ) {
+    constructor( props: MapModel ) {
         super( props );
 
         this._tooltip = this.getComponentByName("tooltip");
@@ -48,8 +49,8 @@ export default class Map extends CContainer {
 
         this._mapScale = (window as any).APP_WIDTH/2048;
 
-        this._locationHeight = props["locationHeight"];
-        this._locationWidth = props["locationWidth"];
+        this._locationHeight = props.locationHeight;
+        this._locationWidth = props.locationWidth;
 
         this.scale.set(this._mapScale, this._mapScale);
         this._tooltip.scale.set(1/this._mapScale);
@@ -70,6 +71,13 @@ export default class Map extends CContainer {
         this._levelOverSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_OVER, this.onMapLevelOver.bind(this));
         this._levelOutSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_OUT, this.onMapLevelOut.bind(this));
         this._levelClickSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_CLICK, this.onMapLevelClick.bind(this));
+    }
+
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        this._levelOverSubscription.unsubscribe();
+        this._levelOutSubscription.unsubscribe();
+        this._levelClickSubscription.unsubscribe();
+        super.destroy(_options);
     }
 
     getNewComponentByType( props:any ) : any {
@@ -241,7 +249,7 @@ export default class Map extends CContainer {
         const currentLevelGL : PIXI.Point = mapLevel.toGlobal({"x":0,"y":0});
         const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
         this._tooltip.x = currentLevelMapLoc.x;
-        this._tooltip.y = currentLevelMapLoc.y + this._tooltip.properties[constants.KEY_Y];
+        this._tooltip.y = currentLevelMapLoc.y + this._tooltip.properties.y;
         this._tooltip.show(mapLevel.getLevelData());
     }
 

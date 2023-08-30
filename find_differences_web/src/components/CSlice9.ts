@@ -3,13 +3,14 @@ import Resource from "../data/Resource";
 import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
+import {Slice9Model} from "../models/PropertiesModels";
 
 export default class CSlice9 extends PIXI.NineSlicePlane {
-    setProperties( props:any ) {}
+    setProperties( props:Slice9Model ) {}
     removeOrientationEvent() {}
 
-    constructor( props: any ) {
-        super(Resource.getTexture( props[constants.KEY_TEXTURE] ));
+    constructor( props: Slice9Model ) {
+        super(Resource.getTexture( props.texture ));
 
         this.setProperties( props );
     }
@@ -22,4 +23,4 @@ export default class CSlice9 extends PIXI.NineSlicePlane {
     }
 }
 
-Mixin.applyMixins( CSlice9, [CBase, PIXI.NineSlicePlane] );
+Mixin.applyMixins( CSlice9, [CBase] );

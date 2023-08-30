@@ -38,6 +38,10 @@ export class SceneLobby extends CContainer {
         this._map.initMap();
     }
 
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        super.destroy(_options);
+    }
+
     getNewComponentByName( props: any ): any {
 
         const name: string = props[constants.KEY_NAME];

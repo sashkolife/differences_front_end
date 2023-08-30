@@ -27,6 +27,11 @@ export default class MapLevelTooltip extends CContainer {
         this._scaleY = this.scale.y;
     }
 
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        gsap.killTweensOf(this.scale);
+        super.destroy(_options);
+    }
+
     show( levelData: any ) : void {
         this._levelNumLabel.text = Localization.get("lobby_level") + " " + levelData.id;
         this._picturesNumLabel.text = levelData.picturesCount;

@@ -4,6 +4,7 @@ import CContainer from "../../components/CContainer";
 import CText from "../../components/CText";
 import CSlice9 from "../../components/CSlice9";
 import CBMText from "../../components/CBMText";
+import {ContainerModel} from "../../models/PropertiesModels";
 
 export default class PicturesProgressBar extends CContainer {
 
@@ -12,9 +13,9 @@ export default class PicturesProgressBar extends CContainer {
     private _pictureNumTexts: Array<CBMText>;
 
     private _picturesCount:number = 0;
-    private _currentPictureNum:number = 0;
+    private _currentPictureNum:number = 1;
 
-    constructor( props: any ) {
+    constructor( props: ContainerModel ) {
         super( props );
 
         this._bg = this.getComponentByName("bg");
@@ -34,7 +35,7 @@ export default class PicturesProgressBar extends CContainer {
             this.getComponentByName("pictureNum9Text")
         ];
 
-        this._currentPictureFlag.x = this._pictureNumTexts[this._currentPictureNum].x;
+        this._currentPictureFlag.x = this._pictureNumTexts[0].x;
     }
 
     setCount( num: number ) : void {
@@ -47,4 +48,8 @@ export default class PicturesProgressBar extends CContainer {
         this.x = ( (window as any).APP_WIDTH - this.width) >> 1;
     }
 
+    setCurrent( num: number ) : void {
+        this._currentPictureNum = num;
+        this._currentPictureFlag.x = this._pictureNumTexts[this._currentPictureNum-1].x;
+    }
 }

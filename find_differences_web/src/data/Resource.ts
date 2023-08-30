@@ -3,7 +3,8 @@ import * as urls from "../constants/urls";
 import Properties from "./Properties";
 import User from "./User";
 import * as constants from "../constants/constants";
-import {LevelPictureModel} from "./models";
+import {LevelPictureModel} from "../models/ApiModels";
+import {URL_PICTURE_0_NAME} from "../constants/urls";
 
 export default class Resource {
 
@@ -72,15 +73,19 @@ export default class Resource {
         picConf.pictKey2 = picConf.id + constants.PICT_2;
         picConf.pictKeyJson = picConf.id + constants.PICT_JSON;
 
-        PIXI.Assets.add(picConf.pictKey1, urls.URL_PICTURE_PATH + picConf.p +"/"+ picConf.i1);
-        loaderArr.push(picConf.pictKey1);
+        if ( !PIXI.Assets.cache.get(picConf.pictKey1) ) {
 
-        PIXI.Assets.add(picConf.pictKey2, urls.URL_PICTURE_PATH + picConf.p +"/"+  picConf.i2);
-        loaderArr.push(picConf.pictKey2);
+            PIXI.Assets.add(picConf.pictKey1, urls.URL_PICTURE_PATH + picConf.p + "/" + urls.URL_PICTURE_0_NAME);
+            loaderArr.push(picConf.pictKey1);
 
-        PIXI.Assets.add(picConf.pictKeyJson, urls.URL_PICTURE_PATH + picConf.p +"/"+  picConf.j);
-        loaderArr.push(picConf.pictKeyJson);
+            PIXI.Assets.add(picConf.pictKey2, urls.URL_PICTURE_PATH + picConf.p + "/" + urls.URL_PICTURE_1_NAME);
+            loaderArr.push(picConf.pictKey2);
 
-        await PIXI.Assets.load( loaderArr, onProgress as PIXI.ProgressCallback );
+            PIXI.Assets.add(picConf.pictKeyJson, urls.URL_PICTURE_PATH + picConf.p + "/" + urls.URL_PICTURE_JSON);
+            loaderArr.push(picConf.pictKeyJson);
+
+            await PIXI.Assets.load(loaderArr, onProgress as PIXI.ProgressCallback);
+
+        }
     }
 }

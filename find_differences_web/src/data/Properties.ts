@@ -1,4 +1,5 @@
 import {URL_JSON_PROPERTIES} from "../constants/urls";
+import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 
 export default class Properties {

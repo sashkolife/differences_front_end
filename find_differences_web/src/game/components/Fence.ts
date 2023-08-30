@@ -5,6 +5,7 @@ import CText from "../../components/CText";
 import CSprite from "../../components/CSprite";
 import Resource from "../../data/Resource";
 import * as constants from "../../constants/constants";
+import {ContainerModel} from "../../models/PropertiesModels";
 
 export default class Fence extends CContainer {
     private _closed: CSprite;
@@ -14,7 +15,7 @@ export default class Fence extends CContainer {
 
     private _keysWins: number;
 
-    constructor( props: any ) {
+    constructor( props: ContainerModel ) {
         super( props );
 
         this._closed = this.getComponentByName("closed");
@@ -74,42 +75,38 @@ export default class Fence extends CContainer {
 
     }
 
-    getId(): number {
-        return this.properties[constants.KEY_ID];
-    }
-
-    positionTest(): void {
-        const self:any = this;
-        self.interactive = true;
-
-        let isDrag:boolean = false;
-
-        self.onmousedown = ()=>{
-            isDrag = true;
-            self.parent.interactive = true;
-            self.parent.parent.interactive = false;
-
-            self.parent.onmousemove = (e:any)=>{
-                if (isDrag) {
-                    this.position=self.parent.toLocal(e.global);
-                }
-            };
-        };
-
-        self.onmouseup = () => {
-            self.parent.onmousemove = null;
-            // console.log(e);
-            isDrag = false;
-            self.parent.interactive = false;
-            self.parent.parent.interactive = true;
-            console.log(this.getId(), "{", this.position.x, this.position.y, "}");
-        };
-        self.onmouseupoutside = () => {
-            // console.log(e);
-            isDrag = false;
-            self.parent.interactive = false;
-            self.parent.parent.interactive = true;
-        };
-    }
+    // positionTest(): void {
+    //     const self:any = this;
+    //     self.interactive = true;
+    //
+    //     let isDrag:boolean = false;
+    //
+    //     self.onmousedown = ()=>{
+    //         isDrag = true;
+    //         self.parent.interactive = true;
+    //         self.parent.parent.interactive = false;
+    //
+    //         self.parent.onmousemove = (e:any)=>{
+    //             if (isDrag) {
+    //                 this.position=self.parent.toLocal(e.global);
+    //             }
+    //         };
+    //     };
+    //
+    //     self.onmouseup = () => {
+    //         self.parent.onmousemove = null;
+    //         // console.log(e);
+    //         isDrag = false;
+    //         self.parent.interactive = false;
+    //         self.parent.parent.interactive = true;
+    //         console.log("{", this.position.x, this.position.y, "}");
+    //     };
+    //     self.onmouseupoutside = () => {
+    //         // console.log(e);
+    //         isDrag = false;
+    //         self.parent.interactive = false;
+    //         self.parent.parent.interactive = true;
+    //     };
+    // }
 
 }

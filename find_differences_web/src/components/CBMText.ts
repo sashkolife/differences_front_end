@@ -4,17 +4,18 @@ import * as PIXI from "pixi.js";
 import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
 import Localization from "../data/Localization";
+import {BitmapTextModel} from "../models/PropertiesModels";
 
 export default class CBMText extends PIXI.BitmapText {
-    setProperties( props:any ) {}
-    removeOrientationEvent() {}
+    setProperties( props:BitmapTextModel ) {};
+    removeOrientationEvent() {};
 
-    constructor( props: any ) {
+    constructor( props: BitmapTextModel ) {
         let text:string = "";
-        if ( props[constants.KEY_TEXT_KEY] ) {
-            text = Localization.get(props[constants.KEY_TEXT_KEY]);
+        if ( props.textKey ) {
+            text = Localization.get(props.textKey);
         }
-        super(text, props[constants.KEY_STYLE]);
+        super(text, props.style);
 
         this.setProperties( props );
     }
@@ -27,4 +28,4 @@ export default class CBMText extends PIXI.BitmapText {
     }
 }
 
-Mixin.applyMixins( CBMText, [CBase, PIXI.BitmapText] );
+Mixin.applyMixins( CBMText, [CBase] );

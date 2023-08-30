@@ -1,11 +1,12 @@
 import * as constants from "../constants/constants";
 import {screenOrientation} from "../App";
-import EventBus from "../utils/EventBus";
+import EventBus, {EventModel} from "../utils/EventBus";
 import * as events from "../constants/events";
+import {ComponentModel} from "../models/PropertiesModels";
 
 export default class CBase {
-    onOrientationEvent:any;
-    properties:any;
+    onOrientationEvent:EventModel;
+    properties:ComponentModel;
 
     public onOrientationChange() : void {
         const allProperties: any = {};
@@ -23,11 +24,11 @@ export default class CBase {
         setAllProperties(this.properties);
 
         if ( screenOrientation === constants.KEY_PORTRAIT ) {
-            setAllProperties(this.properties[constants.KEY_PORTRAIT]);
+            setAllProperties(this.properties.portrait);
         }
 
         if ( screenOrientation === constants.KEY_LANDSCAPE ) {
-            setAllProperties(this.properties[constants.KEY_LANDSCAPE]);
+            setAllProperties(this.properties.landscape);
         }
 
         const self:any = this;
@@ -37,12 +38,12 @@ export default class CBase {
         }
     }
 
-    public setProperties( props:any ) : void {
+    public setProperties( props:ComponentModel ) : void {
         if ( !props ) return;
 
         this.properties = props;
 
-        if (this.properties[constants.KEY_PORTRAIT] || this.properties[constants.KEY_LANDSCAPE]) {
+        if (this.properties.portrait || this.properties.landscape) {
             this.onOrientationEvent = EventBus.subscribe(events.EVENT_ON_ORIENTATION_CHANGED, this.onOrientationChange.bind(this));
         } else {
             this.removeOrientationEvent();
