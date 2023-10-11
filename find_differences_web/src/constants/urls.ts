@@ -1,5 +1,6 @@
 export const URL_JSON_PROPERTIES : string = "./res/properties/properties.json";
 export const URL_JSON_LOCALIZATION_EN : string = "./res/localizations/localization_en.json";
+export const URL_JSON_LOCALIZATION_UK : string = "./res/localizations/localization_uk.json";
 export const URL_JSON_SOUND_SPRITE : string = "./res/sounds/soundsprite.json";
 export const URL_ASSETS_MANIFEST : any = [
     {
@@ -100,10 +101,14 @@ export const URL_SERVER : string = "http://localhost:9002/";
 export const URL_LEVELS : string = URL_SERVER+"user/levels";
 export const URL_SHOP : string = URL_SERVER+"user/shop";
 export const URL_LOGIN : string = URL_SERVER+"user/login/?id=";
+export const URL_OPEN_LOCATION : string = URL_SERVER+"user/openLocation";
 
 export const URL_LEVEL_START : string = URL_SERVER+"level/start/?levelId=";
 export const URL_LEVEL_LEAVE : string = URL_SERVER+"level/leave";
 export const URL_LEVEL_FIND : string = URL_SERVER+"level/find/?";
+export const URL_LEVEL_PENALTY_SKIP : string = URL_SERVER+"level/penaltySkip";
+export const URL_LEVEL_HELP : string = URL_SERVER+"level/help";
+export const URL_LEVEL_ADD_EXTRA_TIME : string = URL_SERVER+"level/addExtraTime";
 
 export const MAP_EXTENSION: string = ".jpg";
 

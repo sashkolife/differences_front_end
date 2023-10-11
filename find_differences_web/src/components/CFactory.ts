@@ -6,6 +6,7 @@ import CContainer from "./CContainer";
 import CText from "./CText";
 import CBMText from "./CBMText";
 import CButton from "./CButton";
+import ButtonPay from "../game/components/common/ButtonPay";
 
 export default class CFactory {
     static getNewComponent( props: any ) : any {
@@ -33,6 +34,8 @@ export default class CFactory {
                 return new CBMText( props );
             case constants.COMPONENT_BUTTON:
                 return new CButton( props );
+            case constants.COMPONENT_BUTTON_PAY:
+                return new ButtonPay( props );
         }
 
         return null;

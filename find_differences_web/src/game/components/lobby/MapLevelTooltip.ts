@@ -1,9 +1,9 @@
 import * as PIXI from 'pixi.js';
 import gsap from 'gsap';
-import CContainer from "../../components/CContainer";
-import CText from "../../components/CText";
-import CSprite from "../../components/CSprite";
-import Localization from "../../data/Localization";
+import CContainer from "../../../components/CContainer";
+import CText from "../../../components/CText";
+import CSprite from "../../../components/CSprite";
+import Localization from "../../../data/Localization";
 
 export default class MapLevelTooltip extends CContainer {
     private _levelNumLabel: CText;

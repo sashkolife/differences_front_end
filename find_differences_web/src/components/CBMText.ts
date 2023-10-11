@@ -1,7 +1,5 @@
 import CBase from "./CBase";
-import Resource from "../data/Resource";
 import * as PIXI from "pixi.js";
-import * as constants from "../constants/constants";
 import Mixin from "../utils/Mixin";
 import Localization from "../data/Localization";
 import {BitmapTextModel} from "../models/PropertiesModels";
@@ -9,6 +7,7 @@ import {BitmapTextModel} from "../models/PropertiesModels";
 export default class CBMText extends PIXI.BitmapText {
     setProperties( props:BitmapTextModel ) {};
     removeOrientationEvent() {};
+    properties:BitmapTextModel;
 
     constructor( props: BitmapTextModel ) {
         let text:string = "";
@@ -25,6 +24,10 @@ export default class CBMText extends PIXI.BitmapText {
         this.removeOrientationEvent();
 
         super.destroy(_options);
+    }
+
+    get textKey() : string {
+        return this.properties.textKey;
     }
 }
 

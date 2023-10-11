@@ -1,22 +1,40 @@
 import * as PIXI from 'pixi.js';
 import CContainer from "../../components/CContainer";
 import Properties from "../../data/Properties";
-import BalanceBar from "../components/BalanceBar";
+import BalanceBar from "../components/common/BalanceBar";
 import CButton from "../../components/CButton";
 import Sounds from "../../data/Sounds";
 import * as constants from "../../constants/constants";
-import PicturesProgressBar from "../components/PicturesProgressBar";
-import DifferencesProgressBar from "../components/DifferencesProgressBar";
+import PicturesProgressBar from "../components/level/PicturesProgressBar";
+import DifferencesProgressBar from "../components/level/DifferencesProgressBar";
 import CBMText from "../../components/CBMText";
-import EventBus from "../../utils/EventBus";
+import EventBus, {EventModel} from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {Errors, LevelFindDiffModel, PlayedLevelModel, UserModel} from "../../models/ApiModels";
-import LevelPicturesContainer from "../components/LevelPicturesContainer";
-import ScreenBlock from "../components/ScreenBlock";
-import {URL_LEVEL_FIND, URL_LEVEL_LEAVE} from "../../constants/urls";
+import {
+    AddExtraTimeModel,
+    HelpDiffModel,
+    LevelFindDiffModel,
+    LevelModel,
+    PlayedLevelModel,
+    StartModel,
+    UserModel
+} from "../../models/ApiModels";
+import LevelPicturesContainer from "../components/level/LevelPicturesContainer";
+import ScreenBlock from "../components/common/ScreenBlock";
+import * as urls from "../../constants/urls";
 import Resource from "../../data/Resource";
 import Api from "../../utils/Api";
 import User from "../../data/User";
+import WindowsController from "../windows/WindowsController";
+import LevelFinishWindow from "../windows/LevelFinishWindow";
+import Localization from "../../data/Localization";
+import LevelPenaltyWindow from "../windows/LevelPenaltyWindow";
+import {Errors} from "../../models/Enums";
+import LevelStarsProgressBar from "../components/level/LevelStarsProgressBar";
+import ButtonPay from "../components/common/ButtonPay";
+import ShopWindow from "../windows/ShopWindow";
+import CSprite from "../../components/CSprite";
+import {PictureTouchEvent} from "../../models/EventModels";
 
 export class SceneLevel extends CContainer {
 
@@ -24,20 +42,22 @@ export class SceneLevel extends CContainer {
     private _picturesProgressBar : PicturesProgressBar;
     private _differencesProgressBar : DifferencesProgressBar;
     private _balanceBar : BalanceBar;
+    private _levelStarsProgressBar : LevelStarsProgressBar;
     private _soundOnBtn : CButton;
     private _soundOffBtn : CButton;
     private _levelText : CBMText;
     private _leaveBtn : CButton;
+    private _btnBoosterAddExtraTime : ButtonPay;
+    private _btnBoosterUseHelp : ButtonPay;
 
-    private _levelId:number;
+    private _pictureTouchSubscription:EventModel;
+    private _nextLevelSubscription:EventModel;
 
-    private _pictureTouchSubscription:any;
+    private _levelData:LevelModel;
 
-    constructor(private _levelData: PlayedLevelModel ) {
+    constructor( playedLevelData: PlayedLevelModel ) {
 
         super(Properties.get("sceneLevel"));
-
-        this._levelId = _levelData.level.id;
 
         this._soundOnBtn = this.getComponentByName("soundOnBtn");
         this._soundOffBtn = this.getComponentByName("soundOffBtn");
@@ -51,35 +71,57 @@ export class SceneLevel extends CContainer {
         this._leaveBtn = this.getComponentByName("leaveBtn");
         this._leaveBtn.setActionUp( this.onLeaveTouch.bind(this) );
 
-        this.setInitialViews();
+        this._btnBoosterAddExtraTime = this.getComponentByName("btnBoosterAddExtraTime");
+        this._btnBoosterUseHelp = this.getComponentByName("btnBoosterUseHelp");
+        this._btnBoosterAddExtraTime.setActionUp(this.onAddExtraTimeClick.bind(this));
+        this._btnBoosterUseHelp.setActionUp(this.onUseHelpClick.bind(this));
 
-        this._pictureTouchSubscription = EventBus.subscribe(events.EVENT_ON_PICTURE_TOUCH, this.onPictureTouch.bind(this));
+        this.setInitialViews(playedLevelData);
+
+        this._pictureTouchSubscription = EventBus.subscribe(events.EVENT_ON_FOUND_ON_TOUCH, this.onPictureTouch.bind(this));
+        this._nextLevelSubscription = EventBus.subscribe(events.EVENT_ON_NEXT_LEVEL, this.onNextLevel.bind(this));
     }
 
-    setInitialViews() : void {
+    private setInitialViews( playedLevelData: PlayedLevelModel ) : void {
 
-        this._levelText.text += " "+ this._levelId;
-
-        this._differencesProgressBar.setCount(this._levelData.level.differencesCount);
+        this.setLevelDataViews( playedLevelData.level, playedLevelData.starsTime );
         this._picturesProgressBar.setCurrent(User.playedPictureNum);
-        this._picturesProgressBar.setCount(this._levelData.level.picturesCount);
+        this._btnBoosterAddExtraTime.setPrice(User.configExtraTimePrice);
+        this.updateBoosterHelpButton();
 
-        this._levelPicturesContainer.init( this._levelData.picture, this._levelData.foundDifferences );
-        this._levelData.foundDifferences?.forEach( (diffId:number) => {
+        this._levelPicturesContainer.init( playedLevelData.picture, playedLevelData.foundDifferences, playedLevelData.helpDifferences );
+        playedLevelData.foundDifferences?.forEach( (diffId:number) => {
             this._differencesProgressBar.setFound( diffId );
         } );
+
+        if ( User.penaltySeconds > 0 ) {
+            WindowsController.instance().show(LevelPenaltyWindow, User.user);
+        }
+    }
+
+    private setLevelDataViews( levelModel: LevelModel, starsTime: number ) : void {
+
+        this._levelData = levelModel;
+        this._levelText.text = Localization.get(this._levelText.textKey) + " " + this._levelData.id;
+
+        this._differencesProgressBar.setCount(this._levelData.differencesCount);
+        this._picturesProgressBar.setCount(this._levelData.picturesCount);
+        this._levelStarsProgressBar.setTimers([this._levelData.time1stars, this._levelData.time2stars, this._levelData.time3stars], starsTime);
+
     }
 
     destroy(_options?: PIXI.IDestroyOptions | boolean) {
         super.destroy(_options);
         this._pictureTouchSubscription.unsubscribe();
         this._pictureTouchSubscription = null;
+        this._nextLevelSubscription.unsubscribe();
+        this._nextLevelSubscription = null;
     }
 
     init() : void {
     }
 
-    getNewComponentByName( props: any ): any {
+    public getNewComponentByName( props: any ): any {
 
         const name: string = props[constants.KEY_NAME];
 
@@ -97,24 +139,27 @@ export class SceneLevel extends CContainer {
                 case "balanceBar":
                     this._balanceBar = new BalanceBar(props);
                     return this._balanceBar;
+                case "levelStarsProgressBar":
+                    this._levelStarsProgressBar = new LevelStarsProgressBar(props);
+                    return this._levelStarsProgressBar;
             }
         }
 
         return null;
     }
 
-    updateSoundBtn() : void {
+    private updateSoundBtn() : void {
         this._soundOnBtn.visible = Sounds.isAudioAllowed();
         this._soundOffBtn.visible = !Sounds.isAudioAllowed();
     }
 
-    onSoundSwitch(btn:any) : void {
+    private onSoundSwitch(btn:any) : void {
         Sounds.setAllowAudio(!Sounds.isAudioAllowed());
         this.updateSoundBtn();
     }
 
     private onLeaveTouch(): void {
-        Api.request(URL_LEVEL_LEAVE).then(async ( loader: Response ) => {
+        Api.request(urls.URL_LEVEL_LEAVE).then(async ( loader: Response ) => {
             const obj: any = await loader.json();
             const data: UserModel = obj as UserModel;
 
@@ -123,9 +168,9 @@ export class SceneLevel extends CContainer {
         EventBus.publish( events.EVENT_ON_LEVEL_LEAVE );
     }
 
-    private onPictureTouch( data:any ): void {
+    private onPictureTouch( data:PictureTouchEvent ): void {
         ScreenBlock.show();
-        Api.request(URL_LEVEL_FIND+"x="+Math.ceil(data.touchPos.x)+"&y="+Math.ceil(data.touchPos.y)).then( async (loader: Response ) => {
+        Api.request(urls.URL_LEVEL_FIND+"x="+Math.ceil(data.touchPos.x)+"&y="+Math.ceil(data.touchPos.y)).then( async (loader: Response ) => {
 
             const obj: any = await loader.json();
 
@@ -142,7 +187,9 @@ export class SceneLevel extends CContainer {
 
             if ( findData.error ) {
                 if ( findData.error == Errors.DIFFERENCE_IS_OUT ) {
-
+                    if ( findData.user.penaltySeconds && findData.user.penaltySeconds > 0 ) {
+                        WindowsController.instance().show(LevelPenaltyWindow, findData.user);
+                    }
                 }
                 ScreenBlock.hide();
                 return;
@@ -159,13 +206,107 @@ export class SceneLevel extends CContainer {
                 });
             } else {
                 ScreenBlock.hide();
-                if ( findData.isWin === true ) {
-                    window.setTimeout( () => {
-                        EventBus.publish( events.EVENT_ON_LEVEL_LEAVE );
-                    }, 2000 );
+                if ( findData.levelFinish ) {
+                    User.setLevelNewStars( this._levelData.id, findData.levelFinish.stars );
+
+                    WindowsController.instance().show(LevelFinishWindow, {"levelData": this._levelData, "levelFinish": findData.levelFinish});
                 }
             }
 
         });
     }
+
+    private onNextLevel( levelData: LevelModel) : void {
+        ScreenBlock.show();
+
+        this.setLevelDataViews(levelData, levelData.time1stars);
+        this._picturesProgressBar.setCurrent(1);
+
+        Api.request(urls.URL_LEVEL_START+levelData.id).then( async ( loader: Response ) => {
+            const data:StartModel = await loader.json();
+
+            User.update(data.user);
+            User.checkAddUserLevel({levelId:levelData.id, stars: 0});
+
+            Resource.loadPicture(data.playedLevel.picture, (p: number) => {}).then(() => {
+                this._differencesProgressBar.reset();
+                this._levelPicturesContainer.setNewPicture( data.playedLevel.picture );
+                ScreenBlock.hide();
+            });
+        } );
+    }
+
+    private onUseHelpClick() : void {
+        if ( User.helps <= 0 && User.balance < this._btnBoosterUseHelp.getPrice() ) {
+            WindowsController.instance().show(ShopWindow);
+            return;
+        }
+
+        ScreenBlock.show();
+        Api.request(urls.URL_LEVEL_HELP).then( async (loader: Response ) => {
+
+            const helpDiff: HelpDiffModel = await loader.json();
+
+            if ( !helpDiff ) {
+                return;
+            }
+
+            if ( helpDiff.error ) {
+                return;
+            }
+
+            ScreenBlock.hide();
+
+            if ( helpDiff.user ) {
+                User.update(helpDiff.user);
+                EventBus.publish(events.EVENT_ON_BALANCE_UPDATE, {coins:helpDiff.user.coins});
+                this.updateBoosterHelpButton();
+            }
+
+            if ( helpDiff.diffId ) {
+                this._levelPicturesContainer.showHelp(helpDiff.diffId);
+            }
+        });
+    }
+
+    private onAddExtraTimeClick() : void {
+        if ( User.balance < User.configExtraTimePrice ) {
+            WindowsController.instance().show(ShopWindow);
+            return;
+        }
+
+        ScreenBlock.show();
+        Api.request(urls.URL_LEVEL_ADD_EXTRA_TIME).then( async (loader: Response ) => {
+
+            const addExtraTimeData: AddExtraTimeModel = await loader.json();
+
+            if ( !addExtraTimeData || addExtraTimeData.error ) {
+                return;
+            }
+
+            ScreenBlock.hide();
+
+            if ( addExtraTimeData.user ) {
+                User.update(addExtraTimeData.user);
+                EventBus.publish(events.EVENT_ON_BALANCE_UPDATE, {coins:addExtraTimeData.user.coins});
+            }
+
+            this._levelStarsProgressBar.addStarsTimer( addExtraTimeData.addExtraTime );
+        });
+    }
+
+    private updateBoosterHelpButton() : void {
+        if ( User.helps > 0 ) {
+            this._btnBoosterUseHelp.setPrice( User.helps );
+            this._btnBoosterUseHelp.getPriceImage().visible = false;
+            this._btnBoosterUseHelp.getPriceText().anchor.x = 0.5;
+            this._btnBoosterUseHelp.getPriceText().x = 3;
+        } else {
+            this._btnBoosterUseHelp.getPriceImage().visible = true;
+            this._btnBoosterUseHelp.setPrice( User.configHelpPrice );
+            this._btnBoosterUseHelp.getPriceText().anchor.x = 0;
+            this._btnBoosterUseHelp.getPriceText().x = 0;
+        }
+    }
+
 }

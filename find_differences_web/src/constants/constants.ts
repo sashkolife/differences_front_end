@@ -21,6 +21,8 @@ export const COMPONENT_GRAPHICS : string = "graphics";
 export const COMPONENT_TEXT : string = "text";
 export const COMPONENT_BM_TEXT : string = "bm_text";
 export const COMPONENT_BUTTON : string = "button";
+export const COMPONENT_BUTTON_PAY : string = "button_pay";
+export const COMPONENT_THREE_STATE_STAR : string = "three_state_star";
 
 export const COMPONENT_LOCATION : string = "location";
 export const COMPONENT_MAP_LEVEL : string = "map_level";
@@ -31,6 +33,7 @@ export const COMPONENT_MAP_CLOUDS : string = "map_clouds";
 export const COMPONENT_LEVEL_PROGRESS_DIFFERENCE : string = "level_progress_differences";
 
 export const COMPONENT_WINDOW_CONTENT : string = "window_content";
+export const COMPONENT_LEVEL_PICTURE : string = "levelPicture";
 
 export const PICT_1 : string = "_1";
 export const PICT_2 : string = "_2";

@@ -37,16 +37,16 @@ export class BaseWindow extends CContainer {
         return component;
     }
 
-    getName() : string {
+    public getName() : string {
         return constants.KEY_WINDOWS;
     }
 
-    setProperties(props: ContainerModel) {
+    public setProperties(props: ContainerModel) {
         const wndProps: ContainerModel = Properties.get(this.getName())||props;
         super.setProperties( wndProps );
     }
 
-    show( params?:any ) : void {
+    public show( params?:any ) : void {
         this._params = params;
 
         if ( this._content.properties.show ) {
@@ -58,11 +58,11 @@ export class BaseWindow extends CContainer {
         }
     }
 
-    onShowComplete() : void {
+    protected onShowComplete() : void {
 
     }
 
-    hide() : void {
+    public hide() : void {
         (this as any).interactiveChildren = false;
         if ( this._content.properties.hide ) {
             gsap.to( this._shadow, {duration: this._content.properties.hide.duration, alpha:0});
@@ -72,7 +72,7 @@ export class BaseWindow extends CContainer {
         }
     }
 
-    onHideComplete() : void {
+    protected onHideComplete() : void {
         WindowsController.instance().hide(this);
     }
 

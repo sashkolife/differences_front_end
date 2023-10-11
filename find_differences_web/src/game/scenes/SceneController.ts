@@ -2,11 +2,11 @@ import * as PIXI from 'pixi.js';
 import {SceneLobby} from "./SceneLobby";
 import {SceneLevel} from "./SceneLevel";
 import {SceneTrophyRoom} from "./SceneTrophyRoom";
-import EventBus from "../../utils/EventBus";
+import EventBus, {EventModel} from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {URL_LEVEL_LEAVE, URL_LEVEL_START, URL_LEVELS} from "../../constants/urls";
+import {URL_LEVEL_START} from "../../constants/urls";
 import User from "../../data/User";
-import ScreenBlock from "../components/ScreenBlock";
+import ScreenBlock from "../components/common/ScreenBlock";
 import Resource from "../../data/Resource";
 import Api from "../../utils/Api";
 import {PlayedLevelModel, StartModel} from "../../models/ApiModels";
@@ -23,8 +23,8 @@ export default class SceneController {
     private _sceneLevel : SceneLevel;
     private _sceneTrophyRoom: SceneTrophyRoom;
 
-    private _levelStartSubscription: any;
-    private _levelLeaveSubscription: any;
+    private _levelStartSubscription: EventModel;
+    private _levelLeaveSubscription: EventModel;
 
 
     constructor( private _stage: PIXI.Container ) {
@@ -50,11 +50,11 @@ export default class SceneController {
         }
     }
 
-    public showSceneLobby() : void {
+    public showSceneLobby(afterLevel: boolean = false) : void {
         this.removeSceneLobby();
         this._sceneLobby = new SceneLobby();
         this._stage.addChild( this._sceneLobby );
-        this._sceneLobby.init();
+        this._sceneLobby.init(afterLevel);
     }
 
     private removeSceneLobby() : void {
@@ -81,11 +81,16 @@ export default class SceneController {
 
     public gotoLevel( levelId : number ) : void {
         ScreenBlock.show();
-        Api.request(URL_LEVEL_START+levelId).then( async ( loader: Response ) => {
+
+        const urlParams = new URLSearchParams( window.location.search);
+        const startPictureId: number = parseInt(urlParams.get("startPictureId"));
+
+        Api.request(URL_LEVEL_START+levelId+(startPictureId > 0 ? "&startPictureId="+startPictureId : "")).then( async ( loader: Response ) => {
             const obj: any = await loader.json();
             const data:StartModel = obj as StartModel;
 
             User.update(data.user);
+            User.checkAddUserLevel({levelId:levelId, stars: 0});
 
             this.loadPicture(data.playedLevel);
         } );
@@ -103,7 +108,7 @@ export default class SceneController {
     public gotoLobby() : void {
         this.removeSceneLevel();
         this.removeSceneTrophyRoom();
-        this.showSceneLobby();
+        this.showSceneLobby(true);
     }
 
     public gotoTrophyRoom() : void {

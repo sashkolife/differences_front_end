@@ -26,7 +26,7 @@ export default class CContainer extends PIXI.Container {
         super.destroy(_options);
     }
 
-    addChildren() : void {
+    public addChildren() : void {
         if ( this.properties && this.properties.children ) {
 
             this.properties.children.forEach( (props:any) => {
@@ -45,30 +45,39 @@ export default class CContainer extends PIXI.Container {
         }
     }
 
-    getNewComponentByType( props:any ) : any {
+    public getNewComponentByType( props:any ) : any {
         return CFactory.getNewComponent( props );
     }
 
     /**
      * Override this method
      */
-    getNewComponentByName( props: any ) : any {
+    public getNewComponentByName( props: any ) : any {
         return null;
     }
 
-    getComponentByName( name: string ) : any {
+    public getComponentByName( name: string ) : any {
         return this.children.find( (component:any) => {
             return (component.properties && component.properties.name == name) || (component.name && component.name == name);
         });
     }
 
-    getComponentsByType( type: string ): Array<any> {
+    public getComponentsByType( type: string ): any[] {
         return this.children.filter((component:any) => {
             return component.properties && component.properties.type == type;
         });
     }
 
-    addMask() : void {
+    public getComponents( filterStr?: string ): any[] {
+        if ( !filterStr ) {
+            return this.children as any[];
+        }
+        return this.children.filter((component:any) => {
+            return component.properties && component.properties.name && component.properties.name.indexOf(filterStr) !== -1;
+        });
+    }
+
+    public addMask() : void {
         if ( this.properties.mask ) {
             this.mask = this.getComponentByName( this.properties.mask);
         }

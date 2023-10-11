@@ -7,32 +7,33 @@ import CFactory from "./CFactory";
 import {
     ButtonModel,
     ButtonStateModel,
-    ComponentModel
+    ComponentModel, TextModel
 } from "../models/PropertiesModels";
+import CText from "./CText";
 
 export default class CButton extends PIXI.Sprite {
     properties:ButtonModel;
     setProperties( props:ButtonModel ) {};
     removeOrientationEvent() {};
 
-    textureNormal:PIXI.Texture;
-    textureOver:PIXI.Texture;
-    textureDown:PIXI.Texture;
-    textureDisable:PIXI.Texture;
+    private _textureNormal:PIXI.Texture;
+    private _textureOver:PIXI.Texture;
+    private _textureDown:PIXI.Texture;
+    private _textureDisable:PIXI.Texture;
 
-    scaleNormal:PIXI.IPointData = null;
-    scaleOver:PIXI.IPointData = null;
-    scaleDown:PIXI.IPointData = null;
-    scaleDisable:PIXI.IPointData = null;
+    private _scaleNormal:PIXI.IPointData = null;
+    private _scaleOver:PIXI.IPointData = null;
+    private _scaleDown:PIXI.IPointData = null;
+    private _scaleDisable:PIXI.IPointData = null;
 
-    textPropsNormal:ComponentModel = null;
-    textPropsOver:ComponentModel = null;
-    textPropsDown:ComponentModel = null;
-    textPropsDisable:ComponentModel = null;
+    private _textPropsNormal:ComponentModel = null;
+    private _textPropsOver:ComponentModel = null;
+    private _textPropsDown:ComponentModel = null;
+    private _textPropsDisable:ComponentModel = null;
 
     state:string = constants.KEY_NORMAL;
 
-    btnText: any;
+    protected _btnText: CText;
 
     protected _actionOver: Function = null;
     protected _actionOut: Function = null;
@@ -44,45 +45,45 @@ export default class CButton extends PIXI.Sprite {
 
 
         const stateNorm:ButtonStateModel = props.states.normal;
-        this.textureNormal = Resource.getTexture( stateNorm.texture );
-        this.scaleNormal = stateNorm.scale;
-        this.textPropsNormal = stateNorm.btnText;
+        this._textureNormal = Resource.getTexture( stateNorm.texture );
+        this._scaleNormal = stateNorm.scale;
+        this._textPropsNormal = stateNorm.btnText;
 
         const stateOver:ButtonStateModel = props.states.over;
         if ( stateOver ) {
-            this.textureOver = Resource.getTexture( stateOver.texture );
-            this.scaleOver = stateOver.scale;
-            this.textPropsOver = stateOver.btnText;
+            this._textureOver = Resource.getTexture( stateOver.texture );
+            this._scaleOver = stateOver.scale;
+            this._textPropsOver = stateOver.btnText;
         }
 
         const stateDown:ButtonStateModel = props.states.down;
         if ( stateDown ) {
-            this.textureDown = Resource.getTexture( stateDown.texture );
-            this.scaleDown = stateDown.scale;
-            this.textPropsDown = stateDown.btnText;
+            this._textureDown = Resource.getTexture( stateDown.texture );
+            this._scaleDown = stateDown.scale;
+            this._textPropsDown = stateDown.btnText;
         }
 
         const stateDisable:ButtonStateModel = props.states.disable;
         if ( stateDisable ) {
-            this.textureDisable = Resource.getTexture( stateDisable.texture );
-            this.scaleDisable = stateDisable.scale;
-            this.textPropsDisable = stateDisable.btnText;
+            this._textureDisable = Resource.getTexture( stateDisable.texture );
+            this._scaleDisable = stateDisable.scale;
+            this._textPropsDisable = stateDisable.btnText;
         }
 
-        this.texture = this.textureNormal;
+        this.texture = this._textureNormal;
 
         this.setEnabled( props.enabled );
         this.setState( props.state||constants.KEY_NORMAL );
 
-        if ( this.scaleNormal ) {
-            this.scale = this.scaleNormal;
+        if ( this._scaleNormal ) {
+            this.scale = this._scaleNormal;
         }
 
         this.setProperties( props );
 
         if ( props.btnText ) {
-            this.btnText = CFactory.getNewComponent(props.btnText);
-            this.addChild(this.btnText);
+            this._btnText = CFactory.getNewComponent(props.btnText);
+            this.addChild(this._btnText);
         }
 
         const self : any = this;
@@ -111,29 +112,27 @@ export default class CButton extends PIXI.Sprite {
 
         switch ( this.state ) {
             case constants.KEY_NORMAL:
-                this.texture = this.textureNormal;
-                this.updateBtnText( this.textPropsNormal );
+                this.texture = this._textureNormal;
+                this.updateBtnText( this._textPropsNormal );
                 break;
             case constants.KEY_OVER:
-                this.texture = this.textureOver||this.textureNormal;
-                this.updateBtnText( this.textPropsOver );
+                this.texture = this._textureOver||this._textureNormal;
+                this.updateBtnText( this._textPropsOver );
                 break;
             case constants.KEY_DOWN:
-                this.texture = this.textureDown||this.textureNormal;
-                this.updateBtnText( this.textPropsDown );
+                this.texture = this._textureDown||this._textureNormal;
+                this.updateBtnText( this._textPropsDown );
                 break;
             case constants.KEY_DISABLE:
-                this.texture = this.textureDisable||this.textureNormal;
-                this.updateBtnText( this.textPropsDisable );
+                this.texture = this._textureDisable||this._textureNormal;
+                this.updateBtnText( this._textPropsDisable );
                 break;
         }
     }
 
-    updateBtnText(props:any):void {
-        if ( this.btnText && props ) {
-            for (let key in props ) {
-                this.btnText[key] = props[key];
-            }
+    updateBtnText(props:ComponentModel):void {
+        if ( this._btnText && props ) {
+            Object.assign(this._btnText, props);
         }
     }
 

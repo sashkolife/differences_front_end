@@ -1,3 +1,4 @@
+import {Errors} from "./Enums";
 
 export interface LevelModel {
     id: number;
@@ -13,6 +14,15 @@ export interface LevelModel {
     coins1stars: number;
 }
 
+export interface LocationModel {
+    id: number;
+    name: string;
+    lastLevelId: number;
+    openNextStars: number;
+    openNextPrice: number;
+    openNextTime: number;
+}
+
 export interface ShopModel {
     androidProductId: string;
     coins: number;
@@ -21,12 +31,34 @@ export interface ShopModel {
 export interface PlayedLevelModel {
     level: LevelModel;
     picture: LevelPictureModel;
+    starsTime?: number;
     foundDifferences?: number[];
+    helpDifferences?: number[];
+}
+
+export interface ConfigModel {
+    helpPrice: number;
+    extraTimePrice: number;
+}
+
+export interface LoginModel {
+    user: UserModel;
+    playedLevel?: PlayedLevelModel;
+    config: ConfigModel;
+    locations: LocationModel[];
+    levels: LevelModel[];
+    shop: ShopModel[];
+}
+
+export interface OpenLocationModel {
+    user: UserModel;
+    error?: Errors;
 }
 
 export interface StartModel {
     user: UserModel;
     playedLevel?: PlayedLevelModel
+    config?: ConfigModel
 }
 
 export interface UserModel {
@@ -41,17 +73,23 @@ export interface UserModel {
     playedPictureNum?: number;
     playedMissCounter?: number;
     playedPenaltyTime?: number;
+    playedPenaltyCounter?: number;
+    penaltySeconds?: number;
+    penaltyPrice?: number;
     registerDate?: number;
     lastBonusDate?: number;
     bonusDay?: number;
     deleted?: number;
     levels?: UserLevelModel[];
     token?: string;
+    nextLocationTimer?: number;
 }
 
 export interface UserLevelModel {
     levelId: number;
     stars: number;
+    newStars?: number;
+    isComplete?: number;
 }
 
 export interface LevelPictureModel {
@@ -72,17 +110,36 @@ export interface LevelFindDiffModel {
     playedLevelId: number;
     playedPictureId: number;
     diffId: number;
-    isWin?: boolean;
-    coins?: number;
-    stars?: number;
-    timeDiff?: number;
+    levelFinish?: LevelFinishModel;
     foundDifferences: number[];
+    helpDifferences: number[];
     user: UserModel;
     picture?: LevelPictureModel;
     error?: Errors
 }
 
-export enum Errors {
-    DIFFERENCE_IS_OUT = "error_difference_is_out",
-    USER_HAVE_PENALTY = "error_user_have_penalty"
+export interface HelpDiffModel {
+    diffId: number;
+    helpDifferences: number[];
+    user: UserModel;
+    error?: Errors;
+}
+
+export interface AddExtraTimeModel {
+    addExtraTime: number;
+    user: UserModel;
+    error?: Errors;
+}
+
+export interface LevelFinishModel {
+    spentTime?: number;
+    stars?: number;
+    coins?: number;
+    helps?: number;
+    userLevelId?: number;
+}
+
+export interface PenaltySkipModel {
+    user: UserModel;
+    error?: Errors
 }

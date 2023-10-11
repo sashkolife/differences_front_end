@@ -43,10 +43,10 @@ export default class CBase {
 
         this.properties = props;
 
+        this.removeOrientationEvent();
+
         if (this.properties.portrait || this.properties.landscape) {
             this.onOrientationEvent = EventBus.subscribe(events.EVENT_ON_ORIENTATION_CHANGED, this.onOrientationChange.bind(this));
-        } else {
-            this.removeOrientationEvent();
         }
 
         this.onOrientationChange();

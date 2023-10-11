@@ -1,7 +1,7 @@
-import CSprite from "../../components/CSprite";
-import Resource from "../../data/Resource";
+import CSprite from "../../../components/CSprite";
+import Resource from "../../../data/Resource";
 import * as animate from "@pixi/animate";
-import {LocationBackgroundModel} from "../../models/PropertiesModels";
+import {LocationBackgroundModel} from "../../../models/PropertiesModels";
 
 export default class LocationBackground extends CSprite {
     properties:LocationBackgroundModel;
@@ -41,7 +41,7 @@ export default class LocationBackground extends CSprite {
 
                 try {
                     if ( !LocationBackground._animationsData[animName] ) {
-                        const animationData: any = await import("../../flash/locations/" + animName + ".js");
+                        const animationData: any = await import("../../../flash/locations/" + animName + ".js");
                         animationData.default.setup(animate);
                         LocationBackground._animationsData[animName] = animationData.default;
                     }

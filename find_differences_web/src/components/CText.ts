@@ -7,6 +7,7 @@ import {TextModel} from "../models/PropertiesModels";
 export default class CText extends PIXI.Text {
     setProperties( props:TextModel ) {}
     removeOrientationEvent() {}
+    properties:TextModel;
 
     constructor( props: TextModel ) {
         super();
@@ -26,6 +27,10 @@ export default class CText extends PIXI.Text {
         this.removeOrientationEvent();
 
         super.destroy(_options);
+    }
+
+    get textKey() : string {
+        return this.properties.textKey;
     }
 }
 

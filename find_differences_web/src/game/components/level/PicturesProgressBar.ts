@@ -1,10 +1,10 @@
 import * as PIXI from 'pixi.js';
-import CSprite from "../../components/CSprite";
-import CContainer from "../../components/CContainer";
-import CText from "../../components/CText";
-import CSlice9 from "../../components/CSlice9";
-import CBMText from "../../components/CBMText";
-import {ContainerModel} from "../../models/PropertiesModels";
+import CSprite from "../../../components/CSprite";
+import CContainer from "../../../components/CContainer";
+import CText from "../../../components/CText";
+import CSlice9 from "../../../components/CSlice9";
+import CBMText from "../../../components/CBMText";
+import {ContainerModel} from "../../../models/PropertiesModels";
 
 export default class PicturesProgressBar extends CContainer {
 
@@ -45,7 +45,6 @@ export default class PicturesProgressBar extends CContainer {
             this._pictureNumTexts[i].visible = true;
         }
         this._bg.width = this._pictureNumTexts[this._picturesCount-1].x + 30;
-        this.x = ( (window as any).APP_WIDTH - this.width) >> 1;
     }
 
     setCurrent( num: number ) : void {

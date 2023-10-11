@@ -64,6 +64,11 @@ export interface ButtonStateModel extends Slice9Model {
     btnText?: ComponentModel;
 }
 
+export interface ButtonPayStateModel extends ButtonStateModel {
+    priceText?: ComponentModel;
+    priceImage?: ComponentModel;
+}
+
 export interface ButtonModel extends ComponentModel {
     states: {
         normal:ButtonStateModel;
@@ -74,6 +79,17 @@ export interface ButtonModel extends ComponentModel {
     enabled?: boolean;
     state?: string;
     btnText?: TextModel|BitmapTextModel;
+}
+
+export interface ButtonPayModel extends ButtonModel {
+    states: {
+        normal:ButtonPayStateModel;
+        over:ButtonPayStateModel;
+        down:ButtonPayStateModel;
+        disable:ButtonPayStateModel;
+    };
+    priceImage: SpriteModel;
+    priceText: TextModel|BitmapTextModel;
 }
 
 export interface ContentWindowModel extends ContainerModel {
@@ -96,4 +112,21 @@ export interface MapCloudsModel extends ContainerModel {
 export interface MapModel extends ContainerModel {
     locationHeight:number;
     locationWidth:number;
+}
+
+export interface PictureModel extends ContainerModel {
+    horizontalProps: PicturePropsModel;
+    verticalProps: PicturePropsModel;
+    startX:number;
+    startY:number;
+    startScale:number;
+}
+
+export interface PicturePropsModel {
+    x:number;
+    y:number;
+    width:number;
+    height:number;
+    hideX:number;
+    hideY:number;
 }

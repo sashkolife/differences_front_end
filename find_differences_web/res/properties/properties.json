@@ -11,6 +11,7 @@
           {
             "name": "location_0",
             "type": "location",
+            "id": 0,
             "y": -1099,
             "visible": false,
             "children": [
@@ -933,18 +934,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -953,35 +943,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_1",
             "type": "location",
+            "id": 1,
             "y": -2198,
             "visible": false,
             "children": [
@@ -1904,18 +1876,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -1924,35 +1885,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_2",
             "type": "location",
+            "id": 2,
             "y": -3297,
             "visible": false,
             "children": [
@@ -2876,18 +2819,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -2896,35 +2828,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_3",
             "type": "location",
+            "id": 3,
             "y": -4396,
             "visible": false,
             "children": [
@@ -3848,18 +3762,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -3868,35 +3771,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_4",
             "type": "location",
+            "id": 4,
             "y": -5495,
             "visible": false,
             "children": [
@@ -4820,18 +4705,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -4840,35 +4714,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_5",
             "type": "location",
+            "id": 5,
             "y": -6594,
             "visible": false,
             "children": [
@@ -5791,18 +5647,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -5811,35 +5656,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_6",
             "type": "location",
+            "id": 6,
             "y": -7693,
             "visible": false,
             "children": [
@@ -6763,18 +6590,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -6783,35 +6599,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_7",
             "type": "location",
+            "id": 7,
             "y": -8792,
             "visible": false,
             "children": [
@@ -7734,18 +7532,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -7754,35 +7541,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_8",
             "type": "location",
+            "id": 8,
             "y": -9891,
             "visible": false,
             "children": [
@@ -8706,18 +8475,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -8726,35 +8484,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_9",
             "type": "location",
+            "id": 9,
             "y": -10990,
             "visible": false,
             "children": [
@@ -9678,18 +9418,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -9698,35 +9427,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_10",
             "type": "location",
+            "id": 10,
             "y": -12089,
             "visible": false,
             "children": [
@@ -10650,18 +10361,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -10670,35 +10370,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_11",
             "type": "location",
+            "id": 11,
             "y": -13188,
             "visible": false,
             "children": [
@@ -11622,18 +11304,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -11642,35 +11313,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_12",
             "type": "location",
+            "id": 12,
             "y": -14287,
             "visible": false,
             "children": [
@@ -12593,18 +12246,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -12613,35 +12255,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_13",
             "type": "location",
+            "id": 13,
             "y": -15386,
             "visible": false,
             "children": [
@@ -13565,18 +13189,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -13585,35 +13198,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_14",
             "type": "location",
+            "id": 14,
             "y": -16485,
             "visible": false,
             "children": [
@@ -14536,18 +14131,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -14556,35 +14140,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_15",
             "type": "location",
+            "id": 15,
             "y": -17584,
             "visible": false,
             "children": [
@@ -15507,18 +15073,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -15527,35 +15082,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_16",
             "type": "location",
+            "id": 16,
             "y": -18683,
             "visible": false,
             "children": [
@@ -16479,18 +16016,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -16499,35 +16025,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_17",
             "type": "location",
+            "id": 17,
             "y": -19782,
             "visible": false,
             "children": [
@@ -17451,18 +16959,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -17471,35 +16968,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_18",
             "type": "location",
+            "id": 18,
             "y": -20881,
             "visible": false,
             "children": [
@@ -18422,18 +17901,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -18442,35 +17910,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_19",
             "type": "location",
+            "id": 19,
             "y": -21980,
             "visible": false,
             "children": [
@@ -19393,18 +18843,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -19413,35 +18852,17 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
           {
             "name": "location_20",
             "type": "location",
+            "id": 20,
             "y": -23079,
             "visible": false,
             "children": [
@@ -20364,18 +19785,7 @@
                         "anchor": {"x":  0.5, "y":  0.5}
                       },
                       {
-                        "name": "key0",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -80,
-                        "y": -4,
-                        "x": -17,
-                        "visible": false
-                      },
-                      {
-                        "name": "key1",
+                        "name": "key",
                         "type": "sprite",
                         "texture": "key_opened",
                         "anchor": {"x":  0.5, "y":  0.5},
@@ -20384,29 +19794,10 @@
                         "y": -8,
                         "x": 1,
                         "visible": false
-                      },
-                      {
-                        "name": "key2",
-                        "type": "sprite",
-                        "texture": "key_opened",
-                        "anchor": {"x":  0.5, "y":  0.5},
-                        "scale": {"x": 0.4, "y": 0.4},
-                        "angle": -40,
-                        "y": -8,
-                        "x": 19,
-                        "visible": false
                       }
                     ]
                   }
                 ]
-              },
-              {
-                "name": "arrow",
-                "type": "sprite",
-                "anchor": {"x": 0.5, "y":  0.5},
-                "texture": "arrow",
-                "visible": false,
-                "y": -100
               }
             ]
           },
@@ -20492,6 +19883,14 @@
               }
             ],
             "y": -105
+          },
+          {
+            "name": "arrow",
+            "type": "sprite",
+            "anchor": {"x": 0.5, "y":  0.5},
+            "texture": "arrow",
+            "visible": false,
+            "y": -100
           },
           {
             "name": "clouds",
@@ -20648,8 +20047,8 @@
         "height": 90
       },
       {
-        "type": "expProgressBar",
-        "name": "expProgressBar",
+        "type": "lobbyStarsProgressBar",
+        "name": "lobbyStarsProgressBar",
         "x": 70,
         "y": 19,
         "children": [
@@ -20657,10 +20056,7 @@
             "type": "sprite",
             "name": "bg",
             "texture": "lobby_progress_bg",
-            "anchor": {
-              "x": 0,
-              "y": 0.5
-            }
+            "anchor": {"x": 0, "y": 0.5}
           },
           {
             "type": "container",
@@ -20686,26 +20082,59 @@
             ]
           },
           {
-            "type": "sprite",
+            "type": "three_state_star",
             "name": "star",
-            "texture": "star_2",
-            "anchor": {
-              "x": 0.5,
-              "y": 0.5
-            }
+            "scale":{"x": 0.5,"y": 0.5},
+            "children": [
+              {
+                "type": "sprite",
+                "name": "starEmpty",
+                "texture": "star_empty",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starFull",
+                "texture": "star_full_1",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starBlick",
+                "texture": "star_fill_blick",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              },
+              {
+                "type": "sprite",
+                "name": "starLight",
+                "texture": "star_light_1",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              }
+            ]
           },
           {
             "type": "bm_text",
             "name": "starsValue",
             "style": {
-              "fontName": "Russia_brown",
+              "fontName": "Russia_white_shadow",
               "fontSize": 18,
               "align": "center"
             },
             "anchor": {
               "x": 0.5,
               "y": 0.5
-            }
+            },
+            "position": {"x": 125, "y": 0}
+          },
+          {
+            "type": "sprite",
+            "name": "key",
+            "texture": "key_opened",
+            "anchor": {"x": 0.5, "y": 0.5},
+            "scale": {"x": 0.35, "y": 0.35},
+            "position": {"x": 245, "y": 0}
           }
         ]
       },
@@ -20857,36 +20286,117 @@
         "y": 360,
         "children": [
           {
-            "name": "picture1h",
-            "type": "sprite",
-            "texture": null,
-            "x": 0,
-            "y": -150,
-            "height": 295
+            "name": "picture0",
+            "type": "levelPicture",
+            "horizontalProps": {"x": 0, "y": -150, "height": 295, "width": 0, "hideX": 0, "hideY": -800},
+            "verticalProps": {"x": -215, "y": 0, "height": 0, "width": 420, "hideX": -1000, "hideY": 0},
+            "children": [
+              {
+                "name": "picture",
+                "type": "sprite",
+                "texture": null
+              },
+              {
+                "name": "border",
+                "type": "slice_9",
+                "texture": "pict_border",
+                "leftWidth": 15,
+                "rightWidth": 15,
+                "topHeight": 15,
+                "bottomHeight": 15,
+                "x": -5,
+                "y": -5
+              }
+            ]
           },
           {
-            "name": "picture2h",
-            "type": "sprite",
-            "texture": null,
-            "x": 0,
-            "y": 150,
-            "height": 295
+            "name": "picture1",
+            "type": "levelPicture",
+            "horizontalProps": {"x": 0, "y": 153, "height": 295, "width": 0, "hideX": 0, "hideY": 800},
+            "verticalProps": {"x": 215, "y": 0, "height": 0, "width": 420, "hideX": 1000, "hideY": 0},
+            "children": [
+              {
+                "name": "picture",
+                "type": "sprite",
+                "texture": null
+              },
+              {
+                "name": "border",
+                "type": "slice_9",
+                "texture": "pict_border",
+                "leftWidth": 15,
+                "rightWidth": 15,
+                "topHeight": 15,
+                "bottomHeight": 15,
+                "x": -5,
+                "y": -5
+              }
+            ]
           },
           {
-            "name": "picture1v",
-            "type": "sprite",
-            "texture": null,
-            "x": -215,
-            "y": 0,
-            "width": 420
+            "name": "picture0next",
+            "type": "levelPicture",
+            "visible": false,
+            "horizontalProps": {"x": 0, "y": -150, "height": 295, "width": 0, "hideX": 0, "hideY": -800},
+            "verticalProps": {"x": -215, "y": 0, "height": 0, "width": 420, "hideX": -1000, "hideY": 0},
+            "children": [
+              {
+                "name": "picture",
+                "type": "sprite",
+                "texture": null
+              },
+              {
+                "name": "border",
+                "type": "slice_9",
+                "texture": "pict_border",
+                "leftWidth": 15,
+                "rightWidth": 15,
+                "topHeight": 15,
+                "bottomHeight": 15,
+                "x": -5,
+                "y": -5
+              }
+            ]
           },
           {
-            "name": "picture2v",
+            "name": "picture1next",
+            "type": "levelPicture",
+            "visible": false,
+            "horizontalProps": {"x": 0, "y": 153, "height": 295, "width": 0, "hideX": 0, "hideY": 800},
+            "verticalProps": {"x": 215, "y": 0, "height": 0, "width": 420, "hideX": 1000, "hideY": 0},
+            "children": [
+              {
+                "name": "picture",
+                "type": "sprite",
+                "texture": null
+              },
+              {
+                "name": "border",
+                "type": "slice_9",
+                "texture": "pict_border",
+                "leftWidth": 15,
+                "rightWidth": 15,
+                "topHeight": 15,
+                "bottomHeight": 15,
+                "x": -5,
+                "y": -5
+              }
+            ]
+          },
+          {
+            "name": "missImage",
             "type": "sprite",
-            "texture": null,
-            "x": 215,
-            "y": 0,
-            "width": 420
+            "texture": "missclick",
+            "visible":  false,
+            "anchor": {"x": 0.5,"y": 0.5},
+            "scale": {"x": 0.7,"y": 0.7}
+          },
+          {
+            "name": "hitImage",
+            "type": "sprite",
+            "texture": "hitclick",
+            "visible":  false,
+            "anchor": {"x": 0.5,"y": 0.7}
           }
         ]
       },
@@ -20947,10 +20457,265 @@
         "y": 20
       },
       {
+        "type": "levelStarsProgressBar",
+        "name": "levelStarsProgressBar",
+        "x": 500,
+        "y": 19,
+        "children": [
+          {
+            "type": "sprite",
+            "name": "bg",
+            "texture": "lobby_progress_bg",
+            "anchor": {
+              "x": 0,
+              "y": 0.5
+            }
+          },
+          {
+            "type": "container",
+            "name": "maskContainer",
+            "mask": "progressMask",
+            "children": [
+              {
+                "type": "graphics",
+                "name": "progressMask",
+                "figure": {
+                  "fillColor": "0x000000",
+                  "rect": {"x": 0, "y": -14, "width": 263, "height": 28}
+                }
+              },
+              {
+                "type": "sprite",
+                "name": "progressLine",
+                "texture": "lobby_exp_progress_line",
+                "anchor": {"x": 1, "y": 0.5},
+                "y": -1,
+                "x": 0
+              }
+            ]
+          },
+          {
+            "type": "three_state_star",
+            "name": "star0",
+            "scale":{"x": 0.5,"y": 0.5},
+            "children": [
+              {
+                "type": "sprite",
+                "name": "starEmpty",
+                "texture": "star_empty",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starFull",
+                "texture": "star_full_1",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starBlick",
+                "texture": "star_fill_blick",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              },
+              {
+                "type": "sprite",
+                "name": "starLight",
+                "texture": "star_light_1",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              }
+            ]
+          },
+          {
+            "type": "three_state_star",
+            "name": "star1",
+            "scale":{"x": 0.5,"y": 0.5},
+            "position":{"x": 70,"y": 0},
+            "children": [
+              {
+                "type": "sprite",
+                "name": "starEmpty",
+                "texture": "star_empty",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starFull",
+                "texture": "star_full_1",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starBlick",
+                "texture": "star_fill_blick",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              },
+              {
+                "type": "sprite",
+                "name": "starLight",
+                "texture": "star_light_1",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              }
+            ]
+          },
+          {
+            "type": "three_state_star",
+            "name": "star2",
+            "scale":{"x": 0.5,"y": 0.5},
+            "position":{"x": 140,"y": 0},
+            "children": [
+              {
+                "type": "sprite",
+                "name": "starEmpty",
+                "texture": "star_empty",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starFull",
+                "texture": "star_full_1",
+                "anchor": {"x": 0.5, "y": 0.5}
+              },
+              {
+                "type": "sprite",
+                "name": "starBlick",
+                "texture": "star_fill_blick",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              },
+              {
+                "type": "sprite",
+                "name": "starLight",
+                "texture": "star_light_1",
+                "anchor": {"x": 0.5, "y": 0.5},
+                "visible":  false
+              }
+            ]
+          },
+          {
+            "type": "bm_text",
+            "name": "levelTimerText",
+            "anchor": {"x":  0, "y":  0.5},
+            "textKey": "00:00",
+            "style": {
+              "fontName": "Russia_white_shadow",
+              "fontSize": 22,
+              "align": "left"
+            },
+            "x": -90,
+            "y": 0
+          }
+        ]
+      },
+      {
+        "type": "balanceBar",
+        "name": "balanceBar",
+        "x": 1080,
+        "y": 19,
+        "children": [
+          {
+            "type": "sprite",
+            "name": "bg",
+            "texture": "lobby_progress_bg",
+            "width": 120,
+            "height": 30,
+            "anchor": {"x":  0.5, "y":  0.5}
+          },
+          {
+            "type": "sprite",
+            "name": "coinImg",
+            "texture": "lobby6",
+            "anchor": {"x":  0.5, "y":  0.5},
+            "x": -60,
+            "scale": {"x": 0.9, "y":  0.9}
+          },
+          {
+            "type": "button",
+            "name": "plusButton",
+            "states": {
+              "normal": {
+                "texture": "lobby_btn_plus_normal"
+              },
+              "over": {
+                "texture": "lobby_btn_plus_over"
+              },
+              "down": {
+                "texture": "lobby_btn_plus_down"
+              }
+            },
+            "enabled": true,
+            "anchor": {"x":  0.5, "y":  0.5},
+            "x": 60
+          },
+          {
+            "type": "bm_text",
+            "name": "balanceValue",
+            "anchor": {"x":  0.5, "y":  0.5},
+            "style": {
+              "fontName": "Russia_white_shadow",
+              "fontSize": 18,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "soundOnBtn",
+        "states": {
+          "normal": {
+            "texture": "lobby_sound_normal"
+          },
+          "over": {
+            "texture": "lobby_sound_over"
+          },
+          "down": {
+            "texture": "lobby_sound_down"
+          }
+        },
+        "enabled": true,
+        "anchor": {"x":  0.5, "y":  0.5},
+        "x": 1200,
+        "y": 19
+      },
+      {
+        "type": "button",
+        "name": "soundOffBtn",
+        "states": {
+          "normal": {
+            "texture": "lobby_sound_off_normal"
+          },
+          "over": {
+            "texture": "lobby_sound_off_over"
+          },
+          "down": {
+            "texture": "lobby_sound_off_down"
+          }
+        },
+        "enabled": true,
+        "anchor": {"x":  0.5, "y":  0.5},
+        "x": 1200,
+        "y": 19
+      },
+      {
+        "name": "bottomBg",
+        "type": "slice_9",
+        "texture": "level_bottom_bar",
+        "leftWidth": 110,
+        "rightWidth": 110,
+        "topHeight": 0,
+        "bottomHeight": 0,
+        "width": 1280,
+        "y": 660
+      },
+      {
         "type": "picturesProgressBar",
         "name": "picturesProgressBar",
-        "x": 400,
-        "y": 5,
+        "x": 100,
+        "y": 688,
         "children": [
           {
             "type": "slice_9",
@@ -20986,7 +20751,7 @@
             "anchor": { "x": 0.5, "y":  0.5 },
             "scale": { "x": 0.8, "y":  0.8 },
             "x": 120,
-            "y": 20
+            "y": 15
           },
           {
             "type": "bm_text",
@@ -21161,110 +20926,9 @@
         ]
       },
       {
-        "type": "balanceBar",
-        "name": "balanceBar",
-        "x": 1080,
-        "y": 19,
-        "children": [
-          {
-            "type": "sprite",
-            "name": "bg",
-            "texture": "lobby_progress_bg",
-            "width": 120,
-            "height": 30,
-            "anchor": {"x":  0.5, "y":  0.5}
-          },
-          {
-            "type": "sprite",
-            "name": "coinImg",
-            "texture": "lobby6",
-            "anchor": {"x":  0.5, "y":  0.5},
-            "x": -60,
-            "scale": {"x": 0.9, "y":  0.9}
-          },
-          {
-            "type": "button",
-            "name": "plusButton",
-            "states": {
-              "normal": {
-                "texture": "lobby_btn_plus_normal"
-              },
-              "over": {
-                "texture": "lobby_btn_plus_over"
-              },
-              "down": {
-                "texture": "lobby_btn_plus_down"
-              }
-            },
-            "enabled": true,
-            "anchor": {"x":  0.5, "y":  0.5},
-            "x": 60
-          },
-          {
-            "type": "bm_text",
-            "name": "balanceValue",
-            "anchor": {"x":  0.5, "y":  0.5},
-            "style": {
-              "fontName": "Russia_white_shadow",
-              "fontSize": 18,
-              "align": "center"
-            }
-          }
-        ]
-      },
-      {
-        "type": "button",
-        "name": "soundOnBtn",
-        "states": {
-          "normal": {
-            "texture": "lobby_sound_normal"
-          },
-          "over": {
-            "texture": "lobby_sound_over"
-          },
-          "down": {
-            "texture": "lobby_sound_down"
-          }
-        },
-        "enabled": true,
-        "anchor": {"x":  0.5, "y":  0.5},
-        "x": 1200,
-        "y": 19
-      },
-      {
-        "type": "button",
-        "name": "soundOffBtn",
-        "states": {
-          "normal": {
-            "texture": "lobby_sound_off_normal"
-          },
-          "over": {
-            "texture": "lobby_sound_off_over"
-          },
-          "down": {
-            "texture": "lobby_sound_off_down"
-          }
-        },
-        "enabled": true,
-        "anchor": {"x":  0.5, "y":  0.5},
-        "x": 1200,
-        "y": 19
-      },
-      {
-        "name": "bottomBg",
-        "type": "slice_9",
-        "texture": "level_bottom_bar",
-        "leftWidth": 110,
-        "rightWidth": 110,
-        "topHeight": 0,
-        "bottomHeight": 0,
-        "width": 1280,
-        "y": 660
-      },
-      {
         "type": "differencesProgressBar",
         "name": "differencesProgressBar",
-        "x": 300,
+        "x": 400,
         "y": 700,
         "children": [
           {
@@ -21530,6 +21194,82 @@
             "y": 0
           }
         ]
+      },
+      {
+        "name": "btnBoosterAddExtraTime",
+        "type": "button_pay",
+        "anchor": {"x":  0.5, "y": 0.5},
+        "position": {"x": 100, "y": 170},
+        "enabled": true,
+        "states": {
+          "normal": {
+            "texture": "btn_booster_time_normal"
+          },
+          "over": {
+            "texture": "btn_booster_time_over"
+          },
+          "down": {
+            "texture": "btn_booster_time_down"
+          }
+        },
+        "priceImage": {
+          "name": "priceImage",
+          "type": "sprite",
+          "texture": "lobby6",
+          "anchor": { "x": 0.5, "y":  0.5 },
+          "scale": {"x": 0.7, "y":  0.7},
+          "position": {"x": -18, "y":  41}
+        },
+        "priceText": {
+          "type": "bm_text",
+          "name": "priceText",
+          "textKey": "20",
+          "style": {
+            "fontName": "Astachov_green",
+            "align": "left",
+            "fontSize": 20
+          },
+          "anchor": {"x":  0, "y":  0.5},
+          "position": {"x": 0, "y":  28}
+        }
+      },
+      {
+        "name": "btnBoosterUseHelp",
+        "type": "button_pay",
+        "anchor": {"x":  0.5, "y": 0.5},
+        "position": {"x": 1180, "y": 170},
+        "enabled": true,
+        "states": {
+          "normal": {
+            "texture": "btn_booster_help_normal"
+          },
+          "over": {
+            "texture": "btn_booster_help_over"
+          },
+          "down": {
+            "texture": "btn_booster_help_down"
+          }
+        },
+        "priceImage": {
+          "name": "priceImage",
+          "type": "sprite",
+          "texture": "lobby6",
+          "anchor": { "x": 0.5, "y":  0.5 },
+          "scale": {"x": 0.7, "y":  0.7},
+          "position": {"x": -18, "y":  41}
+        },
+        "priceText": {
+          "type": "bm_text",
+          "name": "priceText",
+          "textKey": "30",
+          "style": {
+            "fontName": "Astachov_green",
+            "align": "left",
+            "fontSize": 20
+          },
+          "anchor": {"x":  0, "y":  0.5},
+          "position": {"x": 0, "y":  28}
+        }
       }
     ]
   },
@@ -21868,6 +21608,1128 @@
           ]
         }
       ]
+    },
+    "levelFinish": {
+      "name": "levelFinish",
+      "type": "window",
+      "children": [
+        {
+          "name": "shadow",
+          "type": "sprite",
+          "texture": "win_bottom",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "name": "content",
+          "type": "window_content",
+          "x": 640,
+          "y": -360,
+          "show": {
+            "duration": 0.3,
+            "y":360,
+            "ease": "circ.out"
+          },
+          "hide": {
+            "duration": 0.3,
+            "y": 1080,
+            "ease": "circ.in"
+          },
+          "children": [
+            {
+              "name": "background",
+              "type": "sprite",
+              "texture": "win_bg_7",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1.9, "y":  1.9 }
+            },
+            {
+              "name": "lightBg",
+              "type": "sprite",
+              "texture": "bg_light2",
+              "anchor": { "x": 0, "y":  0 },
+              "scale": { "x": 4.45, "y":  4.45 },
+              "position": { "x": -217, "y": -270 }
+            },
+            {
+              "name": "blueTape",
+              "type": "sprite",
+              "texture": "win_header_bg",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "y": -270
+            },
+            {
+              "type": "bm_text",
+              "name": "congratulationText",
+              "textKey": "window_level_finish_congratulation",
+              "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 30
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  -290}
+            },
+            {
+              "type": "bm_text",
+              "name": "levelNumText",
+              "textKey": "window_play_header",
+              "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 40
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  -130}
+            },
+            {
+              "name": "emptyStar0",
+              "type": "sprite",
+              "texture": "star_empty",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "angle": -5,
+              "x": -120,
+              "y": -190
+            },
+            {
+              "name": "emptyStar1",
+              "type": "sprite",
+              "texture": "star_empty",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "x": 0,
+              "y": -210
+            },
+            {
+              "name": "emptyStar2",
+              "type": "sprite",
+              "texture": "star_empty",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "angle": 5,
+              "x": 120,
+              "y": -190
+            },
+            {
+              "name": "fillStar0",
+              "type": "sprite",
+              "texture": "star_full_1",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "angle": -5,
+              "x": -120,
+              "y": -190,
+              "visible": false
+            },
+            {
+              "name": "fillStar1",
+              "type": "sprite",
+              "texture": "star_full_1",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "x": 0,
+              "y": -210,
+              "visible": false
+            },
+            {
+              "name": "fillStar2",
+              "type": "sprite",
+              "texture": "star_full_1",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "angle": 5,
+              "x": 120,
+              "y": -190,
+              "visible": false
+            },
+            {
+              "name": "rectBg1",
+              "type": "slice_9",
+              "texture": "rect_cream1",
+              "leftWidth": 10,
+              "rightWidth": 10,
+              "topHeight": 10,
+              "bottomHeight": 10,
+              "width": 320,
+              "height": 120,
+              "x": -160,
+              "y": -90
+            },
+            {
+              "name": "rectBg2",
+              "type": "slice_9",
+              "texture": "round_bg_purple",
+              "leftWidth": 10,
+              "rightWidth": 10,
+              "topHeight": 10,
+              "bottomHeight": 10,
+              "width": 320,
+              "height": 40,
+              "x": -160,
+              "y": 40
+            },
+            {
+              "type": "bm_text",
+              "name": "descriptorText",
+              "textKey": "window_level_finish_description",
+              "style": {
+                "fontName": "Astachov_brown",
+                "align": "center",
+                "fontSize": 24
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  -40}
+            },
+            {
+              "type": "bm_text",
+              "name": "spentTimeText",
+              "textKey": "window_level_finish_time_spent",
+              "style": {
+                "fontName": "Russia_white_shadow",
+                "align": "center",
+                "fontSize": 25
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  60}
+            },
+            {
+              "type": "bm_text",
+              "name": "yourRewardText",
+              "textKey": "window_level_finish_your_reward",
+              "style": {
+                "fontName": "Russia_white_shadow",
+                "align": "center",
+                "fontSize": 25
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  105},
+              "visible":  false
+            },
+            {
+              "name": "rewardContainer",
+              "type": "container",
+              "position": {"x": 0, "y": 145},
+              "children": [
+                {
+                  "name": "coinsWonImage",
+                  "type": "sprite",
+                  "texture": "lobby6",
+                  "anchor": { "x": 0, "y":  0.5 },
+                  "position": {"x": 0, "y":  0},
+                  "visible":  false
+                },
+                {
+                  "type": "bm_text",
+                  "name": "coinsWonText",
+                  "textKey": "3",
+                  "style": {
+                    "fontName": "Russia_white_shadow",
+                    "align": "center",
+                    "fontSize": 30
+                  },
+                  "anchor": {"x":  0, "y":  0.5},
+                  "position": {"x": 40, "y":  0},
+                  "visible":  false
+                },
+                {
+                  "name": "helpsWonImage",
+                  "type": "sprite",
+                  "texture": "help",
+                  "anchor": { "x": 0, "y":  0.5 },
+                  "scale": {"x": 0.32, "y":  0.32},
+                  "position": {"x": 0, "y":  0},
+                  "visible":  false
+                },
+                {
+                  "type": "bm_text",
+                  "name": "helpsWonText",
+                  "textKey": "3",
+                  "style": {
+                    "fontName": "Russia_white_shadow",
+                    "align": "left",
+                    "fontSize": 30
+                  },
+                  "anchor": {"x":  0, "y":  0.5},
+                  "position": {"x": 40, "y":  0},
+                  "visible":  false
+                }
+              ],
+              "visible": false
+            },
+            {
+              "type": "button",
+              "name": "playAgainBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_red_normal",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -12 }
+                },
+                "over": {
+                  "texture": "btn_red_over",
+                  "scale": {"x": 1.1, "y":  1.1},
+                  "btnText": { "y": -12 }
+                },
+                "down": {
+                  "texture": "btn_red_down",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -9 }
+                }
+              },
+              "enabled": true,
+              "btnText": {
+                "type": "bm_text",
+                "name": "btnText",
+                "textKey": "window_level_finish_play_again",
+                "style": {
+                  "fontName": "Astachov_blue_shadow",
+                  "align": "center",
+                  "fontSize": 30
+                },
+                "anchor": {"x":  0.5, "y":  0.5},
+                "position": {"x": 9, "y":  -12}
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "scale": {"x":  0.9, "y":  0.9},
+              "x": 0,
+              "y": 200
+            },
+            {
+              "type": "button",
+              "name": "playNextBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_green_long_normal",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -12 }
+                },
+                "over": {
+                  "texture": "btn_green_long_over",
+                  "scale": {"x": 1.1, "y":  1.1},
+                  "btnText": { "y": -12 }
+                },
+                "down": {
+                  "texture": "btn_green_long_down",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -9 }
+                }
+              },
+              "enabled": true,
+              "btnText": {
+                "type": "bm_text",
+                "name": "btnText",
+                "textKey": "window_level_finish_play_next",
+                "style": {
+                  "fontName": "Astachov_blue_shadow",
+                  "align": "center",
+                  "fontSize": 34
+                },
+                "anchor": {"x":  0.5, "y":  0.5},
+                "position": {"x": 9, "y":  -12}
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "scale": {"x":  1, "y":  1},
+              "x": 0,
+              "y": 270
+            },
+            {
+              "type": "button",
+              "name": "closeBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_close_normal"
+                },
+                "over": {
+                  "texture": "btn_close_over"
+                },
+                "down": {
+                  "texture": "btn_close_down"
+                }
+              },
+              "enabled": true,
+              "anchor": {"x":  0.5, "y":  0.5},
+              "x": 220,
+              "y": -280
+            }
+          ]
+        }
+      ]
+    },
+    "levelPenalty": {
+      "name": "levelPenalty",
+      "type": "window",
+      "children": [
+        {
+          "name": "shadow",
+          "type": "sprite",
+          "texture": "win_bottom",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "name": "content",
+          "type": "window_content",
+          "x": 640,
+          "y": 360,
+          "alpha": 0,
+          "show": {
+            "duration": 0.1,
+            "alpha": 1,
+            "ease": "none"
+          },
+          "hide": {
+            "duration": 0.1,
+            "alpha": 0,
+            "ease": "none"
+          },
+          "children": [
+            {
+              "name": "rectBg1",
+              "type": "slice_9",
+              "texture": "rect_cream1",
+              "leftWidth": 10,
+              "rightWidth": 10,
+              "topHeight": 10,
+              "bottomHeight": 10,
+              "width": 360,
+              "height": 330,
+              "x": -180,
+              "y": -165
+            },
+            {
+              "type": "bm_text",
+              "name": "descriptorText1",
+              "textKey": "window_penalty_description_1",
+              "style": {
+                "fontName": "Astachov_brown",
+                "align": "center",
+                "fontSize": 22
+              },
+              "anchor": {"x":  0.5, "y": 0.5},
+              "position": {"x": 0, "y": -110}
+            },
+            {
+              "type": "bm_text",
+              "name": "timeText",
+              "textKey": "",
+              "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 25
+              },
+              "anchor": {"x":  0.5, "y": 0.5},
+              "position": {"x": 0, "y": -47}
+            },
+            {
+              "type": "bm_text",
+              "name": "descriptorText2",
+              "textKey": "window_penalty_description_2",
+              "style": {
+                "fontName": "Astachov_brown",
+                "align": "center",
+                "fontSize": 22
+              },
+              "anchor": {"x":  0.5, "y": 0.5},
+              "position": {"x": 0, "y": 17}
+            },
+            {
+              "name": "btnPay",
+              "type": "button_pay",
+              "anchor": {"x":  0.5, "y": 0.5},
+              "position": {"x": 0, "y": 105},
+              "enabled": true,
+              "states": {
+                "normal": {
+                  "texture": "btn_green_long_normal",
+                  "btnText": { "y": -15 },
+                  "priceText": { "y": -15 },
+                  "priceImage": { "y": -2 }
+                },
+                "over": {
+                  "texture": "btn_green_long_over",
+                  "btnText": { "y": -15 },
+                  "priceText": { "y": -15 },
+                  "priceImage": { "y": -2 }
+                },
+                "down": {
+                  "texture": "btn_green_long_down",
+                  "btnText": { "y": -14 },
+                  "priceText": { "y": -14 },
+                  "priceImage": { "y": -1 }
+                }
+              },
+              "btnText": {
+                "type": "bm_text",
+                "name": "btnText",
+                "textKey": "window_penalty_button_pay",
+                "style": {
+                  "fontName": "Astachov_green",
+                  "align": "center",
+                  "fontSize": 20
+                },
+                "anchor": {"x":  0.5, "y":  0.5},
+                "position": {"x": -35, "y": -15}
+              },
+              "priceImage": {
+                "name": "priceImage",
+                "type": "sprite",
+                "texture": "lobby6",
+                "anchor": { "x": 0.5, "y":  0.5 },
+                "scale": {"x": 0.9, "y":  0.9},
+                "position": {"x": 40, "y":  -2}
+              },
+              "priceText": {
+                "type": "bm_text",
+                "name": "priceText",
+                "textKey": "3",
+                "style": {
+                  "fontName": "Astachov_green",
+                  "align": "left",
+                  "fontSize": 20
+                },
+                "anchor": {"x":  0, "y":  0.5},
+                "position": {"x": 65, "y":  -15}
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "shop": {
+      "name": "shop",
+      "type": "window",
+      "children": [
+        {
+          "name": "shadow",
+          "type": "sprite",
+          "texture": "win_bottom",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "name": "content",
+          "type": "window_content",
+          "x": 640,
+          "y": -360,
+          "show": {
+            "duration": 0.3,
+            "y":360,
+            "ease": "circ.out"
+          },
+          "hide": {
+            "duration": 0.3,
+            "y": 1080,
+            "ease": "circ.in"
+          },
+          "children": [
+            {
+              "name": "background",
+              "type": "sprite",
+              "texture": "win_bg_8",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1.0, "y":  1.0 }
+            },
+            {
+              "name": "tape",
+              "type": "sprite",
+              "texture": "shop_title_en",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "y": -220
+            },
+            {
+              "type": "button",
+              "name": "closeBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_close_normal"
+                },
+                "over": {
+                  "texture": "btn_close_over"
+                },
+                "down": {
+                  "texture": "btn_close_down"
+                }
+              },
+              "enabled": true,
+              "anchor": {"x":  0.5, "y":  0.5},
+              "x": 260,
+              "y": -220
+            }
+          ]
+        }
+      ]
+    },
+    "keyReceived": {
+      "name": "keyReceived",
+      "type": "window",
+      "children": [
+        {
+          "name": "shadow",
+          "type": "sprite",
+          "texture": "win_bottom",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "name": "content",
+          "type": "window_content",
+          "x": 640,
+          "y": -360,
+          "show": {
+            "duration": 0.3,
+            "y":360,
+            "ease": "circ.out"
+          },
+          "hide": {
+            "duration": 0.3,
+            "y": 1080,
+            "ease": "circ.in"
+          },
+          "children": [
+            {
+              "name": "background",
+              "type": "sprite",
+              "texture": "win_bg_5",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1.65, "y":  1.65 }
+            },
+            {
+              "name": "shine",
+              "type": "sprite",
+              "texture": "shine",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 2, "y":  2 },
+              "y": 70,
+              "x": 40
+            },
+            {
+              "name": "tape",
+              "type": "sprite",
+              "texture": "win_header_bg",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "y": -200
+            },
+            {
+              "name": "cat",
+              "type": "sprite",
+              "texture": "holmes_10",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 0.7, "y":  0.7 },
+              "x": -180,
+              "y": 20
+            },
+            {
+              "name": "catCloud",
+              "type": "sprite",
+              "texture": "cloud_big",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 0.5, "y": 0.7},
+              "x": 60,
+              "y": -80
+            },
+            {
+              "name": "key",
+              "type": "sprite",
+              "texture": "key_opened",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "x": 40,
+              "y": 70
+            },
+            {
+              "type": "bm_text",
+              "name": "congratulationText",
+              "textKey": "window_key_received_congratulation",
+              "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 30
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  -220}
+            },
+            {
+              "type": "bm_text",
+              "name": "descriptorText",
+              "textKey": "window_key_received_descriptor",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 18
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 70, "y":  -85}
+            },
+            {
+              "type": "button",
+              "name": "playBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_blue_normal",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -12 }
+                },
+                "over": {
+                  "texture": "btn_blue_over",
+                  "scale": {"x": 1.1, "y":  1.1},
+                  "btnText": { "y": -12 }
+                },
+                "down": {
+                  "texture": "btn_blue_down",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -9 }
+                }
+              },
+              "enabled": true,
+              "btnText": {
+                "type": "bm_text",
+                "name": "btnText",
+                "textKey": "window_key_received_play_next",
+                "style": {
+                  "fontName": "Astachov_blue_shadow",
+                  "align": "center",
+                  "fontSize": 34
+                },
+                "anchor": {"x":  0.5, "y":  0.5},
+                "position": {"x": 9, "y":  -12}
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "scale": {"x":  1, "y":  1},
+              "x": 0,
+              "y": 200
+            },
+            {
+              "type": "button",
+              "name": "closeBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_close_normal"
+                },
+                "over": {
+                  "texture": "btn_close_over"
+                },
+                "down": {
+                  "texture": "btn_close_down"
+                }
+              },
+              "enabled": true,
+              "anchor": {"x":  0.5, "y":  0.5},
+              "x": 240,
+              "y": -200
+            }
+          ]
+        }
+      ]
+    },
+    "openLocation": {
+      "name": "openLocation",
+      "type": "window",
+      "children": [
+        {
+          "name": "shadow",
+          "type": "sprite",
+          "texture": "win_bottom",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "name": "content",
+          "type": "window_content",
+          "x": 640,
+          "y": -360,
+          "show": {
+            "duration": 0.3,
+            "y":360,
+            "ease": "circ.out"
+          },
+          "hide": {
+            "duration": 0.3,
+            "y": 1080,
+            "ease": "circ.in"
+          },
+          "children": [
+            {
+              "name": "background",
+              "type": "sprite",
+              "texture": "win_bg_5",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1.65, "y":  1.65 }
+            },
+            {
+              "name": "shine",
+              "type": "sprite",
+              "texture": "shine",
+              "anchor": { "x": 0.5, "y": 0.5 },
+              "scale": { "x": 3.3, "y": 3.3 },
+              "y": 0,
+              "x": 0
+            },
+            {
+              "name": "tape",
+              "type": "sprite",
+              "texture": "win_header_bg",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "y": -200
+            },
+            {
+              "type": "bm_text",
+              "name": "congratulationText",
+              "textKey": "window_key_received_congratulation",
+              "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 30
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  -220}
+            },
+            {
+              "name": "descriptBg",
+              "type": "sprite",
+              "texture": "element6",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 0.8, "y":  0.8 },
+              "y": -120
+            },
+            {
+              "name": "key",
+              "type": "sprite",
+              "texture": "key_opened",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 0.7, "y":  0.7 },
+              "x": -162,
+              "y": -120
+            },
+            {
+              "type": "bm_text",
+              "name": "descriptorText",
+              "textKey": "window_open_location_descriptor",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 20
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 30, "y":  -122}
+            },
+            {
+              "name": "fenceOpen",
+              "type": "sprite",
+              "texture": "fence_open",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1.1, "y":  1.1 },
+              "y": -30
+            },
+            {
+              "type": "bm_text",
+              "name": "descriptor2Text",
+              "textKey": "window_open_location_descriptor2",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 28
+              },
+              "anchor": {"x": 0.5, "y":  0.5},
+              "position": {"x": 0, "y": 75}
+            },
+            {
+              "type": "button",
+              "name": "playBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_green_long_normal",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -12 }
+                },
+                "over": {
+                  "texture": "btn_green_long_over",
+                  "scale": {"x": 1.1, "y":  1.1},
+                  "btnText": { "y": -12 }
+                },
+                "down": {
+                  "texture": "btn_green_long_down",
+                  "scale": {"x": 1, "y":  1},
+                  "btnText": { "y": -9 }
+                }
+              },
+              "enabled": true,
+              "btnText": {
+                "type": "bm_text",
+                "name": "btnText",
+                "textKey": "window_open_location_play_next",
+                "style": {
+                  "fontName": "Astachov_blue_shadow",
+                  "align": "center",
+                  "fontSize": 34
+                },
+                "anchor": {"x":  0.5, "y":  0.5},
+                "position": {"x": 9, "y":  -12}
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "scale": {"x":  1, "y":  1},
+              "x": 0,
+              "y": 150
+            },
+            {
+              "type": "button",
+              "name": "closeBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_close_normal"
+                },
+                "over": {
+                  "texture": "btn_close_over"
+                },
+                "down": {
+                  "texture": "btn_close_down"
+                }
+              },
+              "enabled": true,
+              "anchor": {"x":  0.5, "y":  0.5},
+              "x": 240,
+              "y": -200
+            }
+          ]
+        }
+      ]
+    },
+    "locationClosed": {
+      "name": "locationClosed",
+      "type": "window",
+      "children": [
+        {
+          "name": "shadow",
+          "type": "sprite",
+          "texture": "win_bottom",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "name": "content",
+          "type": "window_content",
+          "x": 640,
+          "y": -360,
+          "show": {
+            "duration": 0.3,
+            "y":360,
+            "ease": "circ.out"
+          },
+          "hide": {
+            "duration": 0.3,
+            "y": 1080,
+            "ease": "circ.in"
+          },
+          "children": [
+            {
+              "name": "background",
+              "type": "sprite",
+              "texture": "win_bg_5",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1.85, "y":  1.85 }
+            },
+            {
+              "name": "tape",
+              "type": "sprite",
+              "texture": "win_header_bg",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "y": -230
+            },
+            {
+              "type": "bm_text",
+              "name": "titleText",
+              "textKey": "window_location_closed_title",
+              "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 30
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 0, "y":  -250}
+            },
+            {
+              "name": "brownRect",
+              "type": "slice_9",
+              "texture": "shop_element6",
+              "leftWidth": 20,
+              "rightWidth": 20,
+              "topHeight": 20,
+              "bottomHeight": 20,
+              "width": 360,
+              "height": 230,
+              "alpha":  0.5,
+              "x": -180,
+              "y": -110
+            },
+            {
+              "name": "descriptBg",
+              "type": "sprite",
+              "texture": "element6",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 1, "y":  1 },
+              "y": -150
+            },
+            {
+              "name": "fenceClosed",
+              "type": "sprite",
+              "texture": "fence_close",
+              "anchor": { "x": 0.5, "y": 0.5 },
+              "scale": { "x": 0.55, "y": 0.55 },
+              "x": -205,
+              "y": -158
+            },
+            {
+              "name": "key",
+              "type": "sprite",
+              "texture": "key_closed",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 0.5, "y":  0.5 },
+              "x": 220,
+              "y": -153
+            },
+            {
+              "type": "bm_text",
+              "name": "keyText",
+              "textKey": "window_location_closed_key_text",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 16
+              },
+              "anchor": {"x":  0.5, "y":  0.5},
+              "position": {"x": 20, "y":  -152}
+            },
+            {
+              "name": "timerBg",
+              "type": "sprite",
+              "texture": "shop_element6",
+              "anchor": { "x": 0.5, "y":  0.5 },
+              "scale": { "x": 0.7, "y":  0.7 },
+              "x": 0,
+              "y": 80
+            },
+            {
+              "type": "bm_text",
+              "name": "starsText",
+              "textKey": "window_location_closed_stars_text",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 22
+              },
+              "anchor": {"x": 0.5, "y":  0.5},
+              "position": {"x": 0, "y": -70}
+            },
+            {
+              "type": "bm_text",
+              "name": "waitText",
+              "textKey": "window_location_closed_wait_text",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 22
+              },
+              "anchor": {"x": 0.5, "y":  0.5},
+              "position": {"x": 0, "y": 15}
+            },
+            {
+              "type": "bm_text",
+              "name": "timerText",
+              "textKey": "00:00:00",
+              "style": {
+                "fontName": "Astachov_brown",
+                "align": "center",
+                "fontSize": 25
+              },
+              "anchor": {"x": 0.5, "y":  0.5},
+              "position": {"x": 0, "y": 73}
+            },
+            {
+              "type": "bm_text",
+              "name": "alsoText",
+              "textKey": "window_location_closed_also_text",
+              "style": {
+                "fontName": "Russia_brown",
+                "align": "center",
+                "fontSize": 18
+              },
+              "anchor": {"x": 0.5, "y":  0.5},
+              "position": {"x": 0, "y": 135}
+            },
+            {
+              "name": "payBtn",
+              "type": "button_pay",
+              "anchor": {"x":  0.5, "y": 0.5},
+              "position": {"x": 0, "y": 180},
+              "enabled": true,
+              "states": {
+                "normal": {
+                  "texture": "btn_green_long_normal",
+                  "btnText": { "y": -15 },
+                  "priceText": { "y": -15 },
+                  "priceImage": { "y": -2 }
+                },
+                "over": {
+                  "texture": "btn_green_long_over",
+                  "btnText": { "y": -15 },
+                  "priceText": { "y": -15 },
+                  "priceImage": { "y": -2 }
+                },
+                "down": {
+                  "texture": "btn_green_long_down",
+                  "btnText": { "y": -14 },
+                  "priceText": { "y": -14 },
+                  "priceImage": { "y": -1 }
+                }
+              },
+              "btnText": {
+                "type": "bm_text",
+                "name": "btnText",
+                "textKey": "window_location_closed_open_for_text",
+                "style": {
+                  "fontName": "Astachov_green",
+                  "align": "center",
+                  "fontSize": 20
+                },
+                "anchor": {"x":  0.5, "y":  0.5},
+                "position": {"x": -35, "y": -15}
+              },
+              "priceImage": {
+                "name": "priceImage",
+                "type": "sprite",
+                "texture": "lobby6",
+                "anchor": { "x": 0.5, "y":  0.5 },
+                "scale": {"x": 0.9, "y":  0.9},
+                "position": {"x": 40, "y":  -2}
+              },
+              "priceText": {
+                "type": "bm_text",
+                "name": "priceText",
+                "textKey": "3",
+                "style": {
+                  "fontName": "Astachov_green",
+                  "align": "left",
+                  "fontSize": 20
+                },
+                "anchor": {"x":  0, "y":  0.5},
+                "position": {"x": 65, "y":  -15}
+              }
+            },
+            {
+              "type": "button",
+              "name": "closeBtn",
+              "states": {
+                "normal": {
+                  "texture": "btn_close_normal"
+                },
+                "over": {
+                  "texture": "btn_close_over"
+                },
+                "down": {
+                  "texture": "btn_close_down"
+                }
+              },
+              "enabled": true,
+              "anchor": {"x":  0.5, "y":  0.5},
+              "x": 270,
+              "y": -230
+            }
+          ]
+        }
+      ]
     }
   },
   "screenBlock": {
@@ -21893,7 +22755,8 @@
             "texture": "dialog_text_box",
             "anchor": {"x": 0.5,"y": 0.5},
             "scale": {"x": 0.3,"y": 0.3},
-            "x": -50
+            "x": -50,
+            "alpha": 0.2
           },
           {
             "name": "box1",

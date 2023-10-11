@@ -3,8 +3,6 @@ import Properties from "./data/Properties";
 import Localization from "./data/Localization";
 import User from "./data/User";
 import Resource from "./data/Resource";
-import Levels from "./data/Levels";
-import Shop from "./data/Shop";
 
 export const load = () => {
 
@@ -16,8 +14,6 @@ export const load = () => {
     const PX : string = "px";
 
     const PROGRESS_STEP_USER_DATA : string = "user_data";
-    const PROGRESS_STEP_LEVELS : string = "levels";
-    const PROGRESS_STEP_SHOP : string = "shop";
     const PROGRESS_STEP_PROPERTIES : string = "settings";
     const PROGRESS_STEP_LOCALIZATION : string = "localization";
     const PROGRESS_STEP_GRAPHICS : string = "graphics";
@@ -29,9 +25,7 @@ export const load = () => {
      * Summa of all must 1
      */
     const PROGRESS_STEPS : any = {
-        [PROGRESS_STEP_USER_DATA]: 0.02,
-        [PROGRESS_STEP_LEVELS]: 0.01,
-        [PROGRESS_STEP_SHOP]: 0.01,
+        [PROGRESS_STEP_USER_DATA]: 0.04,
         [PROGRESS_STEP_PROPERTIES]: 0.01,
         [PROGRESS_STEP_LOCALIZATION]: 0.01,
         [PROGRESS_STEP_GRAPHICS]: 0.85,
@@ -57,14 +51,6 @@ export const load = () => {
         try {
 
             await User.load();
-
-            updateProgressBar( progressStep, PROGRESS_STEP_LEVELS );
-
-            await Levels.load();
-
-            updateProgressBar( progressStep, PROGRESS_STEP_SHOP );
-
-            await Shop.load();
 
             updateProgressBar( progressStep, PROGRESS_STEP_PROPERTIES );
 

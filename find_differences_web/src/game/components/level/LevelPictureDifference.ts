@@ -6,14 +6,15 @@ export default class LevelPictureDifference {
         this._polygon = new PIXI.Polygon( _polygonData.flat() );
     }
 
+    public getId(): number {
+        return this._id;
+    }
+
     public contains(x:number,y:number) : boolean {
         return this._polygon.contains(x,y);
     }
 
-    public getPolygonGraphics() : PIXI.Graphics {
-        const g:PIXI.Graphics = new PIXI.Graphics();
-        g.lineStyle(5, 0xeb8f34);
-        g.drawPolygon(this._polygon);
-        return g;
+    public getPolygon() : PIXI.Polygon {
+        return this._polygon.clone();
     }
 }

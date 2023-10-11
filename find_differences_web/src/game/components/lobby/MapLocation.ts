@@ -1,12 +1,12 @@
 import * as PIXI from "pixi.js";
-import * as constants from "../../constants/constants";
-import CContainer from "../../components/CContainer";
-import CSprite from "../../components/CSprite";
+import * as constants from "../../../constants/constants";
+import CContainer from "../../../components/CContainer";
+import CSprite from "../../../components/CSprite";
 import MapLevel from "./MapLevel";
 import LocationBackground from "./LocationBackground";
 import Fence from "./Fence";
 import gsap from "gsap";
-import {ContainerModel} from "../../models/PropertiesModels";
+import {ContainerModel} from "../../../models/PropertiesModels";
 
 export default class MapLocation extends CContainer {
 
@@ -14,7 +14,6 @@ export default class MapLocation extends CContainer {
     private _activeMarker: CSprite;
     private _mapLevels: Array<MapLevel>;
     private _fence: Fence;
-    private _arrow: CSprite;
 
     constructor( props: ContainerModel ) {
         super( props );
@@ -25,11 +24,10 @@ export default class MapLocation extends CContainer {
         this._mapLevels = this.getComponentsByType( constants.COMPONENT_MAP_LEVEL );
 
         this._fence = this.getComponentByName("fence");
-        this._arrow = this.getComponentByName("arrow");
+        this._fence.setId(props.id);
     }
 
     public destroy(_options?: PIXI.IDestroyOptions | boolean) {
-        gsap.killTweensOf(this._arrow);
         super.destroy(_options);
     }
 
@@ -67,11 +65,6 @@ export default class MapLocation extends CContainer {
         this._activeMarker.x = mapLevel.x;
         this._activeMarker.y = mapLevel.y;
 
-        this._arrow.visible = true;
-        gsap.killTweensOf(this._arrow);
-        this._arrow.x = mapLevel.x;
-        this._arrow.y = mapLevel.y + this._arrow.properties.y;
-        gsap.to( this._arrow.position, { duration:0.5, "y": "+=10", yoyo: true, repeat: -1 } );
     }
 
     getMapLevels(): Array<MapLevel> {
@@ -80,6 +73,10 @@ export default class MapLocation extends CContainer {
 
     getFence() : Fence {
         return this._fence;
+    }
+
+    getMapLevelById(levelId: number): MapLevel {
+        return this._mapLevels.find( (mLevel:MapLevel) => mLevel.getId() == levelId );
     }
 
 }

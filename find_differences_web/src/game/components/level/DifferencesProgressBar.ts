@@ -1,14 +1,14 @@
 import * as PIXI from 'pixi.js';
-import CSprite from "../../components/CSprite";
-import CContainer from "../../components/CContainer";
-import CText from "../../components/CText";
-import CSlice9 from "../../components/CSlice9";
-import CBMText from "../../components/CBMText";
-import * as constants from "../../constants/constants";
+import CSprite from "../../../components/CSprite";
+import CContainer from "../../../components/CContainer";
+import CText from "../../../components/CText";
+import CSlice9 from "../../../components/CSlice9";
+import CBMText from "../../../components/CBMText";
+import * as constants from "../../../constants/constants";
 import PicturesProgressBar from "./PicturesProgressBar";
-import BalanceBar from "./BalanceBar";
+import BalanceBar from "../common/BalanceBar";
 import LevelProgressDifference from "./LevelProgressDifference";
-import {ComponentModel, ContainerModel} from "../../models/PropertiesModels";
+import {ComponentModel, ContainerModel} from "../../../models/PropertiesModels";
 
 export default class DifferencesProgressBar extends CContainer {
 
@@ -45,8 +45,8 @@ export default class DifferencesProgressBar extends CContainer {
     setCount( num: number ) : void {
         this._differencesCount = num;
 
-        for ( let i : number = 0; i < this._differences.length && i < this._differencesCount; i++ ) {
-            this._differences[i].visible = true;
+        for ( let i : number = 0; i < this._differences.length; i++ ) {
+            this._differences[i].visible = i < this._differencesCount;
         }
 
         this._differencesCountText.x = this._differences[Math.min(this._differencesCount-1,this._differences.length-1)].x + 30;

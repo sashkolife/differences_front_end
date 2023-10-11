@@ -1,10 +1,10 @@
 import gsap from 'gsap';
 import {IDestroyOptions} from 'pixi.js';
-import CContainer from "../../components/CContainer";
-import CSprite from "../../components/CSprite";
-import Properties from "../../data/Properties";
-import {game} from "../../App";
-import * as constants from "../../constants/constants";
+import CContainer from "../../../components/CContainer";
+import CSprite from "../../../components/CSprite";
+import Properties from "../../../data/Properties";
+import {game} from "../../../App";
+import * as constants from "../../../constants/constants";
 import * as PIXI from "pixi.js";
 
 export default class ScreenBlock extends CContainer {
@@ -42,13 +42,14 @@ export default class ScreenBlock extends CContainer {
 
         this._boxes = this._spinner.getComponentsByType(constants.COMPONENT_SPRITE);
 
+        const show:number = 0.2;
+        const hide:number = 0.4;
         this._boxesTween = gsap.timeline({repeat:-1});
-        this._boxesTween.to(this._boxes[0], {duration:0.6,alpha:1});
-        this._boxesTween.to(this._boxes[0], {duration:0.8,alpha:0.2});
-        this._boxesTween.to(this._boxes[1], {duration:0.6,alpha:1}, "-=0.8");
-        this._boxesTween.to(this._boxes[1], {duration:0.8,alpha:0.2});
-        this._boxesTween.to(this._boxes[2], {duration:0.6,alpha:1}, "-=0.8");
-        this._boxesTween.to(this._boxes[2], {duration:0.8,alpha:0.2});
+        this._boxesTween.to(this._boxes[0], {duration:show,alpha:1.0, ease: "none"}).to(this._boxes[0], {duration:hide,alpha:0.2});
+        this._boxesTween.to(this._boxes[1], {duration:show,alpha:1.0, ease: "none"}, "-=0.4").to(this._boxes[1], {duration:hide,alpha:0.2});
+        this._boxesTween.to(this._boxes[2], {duration:show,alpha:1.0, ease: "none"}, "-=0.4").to(this._boxes[2], {duration:hide,alpha:0.2});
+
+        (this._background as any).interactive = true;
 
         this.alpha = 0.05;
 

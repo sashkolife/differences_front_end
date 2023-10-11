@@ -1,12 +1,12 @@
-import CContainer from "../../components/CContainer";
-import CText from "../../components/CText";
-import CSprite from "../../components/CSprite";
-import Resource from "../../data/Resource";
-import * as constants from "../../constants/constants";
-import CButton from "../../components/CButton";
-import EventBus from "../../utils/EventBus";
-import * as events from "../../constants/events";
-import {LevelModel, UserLevelModel} from "../../models/ApiModels";
+import CContainer from "../../../components/CContainer";
+import CText from "../../../components/CText";
+import CSprite from "../../../components/CSprite";
+import Resource from "../../../data/Resource";
+import * as constants from "../../../constants/constants";
+import CButton from "../../../components/CButton";
+import EventBus from "../../../utils/EventBus";
+import * as events from "../../../constants/events";
+import {LevelModel, UserLevelModel} from "../../../models/ApiModels";
 
 export default class MapLevel extends CContainer {
     private _availableMarker: CButton;
@@ -53,6 +53,17 @@ export default class MapLevel extends CContainer {
         if ( this._userLevelData ) {
             this.setStars(this._userLevelData.stars);
         }
+    }
+
+    setNewStars() : void {
+        if ( !this._userLevelData ) {
+            return;
+        }
+        const newStars:number = this._userLevelData.newStars ? this._userLevelData.newStars : this._userLevelData.stars;
+        if ( newStars > this._userLevelData.stars ) {
+            this.setStars(newStars);
+        }
+        this._userLevelData.stars = newStars;
     }
 
     getLevelData() : LevelModel {

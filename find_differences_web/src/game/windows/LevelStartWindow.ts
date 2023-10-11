@@ -33,8 +33,8 @@ export default class LevelStartWindow extends BaseWindow {
 
         this._fillStars = [
             this._content.getComponentByName("fillStar0"),
-            this._content.getComponentByName("fillStar0"),
-            this._content.getComponentByName("fillStar0")
+            this._content.getComponentByName("fillStar1"),
+            this._content.getComponentByName("fillStar2")
         ];
 
         this._headerText = this._content.getComponentByName("headerText");
@@ -46,21 +46,21 @@ export default class LevelStartWindow extends BaseWindow {
         this._needTime2 = this._content.getComponentByName("needTime2");
     }
 
-    getName(): string {
+    public getName(): string {
         return super.getName()+"levelStart";
     }
 
-    onCloseClick() : void {
+    private onCloseClick() : void {
         this.hide();
     }
 
-    onPlayClick() : void {
+    private onPlayClick() : void {
         this.hide();
         const levelData:LevelModel = this._params["levelData"];
         EventBus.publish( events.EVENT_ON_LEVEL_START, levelData.id );
     }
 
-    show(params?: any) {
+    public show(params?: any) {
         super.show(params);
         const levelData:LevelModel = this._params["levelData"];
         const userLevelData:UserLevelModel = this._params["userLevelData"];
@@ -68,9 +68,9 @@ export default class LevelStartWindow extends BaseWindow {
         this._picturesText.text = Localization.get("window_play_pictures") + " " + levelData.picturesCount;
         this._differencesText.text = Localization.get("window_play_differences") + " " + levelData.differencesCount;
 
-        this._needTime0.text = Localization.convertToHHMMSS(levelData.time1stars);
+        this._needTime0.text = Localization.convertToHHMMSS(levelData.time3stars);
         this._needTime1.text = Localization.convertToHHMMSS(levelData.time2stars);
-        this._needTime2.text = Localization.convertToHHMMSS(levelData.time3stars);
+        this._needTime2.text = Localization.convertToHHMMSS(levelData.time1stars);
 
         if ( userLevelData ) {
             for (let i: number = 0; i < userLevelData.stars; i++) {
