@@ -66,6 +66,10 @@ export default class LevelStarsProgressBar extends CContainer {
         }
     }
 
+    public stopTimer(): void {
+        window.clearInterval( this._starsTimerInterval );
+    }
+
     private updateStars( animate: boolean ): void {
         const spentTime: number = this._timersValues[0]-this._starsTimer;
         for ( let i: number = 0; i < this._timersValues.length; i++ ) {
@@ -79,7 +83,6 @@ export default class LevelStarsProgressBar extends CContainer {
 
     private updateProgress(): void {
         const time: number = this._starsTimer < 0 ? 0 : this._starsTimer > this._timersValues[0] ? this._timersValues[0] : this._starsTimer;
-        console.log(this._progressLine.width);
         this._progressLine.x = this._progressLine.width - this._progressLine.width*((this._timersValues[0]-time)/this._timersValues[0]);
     }
 

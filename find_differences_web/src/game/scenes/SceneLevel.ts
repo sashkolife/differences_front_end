@@ -207,7 +207,8 @@ export class SceneLevel extends CContainer {
             } else {
                 ScreenBlock.hide();
                 if ( findData.levelFinish ) {
-                    User.setLevelNewStars( this._levelData.id, findData.levelFinish.stars );
+                    this._levelStarsProgressBar.stopTimer();
+                    User.updateWinLevel( this._levelData.id, findData.levelFinish.stars );
 
                     WindowsController.instance().show(LevelFinishWindow, {"levelData": this._levelData, "levelFinish": findData.levelFinish});
                 }

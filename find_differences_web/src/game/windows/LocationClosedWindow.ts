@@ -39,6 +39,7 @@ export default class LocationClosedWindow extends BaseWindow {
 
     public show(params?: any) {
         super.show(params);
+        console.log(params);
         this._payBtn.setPrice( params["price"] );
         this._starsText.text = Localization.replaceString(Localization.get(this._starsText.textKey), [params["stars"]]);
     }

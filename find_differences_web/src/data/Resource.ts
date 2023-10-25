@@ -63,10 +63,6 @@ export default class Resource {
         return null;
     }
 
-    public static getParticleData( key: string ) : any {
-        return null;
-    }
-
     public static async loadPicture( picConf:LevelPictureModel, onProgress: Function ) {
         const loaderArr: Array<string> = [];
         picConf.pictKey1 = picConf.id + constants.PICT_1;

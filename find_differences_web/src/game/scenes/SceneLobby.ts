@@ -154,6 +154,8 @@ export class SceneLobby extends CContainer {
                             });
                         }
                     });
+                } else {
+                    this.checkOnFenceOpen(locationStars);
                 }
             }, 1000);
         } else {

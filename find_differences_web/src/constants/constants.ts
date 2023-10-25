@@ -22,6 +22,9 @@ export const COMPONENT_TEXT : string = "text";
 export const COMPONENT_BM_TEXT : string = "bm_text";
 export const COMPONENT_BUTTON : string = "button";
 export const COMPONENT_BUTTON_PAY : string = "button_pay";
+
+export const COMPONENT_PARTICLE_ANIMATION : string = "particle_animation";
+
 export const COMPONENT_THREE_STATE_STAR : string = "three_state_star";
 
 export const COMPONENT_LOCATION : string = "location";

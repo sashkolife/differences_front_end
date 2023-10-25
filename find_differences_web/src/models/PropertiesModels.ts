@@ -130,3 +130,8 @@ export interface PicturePropsModel {
     hideX:number;
     hideY:number;
 }
+
+export interface ParticleAnimationModel extends ComponentModel {
+    resourceName: string;
+    autoplay: boolean;
+}

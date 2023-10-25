@@ -19,7 +19,7 @@ export interface LocationModel {
     name: string;
     lastLevelId: number;
     openNextStars: number;
-    openNextPrice: number;
+    openNextCoins: number;
     openNextTime: number;
 }
 

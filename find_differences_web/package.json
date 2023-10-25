@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "@pixi/animate": "^3.0.0",
+    "@pixi/particle-emitter": "^5.0.8",
     "@types/howler": "^2.2.7",
     "gsap": "^3.12.1",
     "howler": "^2.2.3",

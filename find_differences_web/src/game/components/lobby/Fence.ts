@@ -16,6 +16,7 @@ import EventBus from "../../../utils/EventBus";
 import * as events from "../../../constants/events";
 import {EVENT_ON_LOCATION_OPEN} from "../../../constants/events";
 import LocationClosedWindow from "../../windows/LocationClosedWindow";
+import User from "../../../data/User";
 
 export default class Fence extends CContainer {
     private _closed: CSprite;
@@ -92,10 +93,10 @@ export default class Fence extends CContainer {
 
             const locationMaxStars: number = this._locationData.openNextStars;
 
-            if ( this._stars >= locationMaxStars ) {
+            if ( this._stars >= locationMaxStars || User.nextLocationTimer < 0 ) {
                 WindowsController.instance().show(OpenLocationWindow, null);
             } else {
-                WindowsController.instance().show(LocationClosedWindow, {price:this._locationData.openNextPrice,stars:this._locationData.openNextStars});
+                WindowsController.instance().show(LocationClosedWindow, {price:this._locationData.openNextCoins,stars:this._locationData.openNextStars});
             }
 
         }

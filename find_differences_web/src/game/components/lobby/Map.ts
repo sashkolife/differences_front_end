@@ -245,6 +245,8 @@ export default class Map extends CContainer {
 
         this.y = newY;
 
+        this.updateVisibleLocations();
+
     }
 
     private setFences() {
@@ -315,6 +317,8 @@ export default class Map extends CContainer {
         }
 
         gsap.to(this, {duration: 0.5, "y": newY, onComplete: () => callback()});
+
+        this.updateVisibleLocations();
 
     }
 

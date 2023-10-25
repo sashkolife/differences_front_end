@@ -13,3 +13,5 @@ export const EVENT_ON_BALANCE_UPDATE = "eventOnBalanceUpdate";
 export const EVENT_ON_LOCATION_OPEN = "eventOnLocationOpen";
 export const EVENT_ON_LOCATION_OPEN_TIMER_TICK = "eventOnLocationOpenTimerTick";
 export const EVENT_ON_LOCATION_OPEN_TIMER_END = "eventOnLocationOpenTimerEnd";
+export const EVENT_ON_PENALTY_TIMER_TICK = "eventOnPenaltyTimerTick";
+export const EVENT_ON_PENALTY_TIMER_END = "eventOnPenaltyTimerEnd";

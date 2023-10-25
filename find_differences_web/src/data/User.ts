@@ -20,6 +20,9 @@ export default class User {
     private static _playedLevel : PlayedLevelModel;
     private static _config : ConfigModel;
 
+    private static _nextLocationInterval: any = null;
+    private static _penaltyInterval: any = null;
+
     public static async load() {
         let id: string = null;
         try {
@@ -41,7 +44,7 @@ export default class User {
         this.update( loginData.user );
 
         try {
-            window.localStorage.setItem("userId", this._user.id.toString() );
+            window.localStorage.setItem("userId", this._user.id.toString());
         } catch (err) {
             console.log("Set local store userId Error", err);
         }
@@ -61,6 +64,7 @@ export default class User {
             Object.assign(this._user, data);
             this.setCurrentLocation();
             this.setOpenLocationTimer();
+            this.setPenaltyTimer();
         }
     }
 
@@ -138,9 +142,11 @@ export default class User {
         }
     }
 
-    public static setLevelNewStars( levelId: number, stars: number ) : void {
+    public static updateWinLevel(levelId: number, stars: number ) : void {
         const userLevel: UserLevelModel = this.getUserLevelByID(levelId);
-        userLevel.newStars = !userLevel.stars || stars > userLevel.stars ? stars : userLevel.stars;
+        if (!userLevel.stars || stars > userLevel.stars) {
+            userLevel.newStars = stars;
+        }
         userLevel.isComplete = 1;
     }
 
@@ -159,17 +165,45 @@ export default class User {
     private static setOpenLocationTimer(): void {
         if ( this._user.nextLocationTimer > 0 ) {
 
-            const interval: any = setInterval(() => {
+            clearInterval(this._nextLocationInterval);
+            this._nextLocationInterval = null;
+
+            this._nextLocationInterval = setInterval(() => {
                 this._user.nextLocationTimer -= 1000;
                 if ( this._user.nextLocationTimer <= 0 ) {
                     this._user.nextLocationTimer = 0;
-                    clearInterval(interval);
+                    clearInterval(this._nextLocationInterval);
+                    this._nextLocationInterval = null;
                 }
 
                 EventBus.publish(events.EVENT_ON_LOCATION_OPEN_TIMER_TICK, this._user.nextLocationTimer);
 
                 if ( this._user.nextLocationTimer <= 0 ) {
                     EventBus.publish(events.EVENT_ON_LOCATION_OPEN_TIMER_END);
+                }
+            }, 1000);
+        }
+    }
+
+    private static setPenaltyTimer(): void {
+        if ( this._user.penaltySeconds > 0 ) {
+
+            clearInterval(this._penaltyInterval);
+            this._penaltyInterval = null;
+
+            this._penaltyInterval = setInterval(() => {
+                this._user.penaltySeconds -= 1;
+                if ( this._user.penaltySeconds <= 0 ) {
+                    this._user.penaltySeconds = 0;
+
+                    clearInterval(this._penaltyInterval);
+                    this._penaltyInterval = null;
+                }
+
+                EventBus.publish(events.EVENT_ON_PENALTY_TIMER_TICK, this._user.penaltySeconds);
+
+                if ( this._user.penaltySeconds <= 0 ) {
+                    EventBus.publish(events.EVENT_ON_PENALTY_TIMER_END);
                 }
             }, 1000);
         }

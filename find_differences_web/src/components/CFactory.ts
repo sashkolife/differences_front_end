@@ -7,6 +7,8 @@ import CText from "./CText";
 import CBMText from "./CBMText";
 import CButton from "./CButton";
 import ButtonPay from "../game/components/common/ButtonPay";
+import {COMPONENT_PARTICLE_ANIMATION} from "../constants/constants";
+import {ParticleAnimation} from "../animations/ParticleAnimation";
 
 export default class CFactory {
     static getNewComponent( props: any ) : any {
@@ -36,6 +38,8 @@ export default class CFactory {
                 return new CButton( props );
             case constants.COMPONENT_BUTTON_PAY:
                 return new ButtonPay( props );
+            case constants.COMPONENT_PARTICLE_ANIMATION:
+                return new ParticleAnimation( props );
         }
 
         return null;

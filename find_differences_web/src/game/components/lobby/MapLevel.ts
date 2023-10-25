@@ -7,6 +7,7 @@ import CButton from "../../../components/CButton";
 import EventBus from "../../../utils/EventBus";
 import * as events from "../../../constants/events";
 import {LevelModel, UserLevelModel} from "../../../models/ApiModels";
+import {ParticleAnimation} from "../../../animations/ParticleAnimation";
 
 export default class MapLevel extends CContainer {
     private _availableMarker: CButton;
@@ -14,6 +15,7 @@ export default class MapLevel extends CContainer {
     private _numLabel: CText;
 
     private _ribbon: CSprite;
+    private _particles: ParticleAnimation[];
     private _stars: Array<CSprite> = null;
 
     private _starsWins: number = 0;
@@ -35,6 +37,11 @@ export default class MapLevel extends CContainer {
             this.getComponentByName("star0"),
             this.getComponentByName("star1"),
             this.getComponentByName("star2")
+        ];
+        this._particles = [
+            this.getComponentByName("particle0"),
+            this.getComponentByName("particle1"),
+            this.getComponentByName("particle2")
         ];
 
         this._availableMarker.setActionUp( this.onLevelClick.bind(this) );
@@ -61,7 +68,15 @@ export default class MapLevel extends CContainer {
         }
         const newStars:number = this._userLevelData.newStars ? this._userLevelData.newStars : this._userLevelData.stars;
         if ( newStars > this._userLevelData.stars ) {
-            this.setStars(newStars);
+            this._starsWins = newStars;
+            let counterI: number = 0;
+            for (let i: number = this._userLevelData.stars; i < newStars; i++) {
+                setTimeout((si: number)=>{
+                    this._stars[si].visible = true;
+                    this._particles[si].playOnce(null);
+                }, 100*counterI, i);
+                counterI++;
+            }
         }
         this._userLevelData.stars = newStars;
     }

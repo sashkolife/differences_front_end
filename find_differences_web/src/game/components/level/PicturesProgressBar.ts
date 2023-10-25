@@ -41,8 +41,8 @@ export default class PicturesProgressBar extends CContainer {
     setCount( num: number ) : void {
         this._picturesCount = num;
 
-        for ( let i : number = 0; i < this._pictureNumTexts.length && i < this._picturesCount; i++ ) {
-            this._pictureNumTexts[i].visible = true;
+        for ( let i : number = 0; i < 10; i++ ) {
+            this._pictureNumTexts[i].visible = i < this._pictureNumTexts.length && i < this._picturesCount;
         }
         this._bg.width = this._pictureNumTexts[this._picturesCount-1].x + 30;
     }

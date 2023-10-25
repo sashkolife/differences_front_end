@@ -1,14 +1,13 @@
+import * as PIXI from 'pixi.js';
 import {BaseWindow} from "./BaseWindow";
-import CButton from "../../components/CButton";
-import CSprite from "../../components/CSprite";
 import CBMText from "../../components/CBMText";
 import Localization from "../../data/Localization";
-import EventBus from "../../utils/EventBus";
+import EventBus, {EventModel} from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {LevelModel, PenaltySkipModel, UserLevelModel, UserModel} from "../../models/ApiModels";
+import {PenaltySkipModel, UserModel} from "../../models/ApiModels";
 import ButtonPay from "../components/common/ButtonPay";
 import Api from "../../utils/Api";
-import {URL_LEVEL_FIND, URL_LEVEL_PENALTY_SKIP} from "../../constants/urls";
+import { URL_LEVEL_PENALTY_SKIP} from "../../constants/urls";
 import ScreenBlock from "../components/common/ScreenBlock";
 import User from "../../data/User";
 
@@ -20,8 +19,8 @@ export default class LevelPenaltyWindow extends BaseWindow {
 
     private _btnPay:ButtonPay;
 
-    private _seconds: number = 0;
-    private _interval: any = null;
+    private _penaltyTimerEvent: EventModel = null;
+    private _penaltyTimerEndEvent: EventModel = null;
 
     constructor() {
         super();
@@ -32,6 +31,14 @@ export default class LevelPenaltyWindow extends BaseWindow {
         this._timeText = this._content.getComponentByName("timeText");
 
         this._btnPay.setActionUp( this.onPayClick.bind(this) );
+    }
+
+    destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        super.destroy(_options);
+        this._penaltyTimerEvent.unsubscribe();
+        this._penaltyTimerEvent = null;
+        this._penaltyTimerEndEvent.unsubscribe();
+        this._penaltyTimerEndEvent = null;
     }
 
     public getName(): string {
@@ -63,17 +70,18 @@ export default class LevelPenaltyWindow extends BaseWindow {
 
     public show(params?: UserModel) {
         super.show(params);
-        this._seconds = params.penaltySeconds;
-        this._timeText.text = Localization.convertToHHMMSS(this._seconds);
+        this._timeText.text = Localization.convertToHHMMSS(params.penaltySeconds);
         this._btnPay.setPrice(params.penaltyPrice);
 
-        this._interval = window.setInterval(()=> {
-            this._seconds--;
-            this._timeText.text = Localization.convertToHHMMSS(this._seconds);
-            if ( this._seconds <= 0 ) {
-                window.clearInterval(this._interval);
-                this.hide();
-            }
-        }, 1000);
+        this._penaltyTimerEvent = EventBus.subscribe(events.EVENT_ON_PENALTY_TIMER_TICK, this.onPenaltyTimerTick.bind(this));
+        this._penaltyTimerEndEvent = EventBus.subscribe(events.EVENT_ON_PENALTY_TIMER_END, this.onPenaltyTimerEnd.bind(this));
+    }
+
+    private onPenaltyTimerTick(seconds: number): void {
+        this._timeText.text = Localization.convertToHHMMSS(seconds);
+    }
+
+    private onPenaltyTimerEnd(): void {
+        this.hide();
     }
 }

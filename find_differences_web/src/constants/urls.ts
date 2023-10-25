@@ -92,6 +92,10 @@ export const URL_ASSETS_MANIFEST : any = [
     {
         "name": "Russia_cups_nums",
         "src": "./res/pixi/bmFonts/Russia_cups_nums.fnt"
+    },
+    {
+        "name": "win_lobby_star",
+        "src": "./res/pixi/particles/win_lobby_star.json"
     }
 ];
 export const URL_MAPS: string = "./res/pixi/maps/";

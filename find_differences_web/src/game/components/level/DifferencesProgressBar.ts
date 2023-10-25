@@ -50,7 +50,7 @@ export default class DifferencesProgressBar extends CContainer {
         }
 
         this._differencesCountText.x = this._differences[Math.min(this._differencesCount-1,this._differences.length-1)].x + 30;
-        this.x = ( (window as any).APP_WIDTH - this.width) >> 1;
+        this.x = (( (window as any).APP_WIDTH - this.width) >> 1) + this.properties.x;
 
         this.updateCounter();
     }
