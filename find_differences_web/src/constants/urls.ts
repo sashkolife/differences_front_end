@@ -13,10 +13,10 @@ export const URL_ASSETS_MANIFEST : any = [
         "name": "atlas_avatars",
         "src": "./res/pixi/atlases/atlas_avatars.json"
     },
-    {
-        "name": "atlas_collections",
-        "src": "./res/pixi/atlases/atlas_collections.json"
-    },
+    // {
+    //     "name": "atlas_collections",
+    //     "src": "./res/pixi/atlases/atlas_collections.json"
+    // },
     {
         "name": "atlas_images",
         "src": "./res/pixi/atlases/atlas_images.json"
@@ -25,46 +25,46 @@ export const URL_ASSETS_MANIFEST : any = [
         "name": "atlas_mini",
         "src": "./res/pixi/atlases/atlas_mini.json"
     },
-    {
-        "name": "atlas_persononaj_gregor",
-        "src": "./res/pixi/atlases/atlas_persononaj_gregor.json"
-    },
+    // {
+    //     "name": "atlas_persononaj_gregor",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_gregor.json"
+    // },
     {
         "name": "atlas_persononaj_holmes",
         "src": "./res/pixi/atlases/atlas_persononaj_holmes.json"
     },
-    {
-        "name": "atlas_persononaj_jonathan",
-        "src": "./res/pixi/atlases/atlas_persononaj_jonathan.json"
-    },
-    {
-        "name": "atlas_persononaj_martin",
-        "src": "./res/pixi/atlases/atlas_persononaj_martin.json"
-    },
-    {
-        "name": "atlas_persononaj_molly",
-        "src": "./res/pixi/atlases/atlas_persononaj_molly.json"
-    },
-    {
-        "name": "atlas_persononaj_moriarty",
-        "src": "./res/pixi/atlases/atlas_persononaj_moriarty.json"
-    },
-    {
-        "name": "atlas_persononaj_sebastian",
-        "src": "./res/pixi/atlases/atlas_persononaj_sebastian.json"
-    },
-    {
-        "name": "atlas_persononaj_tobias",
-        "src": "./res/pixi/atlases/atlas_persononaj_tobias.json"
-    },
-    {
-        "name": "atlas_quests",
-        "src": "./res/pixi/atlases/atlas_quests.json"
-    },
-    {
-        "name": "atlas_trophy",
-        "src": "./res/pixi/atlases/atlas_trophy.json"
-    },
+    // {
+    //     "name": "atlas_persononaj_jonathan",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_jonathan.json"
+    // },
+    // {
+    //     "name": "atlas_persononaj_martin",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_martin.json"
+    // },
+    // {
+    //     "name": "atlas_persononaj_molly",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_molly.json"
+    // },
+    // {
+    //     "name": "atlas_persononaj_moriarty",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_moriarty.json"
+    // },
+    // {
+    //     "name": "atlas_persononaj_sebastian",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_sebastian.json"
+    // },
+    // {
+    //     "name": "atlas_persononaj_tobias",
+    //     "src": "./res/pixi/atlases/atlas_persononaj_tobias.json"
+    // },
+    // {
+    //     "name": "atlas_quests",
+    //     "src": "./res/pixi/atlases/atlas_quests.json"
+    // },
+    // {
+    //     "name": "atlas_trophy",
+    //     "src": "./res/pixi/atlases/atlas_trophy.json"
+    // },
     {
         "name": "atlas_windows",
         "src": "./res/pixi/atlases/atlas_windows.json"
@@ -96,6 +96,14 @@ export const URL_ASSETS_MANIFEST : any = [
     {
         "name": "win_lobby_star",
         "src": "./res/pixi/particles/win_lobby_star.json"
+    },
+    {
+        "name": "particle_wheel_blue",
+        "src": "./res/pixi/particles/particle_wheel_blue.json"
+    },
+    {
+        "name": "particle_blue",
+        "src": "./res/pixi/particles/particle_blue.json"
     }
 ];
 export const URL_MAPS: string = "./res/pixi/maps/";

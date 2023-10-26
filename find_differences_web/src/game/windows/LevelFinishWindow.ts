@@ -1,3 +1,4 @@
+import * as PIXI from 'pixi.js';
 import {BaseWindow} from "./BaseWindow";
 import CButton from "../../components/CButton";
 import CSprite from "../../components/CSprite";
@@ -8,6 +9,11 @@ import * as events from "../../constants/events";
 import {LevelFinishModel, LevelModel, UserLevelModel} from "../../models/ApiModels";
 import CContainer from "../../components/CContainer";
 import Levels from "../../data/Levels";
+import ThreeStateStar from "../components/common/ThreeStateStar";
+import {ComponentModel, ContentWindowModel} from "../../models/PropertiesModels";
+import {COMPONENT_THREE_STATE_STAR} from "../../constants/constants";
+import {WindowContent} from "./WindowContent";
+import * as constants from "../../constants/constants";
 
 export default class LevelFinishWindow extends BaseWindow {
 
@@ -15,7 +21,7 @@ export default class LevelFinishWindow extends BaseWindow {
     private _playNextBtn:CButton;
     private _playAgainBtn:CButton;
 
-    private _fillStars:Array<CSprite>;
+    private _stars:Array<ThreeStateStar>;
 
     private _congratulationText:CBMText;
     private _levelNumText:CBMText;
@@ -34,6 +40,8 @@ export default class LevelFinishWindow extends BaseWindow {
     private _nextLevelData:LevelModel = null;
     private _levelFinish:LevelFinishModel = null;
 
+    private _starsTimeouts: any[];
+
     constructor() {
         super();
 
@@ -50,10 +58,10 @@ export default class LevelFinishWindow extends BaseWindow {
         this._coinsWonText = this._rewardContainer.getComponentByName("coinsWonText");
         this._helpsWonText = this._rewardContainer.getComponentByName("helpsWonText");
 
-        this._fillStars = [
-            this._content.getComponentByName("fillStar0"),
-            this._content.getComponentByName("fillStar1"),
-            this._content.getComponentByName("fillStar2")
+        this._stars = [
+            this._content.getComponentByName("star0"),
+            this._content.getComponentByName("star1"),
+            this._content.getComponentByName("star2")
         ];
 
         this._coinsWonImage = this._rewardContainer.getComponentByName("coinsWonImage");
@@ -66,6 +74,13 @@ export default class LevelFinishWindow extends BaseWindow {
 
     public getName(): string {
         return super.getName()+"levelFinish";
+    }
+
+    override getNewComponentByType( props:ComponentModel ) : any {
+        if ( props.type === constants.COMPONENT_WINDOW_CONTENT ) {
+            return new LevelFinishContent( props as ContentWindowModel );
+        }
+        return super.getNewComponentByType( props );
     }
 
     private onCloseClick() : void {
@@ -94,12 +109,6 @@ export default class LevelFinishWindow extends BaseWindow {
         this._levelNumText.text = Localization.get("window_play_header") + " " + this._levelData.id;
         this._descriptorText.text = Localization.replaceString(Localization.get(this._descriptorText.textKey), [this._levelData.picturesCount, this._levelData.differencesCount]);
         this._spentTimeText.text = Localization.replaceString(Localization.get(this._spentTimeText.textKey),  [Localization.convertToHHMMSS(this._levelFinish.spentTime)]);
-
-        if ( this._levelFinish.stars && this._levelFinish.stars > 0 ) {
-            for ( let i: number = 0; i < this._levelFinish.stars; i++ ) {
-                this._fillStars[i].visible = true;
-            }
-        }
 
         const rewardCoins: number = this._levelFinish.coins ? this._levelFinish.coins : 0;
         const rewardHelps: number = this._levelFinish.helps ? this._levelFinish.helps : 0;
@@ -143,8 +152,46 @@ export default class LevelFinishWindow extends BaseWindow {
 
     protected onShowComplete():void {
         super.onShowComplete();
+
+        if ( this._levelFinish.stars && this._levelFinish.stars > 0 ) {
+            this._starsTimeouts = [];
+            for ( let i: number = 0; i < this._levelFinish.stars; i++ ) {
+                this._starsTimeouts.push(
+                    setTimeout( (star:ThreeStateStar) => {
+                        star.setFull(true);
+                    }, 100+200*i, this._stars[i] )
+                );
+            }
+        }
+
         if ( this._levelFinish.coins && this._levelFinish.coins > 0 ) {
             EventBus.publish(events.EVENT_ON_BALANCE_UPDATE, {coins:this._levelFinish.coins});
         }
+    }
+
+    private stopStarsTimeouts(): void {
+        if ( this._starsTimeouts ) {
+            this._starsTimeouts.forEach( timeout => clearTimeout(timeout) );
+            this._starsTimeouts = null;
+        }
+    }
+
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        this.stopStarsTimeouts();
+        super.destroy(_options);
+    }
+}
+
+class LevelFinishContent extends WindowContent {
+
+    constructor( props: ContentWindowModel ) {
+        super( props );
+    }
+
+    override getNewComponentByType(props: ComponentModel): any {
+        if ( props.type === COMPONENT_THREE_STATE_STAR ) {
+            return new ThreeStateStar(props);
+        }
+        return super.getNewComponentByType(props);
     }
 }

@@ -22,6 +22,7 @@ import Api from "../../utils/Api";
 import * as urls from "../../constants/urls";
 import LocationClosedWindow from "../windows/LocationClosedWindow";
 import ScreenBlock from "../components/common/ScreenBlock";
+import LevelFinishWindow from "../windows/LevelFinishWindow";
 
 export class SceneLobby extends CContainer {
     private _lobbyStarsProgressBar : LobbyStarsProgressBar;
@@ -95,7 +96,7 @@ export class SceneLobby extends CContainer {
     private onPlayNowClick(): void {
         EventBus.publish( events.EVENT_ON_LEVEL_START, User.level );
 
-        // WindowsController.instance().show(LevelFinishWindow, {"levelData": mapLevel.getLevelData(), "levelFinish": {
+        // WindowsController.instance().show(LevelFinishWindow, {"levelData": Levels.getLevelByID(1), "levelFinish": {
         //         spentTime:30,
         //         stars: 3,
         //         coins: 10,

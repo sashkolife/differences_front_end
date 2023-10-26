@@ -28,13 +28,10 @@ export class BaseWindow extends CContainer {
     }
 
     getNewComponentByType( props:ComponentModel ) : any {
-        let component: any = super.getNewComponentByType( props );
-        if ( !component ) {
-            if ( props.type === constants.COMPONENT_WINDOW_CONTENT ) {
-                component = new WindowContent( props as ContentWindowModel );
-            }
+        if ( props.type === constants.COMPONENT_WINDOW_CONTENT ) {
+            return new WindowContent( props as ContentWindowModel );
         }
-        return component;
+        return super.getNewComponentByType( props );
     }
 
     public getName() : string {

@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import gsap from "gsap";
 import CContainer from "../../components/CContainer";
 import Properties from "../../data/Properties";
 import BalanceBar from "../components/common/BalanceBar";
@@ -35,20 +36,25 @@ import ButtonPay from "../components/common/ButtonPay";
 import ShopWindow from "../windows/ShopWindow";
 import CSprite from "../../components/CSprite";
 import {PictureTouchEvent} from "../../models/EventModels";
+import {ParticleAnimation} from "../../animations/ParticleAnimation";
+import CBase from "../../components/CBase";
 
 export class SceneLevel extends CContainer {
 
-    private _levelPicturesContainer : LevelPicturesContainer;
-    private _picturesProgressBar : PicturesProgressBar;
-    private _differencesProgressBar : DifferencesProgressBar;
-    private _balanceBar : BalanceBar;
-    private _levelStarsProgressBar : LevelStarsProgressBar;
-    private _soundOnBtn : CButton;
-    private _soundOffBtn : CButton;
-    private _levelText : CBMText;
-    private _leaveBtn : CButton;
-    private _btnBoosterAddExtraTime : ButtonPay;
-    private _btnBoosterUseHelp : ButtonPay;
+    private _levelPicturesContainer: LevelPicturesContainer;
+    private _picturesProgressBar: PicturesProgressBar;
+    private _differencesProgressBar: DifferencesProgressBar;
+    private _balanceBar: BalanceBar;
+    private _levelStarsProgressBar: LevelStarsProgressBar;
+    private _soundOnBtn: CButton;
+    private _soundOffBtn: CButton;
+    private _levelText: CBMText;
+    private _leaveBtn: CButton;
+    private _btnBoosterAddExtraTime: ButtonPay;
+    private _btnBoosterUseHelp: ButtonPay;
+    private _particleUseHelpWheel: ParticleAnimation;
+    private _particleUseHelpPath0: ParticleAnimation;
+    private _particleUseHelpPath1: ParticleAnimation;
 
     private _pictureTouchSubscription:EventModel;
     private _nextLevelSubscription:EventModel;
@@ -75,6 +81,10 @@ export class SceneLevel extends CContainer {
         this._btnBoosterUseHelp = this.getComponentByName("btnBoosterUseHelp");
         this._btnBoosterAddExtraTime.setActionUp(this.onAddExtraTimeClick.bind(this));
         this._btnBoosterUseHelp.setActionUp(this.onUseHelpClick.bind(this));
+
+        this._particleUseHelpWheel = this.getComponentByName("particleUseHelpWheel");
+        this._particleUseHelpPath0 = this.getComponentByName("particleUseHelpPath0");
+        this._particleUseHelpPath1 = this.getComponentByName("particleUseHelpPath1");
 
         this.setInitialViews(playedLevelData);
 
@@ -265,7 +275,9 @@ export class SceneLevel extends CContainer {
             }
 
             if ( helpDiff.diffId ) {
-                this._levelPicturesContainer.showHelp(helpDiff.diffId);
+                this.playHelpParticle(helpDiff.diffId, () => {
+                    this._levelPicturesContainer.showHelp(helpDiff.diffId, true);
+                });
             }
         });
     }
@@ -308,6 +320,44 @@ export class SceneLevel extends CContainer {
             this._btnBoosterUseHelp.getPriceText().anchor.x = 0;
             this._btnBoosterUseHelp.getPriceText().x = 0;
         }
+    }
+
+    private playHelpParticle(diffId: number, complete: gsap.Callback): void {
+        this._particleUseHelpWheel.playOnce();
+        this._particleUseHelpPath0.reset();
+        this._particleUseHelpPath1.reset();
+        this._particleUseHelpPath0.setPlay(true);
+        this._particleUseHelpPath1.setPlay(true);
+
+        const duration: number = 0.32;
+        const ease: string = "power1.out";
+
+        const startPos0: PIXI.Point = new PIXI.Point(0,0);
+        const endGPos0: PIXI.Point = this._levelPicturesContainer.getPicture1().getDiffCenter(diffId);
+        const endLPos0: PIXI.Point = this._particleUseHelpPath0.toLocal(endGPos0);
+        const anchors0 = [{x: startPos0.x, y: startPos0.y}, {x: endLPos0.x/2, y: -80}, {x: endLPos0.x, y: endLPos0.y}];
+        gsap.to( startPos0, {
+            duration: duration,
+            ease: ease,
+            motionPath: { path: anchors0 },
+            onUpdate: () => {
+                this._particleUseHelpPath0.updateSpawnPos(startPos0.x, startPos0.y);
+            }
+        });
+
+        const startPos1: PIXI.Point = new PIXI.Point(0,0);
+        const endGPos1: PIXI.Point = this._levelPicturesContainer.getPicture0().getDiffCenter(diffId);
+        const endLPos1: PIXI.Point = this._particleUseHelpPath1.toLocal(endGPos1);
+        const anchors1 = [{x: startPos1.x, y: startPos1.y}, {x: endLPos1.x/2, y: endLPos1.y}, {x: endLPos1.x, y: endLPos1.y}];
+        gsap.to( startPos1, {
+            duration: duration,
+            ease: ease,
+            motionPath: { path: anchors1 },
+            onUpdate: () => {
+                this._particleUseHelpPath1.updateSpawnPos(startPos1.x, startPos1.y);
+            },
+            onComplete: complete
+        });
     }
 
 }

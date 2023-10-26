@@ -1,5 +1,16 @@
+import * as PIXI from 'pixi.js';
 import {Game} from "./game/Game";
 import {load} from "./Preloader";
+
+import { gsap } from 'gsap';
+import { PixiPlugin } from 'gsap/PixiPlugin';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { CustomEase } from 'gsap/CustomEase';
+
+gsap.registerPlugin(MotionPathPlugin);
+gsap.registerPlugin(PixiPlugin);
+gsap.registerPlugin(CustomEase);
+PixiPlugin.registerPIXI(PIXI);
 
 export const screenOrientation : "landscape"|"portrait" = "landscape";
 

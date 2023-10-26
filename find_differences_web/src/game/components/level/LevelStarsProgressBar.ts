@@ -54,7 +54,7 @@ export default class LevelStarsProgressBar extends CContainer {
             this._levelTimerText.text = Localization.convertToHHMMSS(0);
         }
 
-        this.updateStars(false);
+        this.updateStars(true);
         this.updateProgress();
     }
 
@@ -74,9 +74,9 @@ export default class LevelStarsProgressBar extends CContainer {
         const spentTime: number = this._timersValues[0]-this._starsTimer;
         for ( let i: number = 0; i < this._timersValues.length; i++ ) {
             if ( spentTime > this._timersValues[i] ) {
-                this._stars[i].setEmpty();
+                this._stars[i].setEmpty(animate);
             } else {
-                this._stars[i].setFull();
+                this._stars[i].setFull(animate);
             }
         }
     }

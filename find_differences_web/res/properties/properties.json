@@ -25606,6 +25606,13 @@
         ]
       },
       {
+        "name": "particleAddExtraTime",
+        "type": "particle_animation",
+        "resourceName": "./res/pixi/particles/particle_wheel_blue.json",
+        "position": {"x": 100, "y": 170},
+        "autoplay": false
+      },
+      {
         "name": "btnBoosterAddExtraTime",
         "type": "button_pay",
         "anchor": {"x":  0.5, "y": 0.5},
@@ -25642,6 +25649,27 @@
           "anchor": {"x":  0, "y":  0.5},
           "position": {"x": 0, "y":  28}
         }
+      },
+      {
+        "name": "particleUseHelpWheel",
+        "type": "particle_animation",
+        "resourceName": "./res/pixi/particles/particle_wheel_blue.json",
+        "position": {"x": 1180, "y": 170},
+        "autoplay": false
+      },
+      {
+        "name": "particleUseHelpPath0",
+        "type": "particle_animation",
+        "resourceName": "./res/pixi/particles/particle_blue.json",
+        "position": {"x": 1180, "y": 170},
+        "autoplay": false
+      },
+      {
+        "name": "particleUseHelpPath1",
+        "type": "particle_animation",
+        "resourceName": "./res/pixi/particles/particle_blue.json",
+        "position": {"x": 1180, "y": 170},
+        "autoplay": false
       },
       {
         "name": "btnBoosterUseHelp",
@@ -26092,60 +26120,116 @@
               "anchor": {"x":  0.5, "y":  0.5},
               "position": {"x": 0, "y":  -130}
             },
+
             {
-              "name": "emptyStar0",
-              "type": "sprite",
-              "texture": "star_empty",
-              "anchor": { "x": 0.5, "y":  0.5 },
+              "type": "three_state_star",
+              "name": "star0",
+              "scale":{"x": 1,"y": 1},
               "angle": -5,
-              "x": -120,
-              "y": -190
+              "position": {"x": -120, "y": -190},
+              "children": [
+                {
+                  "type": "sprite",
+                  "name": "starEmpty",
+                  "texture": "star_empty",
+                  "anchor": {"x": 0.5, "y": 0.5}
+                },
+                {
+                  "type": "sprite",
+                  "name": "starFull",
+                  "texture": "star_full_1",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "visible":  false
+                },
+                {
+                  "type": "sprite",
+                  "name": "starLight",
+                  "texture": "star_light_1",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "scale": {"x": 0.8, "y": 0.8},
+                  "visible":  false
+                },
+                {
+                  "type": "sprite",
+                  "name": "starBlick",
+                  "texture": "star_fill_blick",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "visible":  false
+                }
+              ]
             },
             {
-              "name": "emptyStar1",
-              "type": "sprite",
-              "texture": "star_empty",
-              "anchor": { "x": 0.5, "y":  0.5 },
-              "x": 0,
-              "y": -210
+              "type": "three_state_star",
+              "name": "star1",
+              "scale":{"x": 1,"y": 1},
+              "position":{"x": 0,"y": -210},
+              "children": [
+                {
+                  "type": "sprite",
+                  "name": "starEmpty",
+                  "texture": "star_empty",
+                  "anchor": {"x": 0.5, "y": 0.5}
+                },
+                {
+                  "type": "sprite",
+                  "name": "starFull",
+                  "texture": "star_full_1",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "visible":  false
+                },
+                {
+                  "type": "sprite",
+                  "name": "starLight",
+                  "texture": "star_light_1",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "scale": {"x": 0.8, "y": 0.8},
+                  "visible":  false
+                },
+                {
+                  "type": "sprite",
+                  "name": "starBlick",
+                  "texture": "star_fill_blick",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "visible":  false
+                }
+              ]
             },
             {
-              "name": "emptyStar2",
-              "type": "sprite",
-              "texture": "star_empty",
-              "anchor": { "x": 0.5, "y":  0.5 },
+              "type": "three_state_star",
+              "name": "star2",
+              "scale":{"x": 1,"y": 1},
               "angle": 5,
-              "x": 120,
-              "y": -190
-            },
-            {
-              "name": "fillStar0",
-              "type": "sprite",
-              "texture": "star_full_1",
-              "anchor": { "x": 0.5, "y":  0.5 },
-              "angle": -5,
-              "x": -120,
-              "y": -190,
-              "visible": false
-            },
-            {
-              "name": "fillStar1",
-              "type": "sprite",
-              "texture": "star_full_1",
-              "anchor": { "x": 0.5, "y":  0.5 },
-              "x": 0,
-              "y": -210,
-              "visible": false
-            },
-            {
-              "name": "fillStar2",
-              "type": "sprite",
-              "texture": "star_full_1",
-              "anchor": { "x": 0.5, "y":  0.5 },
-              "angle": 5,
-              "x": 120,
-              "y": -190,
-              "visible": false
+              "position": {"x": 120, "y": -190},
+              "children": [
+                {
+                  "type": "sprite",
+                  "name": "starEmpty",
+                  "texture": "star_empty",
+                  "anchor": {"x": 0.5, "y": 0.5}
+                },
+                {
+                  "type": "sprite",
+                  "name": "starFull",
+                  "texture": "star_full_1",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "visible":  false
+                },
+                {
+                  "type": "sprite",
+                  "name": "starLight",
+                  "texture": "star_light_1",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "scale": {"x": 0.8, "y": 0.8},
+                  "visible":  false
+                },
+                {
+                  "type": "sprite",
+                  "name": "starBlick",
+                  "texture": "star_fill_blick",
+                  "anchor": {"x": 0.5, "y": 0.5},
+                  "visible":  false
+                }
+              ]
             },
             {
               "name": "rectBg1",

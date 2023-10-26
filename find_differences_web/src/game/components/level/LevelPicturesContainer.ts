@@ -116,11 +116,18 @@ export default class LevelPicturesContainer extends CContainer {
         this._picture1.showDiff(diffId);
     }
 
-    public showHelp(diffId: number ) : void {
-        this._picture0.showHelp(diffId);
-        this._picture1.showHelp(diffId);
+    public showHelp(diffId: number, animate: boolean = false ) : void {
+        this._picture0.showHelp(diffId, animate);
+        this._picture1.showHelp(diffId, animate);
     }
 
+    public getPicture0(): LevelPicture {
+        return this._picture0;
+    }
+
+    public getPicture1(): LevelPicture {
+        return this._picture1;
+    }
 
     private playTouch( pos: Point, diffId: number ) : void {
         const touchViewObj:CSprite = diffId < 0 ? this._missImage : this._hitImage;

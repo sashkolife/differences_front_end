@@ -79,12 +79,17 @@ export default class LevelPicture extends CContainer {
         (this._picture as any).interactive = value;
     }
 
-    showDiff(diffId: number): void {
-        this.clearHelp(diffId);
+    private getScalePolygon(diffId: number): PIXI.Polygon {
         const p: PIXI.Polygon = this._differences[diffId].getPolygon();
         for (let i:number = 0; i < p.points.length; i++) {
             p.points[i] = p.points[i]*this._pictScale;
         }
+        return p;
+    }
+
+    showDiff(diffId: number): void {
+        this.clearHelp(diffId);
+        const p: PIXI.Polygon = this.getScalePolygon(diffId);
         const g:PIXI.Graphics = new PIXI.Graphics();
         g.lineStyle(4, 0xff5500, 0.5);
         g.drawPolygon(p);
@@ -94,13 +99,9 @@ export default class LevelPicture extends CContainer {
         this._foundViews[diffId] = g;
     }
 
-    showHelp(diffId: number): void {
+    showHelp(diffId: number, animate: boolean = false): void {
         this.clearHelp(diffId);
-
-        const p: PIXI.Polygon = this._differences[diffId].getPolygon();
-        for (let i:number = 0; i < p.points.length; i++) {
-            p.points[i] = p.points[i]*this._pictScale;
-        }
+        const p: PIXI.Polygon = this.getScalePolygon(diffId);
         const g:PIXI.Graphics = new PIXI.Graphics();
         g.lineStyle(4, 0x0055ff, 0.8);
         g.drawPolygon(p);
@@ -108,6 +109,39 @@ export default class LevelPicture extends CContainer {
         g.drawPolygon(p);
         this.addChild(g);
         this._helpViews[diffId] = g;
+        if ( animate ) {
+            let animG:PIXI.Graphics = new PIXI.Graphics();
+            animG.lineStyle(10, 0xffffff, 1);
+            animG.drawPolygon(p);
+            this.addChild(animG);
+            gsap.to(animG, {duration: 1, alpha:0, ease: "circ.out", onComplete: () => {
+                    animG.destroy(true);
+                }
+            });
+        }
+    }
+
+    getDiffCenter(diffId: number): PIXI.Point {
+        const points: number[][] = this._differences[diffId].getPolygonData();
+        let minX: number = points[0][0];
+        let maxX: number = points[0][0];
+        let minY: number = points[0][1];
+        let maxY: number = points[0][1];
+        for ( let i: number = 1; i < points.length; i++ ) {
+            if ( points[i][0] > maxX ) {
+                maxX = points[i][0];
+            }
+            if ( points[i][0] < minX ) {
+                minX = points[i][0];
+            }
+            if ( points[i][1] > maxY ) {
+                maxY = points[i][1];
+            }
+            if ( points[i][1] < minY ) {
+                minY = points[i][1];
+            }
+        }
+        return this.toGlobal(new Point((minX+(maxX-minX)/2)*this._pictScale, (minY+(maxY-minY)/2)*this._pictScale));
     }
 
     moveToPosition(callback?:Function): void {

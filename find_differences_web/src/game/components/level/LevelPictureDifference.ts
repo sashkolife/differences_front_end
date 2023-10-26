@@ -17,4 +17,8 @@ export default class LevelPictureDifference {
     public getPolygon() : PIXI.Polygon {
         return this._polygon.clone();
     }
+
+    public getPolygonData() : number[][] {
+        return this._polygonData;
+    }
 }

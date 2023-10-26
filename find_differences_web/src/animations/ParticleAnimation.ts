@@ -10,6 +10,7 @@ export class ParticleAnimation extends PIXI.Container {
     setProperties( props:ParticleAnimationModel ) {}
     removeOrientationEvent() {}
 
+    private _particleConf: particles.EmitterConfigV3;
     private _emitter: particles.Emitter;
     /*
     descriptor parameters
@@ -26,20 +27,16 @@ export class ParticleAnimation extends PIXI.Container {
         super();
         this.setProperties(props);
 
-        const particleConf: particles.EmitterConfigV3 = PIXI.Assets.cache.get(props.resourceName);
+        this._particleConf = PIXI.Assets.cache.get(props.resourceName);
 
-        this._emitter = new particles.Emitter(this, particleConf);
-
-        if (props.autoplay) {
-            this.setPlay(props.autoplay);
-        }
+        this.reset();
     }
 
     setPlay(value: boolean): void {
         this._emitter.autoUpdate = value;
     }
 
-    playOnceAndDestroy( callback: Function ): void {
+    playOnceAndDestroy( callback?: Function ): void {
         this._emitter.playOnceAndDestroy(()=>{
             if ( callback ) {
                 callback();
@@ -49,7 +46,7 @@ export class ParticleAnimation extends PIXI.Container {
         });
     }
 
-    playOnce( callback: Function ): void {
+    playOnce( callback?: Function ): void {
         this._emitter.autoUpdate = true;
         this._emitter.playOnce( ()=>{
             this._emitter.autoUpdate = false;
@@ -69,6 +66,20 @@ export class ParticleAnimation extends PIXI.Container {
         this.removeOrientationEvent();
 
         super.destroy(_options);
+    }
+
+    public updateSpawnPos(x: number, y: number): void {
+        this._emitter.updateSpawnPos(x, y);
+    }
+
+    public reset(): void {
+        if (this._emitter)
+            this._emitter.destroy();
+
+        this._emitter = new particles.Emitter(this, this._particleConf);
+
+        if (this.properties.autoplay)
+            this.setPlay(this.properties.autoplay);
     }
 }
 
