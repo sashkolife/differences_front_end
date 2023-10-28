@@ -56,8 +56,6 @@ export default class LevelPicture extends CContainer {
 
         this._border.width = this._picture.width + Math.abs(this._border.x*2);
         this._border.height = this._picture.height + Math.abs(this._border.y*2);
-
-        this.moveToPosition();
     }
 
     performPolygons(pictKeyJson:string) : void {
@@ -87,7 +85,7 @@ export default class LevelPicture extends CContainer {
         return p;
     }
 
-    showDiff(diffId: number): void {
+    showDiff(diffId: number, animate: boolean = false): void {
         this.clearHelp(diffId);
         const p: PIXI.Polygon = this.getScalePolygon(diffId);
         const g:PIXI.Graphics = new PIXI.Graphics();
@@ -97,6 +95,9 @@ export default class LevelPicture extends CContainer {
         g.drawPolygon(p);
         this.addChild(g);
         this._foundViews[diffId] = g;
+        if ( animate ) {
+            this.animateDiff(p);
+        }
     }
 
     showHelp(diffId: number, animate: boolean = false): void {
@@ -110,15 +111,20 @@ export default class LevelPicture extends CContainer {
         this.addChild(g);
         this._helpViews[diffId] = g;
         if ( animate ) {
-            let animG:PIXI.Graphics = new PIXI.Graphics();
-            animG.lineStyle(10, 0xffffff, 1);
-            animG.drawPolygon(p);
-            this.addChild(animG);
-            gsap.to(animG, {duration: 1, alpha:0, ease: "circ.out", onComplete: () => {
-                    animG.destroy(true);
-                }
-            });
+            this.animateDiff(p);
         }
+    }
+
+    private animateDiff(p:PIXI.Polygon): void {
+        let animG:PIXI.Graphics = new PIXI.Graphics();
+        animG.lineStyle(8, 0xffffff, 0.8);
+        animG.drawPolygon(p);
+        this.addChild(animG);
+        gsap.to(animG, {duration: 0.7, alpha:0, ease: "none", onComplete: () => {
+                this.removeChild(animG);
+                animG.destroy(true);
+            }
+        });
     }
 
     getDiffCenter(diffId: number): PIXI.Point {

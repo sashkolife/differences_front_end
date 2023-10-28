@@ -104,6 +104,10 @@ export const URL_ASSETS_MANIFEST : any = [
     {
         "name": "particle_blue",
         "src": "./res/pixi/particles/particle_blue.json"
+    },
+    {
+        "name": "particle_green_win",
+        "src": "./res/pixi/particles/particle_green_win.json"
     }
 ];
 export const URL_MAPS: string = "./res/pixi/maps/";

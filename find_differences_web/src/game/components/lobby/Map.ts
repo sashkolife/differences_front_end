@@ -231,7 +231,7 @@ export default class Map extends CContainer {
         this._dragMax = Math.abs(maxLocation.y*this._mapScale );
     }
 
-    private scrollMapToCurrentLevel() : void {
+    private scrollMapToCurrentLevel(animate?: boolean) : void {
         const currentLevelGL : PIXI.Point = this._currentLevel.toGlobal({"x":0,"y":0});
         const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
 
@@ -243,7 +243,11 @@ export default class Map extends CContainer {
             newY = this._dragMax;
         }
 
-        this.y = newY;
+        if ( animate ) {
+            gsap.to(this, {duration: 1, y: newY});
+        } else {
+            this.y = newY;
+        }
 
         this.updateVisibleLocations();
 
@@ -387,7 +391,7 @@ export default class Map extends CContainer {
 
         this.setMaxDrag();
 
-        this.scrollMapToCurrentLevel();
+        this.scrollMapToCurrentLevel(true);
 
         this.showTooltipOnLevel(this._currentLevel);
 

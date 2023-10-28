@@ -1,5 +1,4 @@
 import gsap from 'gsap';
-import {IDestroyOptions} from 'pixi.js';
 import CContainer from "../../../components/CContainer";
 import CSprite from "../../../components/CSprite";
 import Properties from "../../../data/Properties";
@@ -11,9 +10,9 @@ export default class ScreenBlock extends CContainer {
 
     private static _instance: ScreenBlock;
 
-    public static show() : void {
+    public static show(invisibleTime?:number) : void {
         if ( !this._instance ) {
-            this._instance = new ScreenBlock();
+            this._instance = new ScreenBlock(invisibleTime);
             game.stage.addChild(this._instance);
         }
     }
@@ -34,7 +33,7 @@ export default class ScreenBlock extends CContainer {
 
     private _showTimer:number = null;
 
-    constructor() {
+    constructor(invisibleTime:number = 2000) {
         super( Properties.get("screenBlock") );
 
         this._background = this.getComponentByName("background");
@@ -53,9 +52,11 @@ export default class ScreenBlock extends CContainer {
 
         this.alpha = 0.05;
 
-        this._showTimer = window.setTimeout( () => {
-            this.alpha = 1;
-        }, 2000 );
+        if ( invisibleTime !== -1 ) {
+            this._showTimer = window.setTimeout(() => {
+                this.alpha = 1;
+            }, invisibleTime);
+        }
     }
 
     public destroy(_options?: PIXI.IDestroyOptions | boolean) {

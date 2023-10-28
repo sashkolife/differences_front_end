@@ -52,9 +52,13 @@ export class SceneLevel extends CContainer {
     private _leaveBtn: CButton;
     private _btnBoosterAddExtraTime: ButtonPay;
     private _btnBoosterUseHelp: ButtonPay;
+    private _useHelpLight: CSprite;
     private _particleUseHelpWheel: ParticleAnimation;
     private _particleUseHelpPath0: ParticleAnimation;
     private _particleUseHelpPath1: ParticleAnimation;
+    private _addExtraLight: CSprite;
+    private _particleAddExtraTime: ParticleAnimation;
+    private _particleAddExtraPath: ParticleAnimation;
 
     private _pictureTouchSubscription:EventModel;
     private _nextLevelSubscription:EventModel;
@@ -85,6 +89,11 @@ export class SceneLevel extends CContainer {
         this._particleUseHelpWheel = this.getComponentByName("particleUseHelpWheel");
         this._particleUseHelpPath0 = this.getComponentByName("particleUseHelpPath0");
         this._particleUseHelpPath1 = this.getComponentByName("particleUseHelpPath1");
+        this._useHelpLight = this.getComponentByName("useHelpLight");
+
+        this._particleAddExtraPath = this.getComponentByName("particleAddExtraPath");
+        this._particleAddExtraTime = this.getComponentByName("particleAddExtraTime");
+        this._addExtraLight = this.getComponentByName("addExtraLight");
 
         this.setInitialViews(playedLevelData);
 
@@ -179,7 +188,8 @@ export class SceneLevel extends CContainer {
     }
 
     private onPictureTouch( data:PictureTouchEvent ): void {
-        ScreenBlock.show();
+        ScreenBlock.show(15000);
+
         Api.request(urls.URL_LEVEL_FIND+"x="+Math.ceil(data.touchPos.x)+"&y="+Math.ceil(data.touchPos.y)).then( async (loader: Response ) => {
 
             const obj: any = await loader.json();
@@ -205,30 +215,32 @@ export class SceneLevel extends CContainer {
                 return;
             }
 
-            this._differencesProgressBar.setFound(findData.diffId);
-
-            if ( findData.picture ) {
-                Resource.loadPicture(findData.picture, (p: number) => {}).then(() => {
-                    this._picturesProgressBar.setCurrent(findData.user.playedPictureNum);
-                    this._differencesProgressBar.reset();
-                    this._levelPicturesContainer.setNewPicture( findData.picture );
+            this._differencesProgressBar.setFound(findData.diffId, () => {
+                if ( findData.picture ) {
+                    Resource.loadPicture(findData.picture, (p: number) => {}).then(() => {
+                        this._picturesProgressBar.setCurrent(findData.user.playedPictureNum);
+                        this._differencesProgressBar.reset();
+                        this._levelPicturesContainer.setNewPicture( findData.picture, () => {
+                            ScreenBlock.hide();
+                        } );
+                    });
+                } else if ( findData.levelFinish ) {
                     ScreenBlock.hide();
-                });
-            } else {
-                ScreenBlock.hide();
-                if ( findData.levelFinish ) {
+
                     this._levelStarsProgressBar.stopTimer();
                     User.updateWinLevel( this._levelData.id, findData.levelFinish.stars );
 
                     WindowsController.instance().show(LevelFinishWindow, {"levelData": this._levelData, "levelFinish": findData.levelFinish});
+                } else {
+                    ScreenBlock.hide();
                 }
-            }
+            });
 
         });
     }
 
     private onNextLevel( levelData: LevelModel) : void {
-        ScreenBlock.show();
+        ScreenBlock.show(10000);
 
         this.setLevelDataViews(levelData, levelData.time1stars);
         this._picturesProgressBar.setCurrent(1);
@@ -241,8 +253,9 @@ export class SceneLevel extends CContainer {
 
             Resource.loadPicture(data.playedLevel.picture, (p: number) => {}).then(() => {
                 this._differencesProgressBar.reset();
-                this._levelPicturesContainer.setNewPicture( data.playedLevel.picture );
-                ScreenBlock.hide();
+                this._levelPicturesContainer.setNewPicture( data.playedLevel.picture, () => {
+                    ScreenBlock.hide();
+                } );
             });
         } );
     }
@@ -255,6 +268,7 @@ export class SceneLevel extends CContainer {
 
         ScreenBlock.show();
         Api.request(urls.URL_LEVEL_HELP).then( async (loader: Response ) => {
+            ScreenBlock.hide();
 
             const helpDiff: HelpDiffModel = await loader.json();
 
@@ -265,8 +279,6 @@ export class SceneLevel extends CContainer {
             if ( helpDiff.error ) {
                 return;
             }
-
-            ScreenBlock.hide();
 
             if ( helpDiff.user ) {
                 User.update(helpDiff.user);
@@ -303,8 +315,10 @@ export class SceneLevel extends CContainer {
                 User.update(addExtraTimeData.user);
                 EventBus.publish(events.EVENT_ON_BALANCE_UPDATE, {coins:addExtraTimeData.user.coins});
             }
+            this.playAddExtraParticle(()=>{
+                this._levelStarsProgressBar.addStarsTimer( addExtraTimeData.addExtraTime );
+            });
 
-            this._levelStarsProgressBar.addStarsTimer( addExtraTimeData.addExtraTime );
         });
     }
 
@@ -357,6 +371,41 @@ export class SceneLevel extends CContainer {
                 this._particleUseHelpPath1.updateSpawnPos(startPos1.x, startPos1.y);
             },
             onComplete: complete
+        });
+
+        this._useHelpLight.visible = true;
+        this._useHelpLight.alpha = 0;
+        gsap.to(this._useHelpLight, {duration: 0.3, alpha: 1}).then(()=>{
+            gsap.to(this._useHelpLight, {duration: 0.3, alpha: 0});
+        });
+    }
+
+    private playAddExtraParticle(complete: gsap.Callback): void {
+        this._particleAddExtraTime.playOnce();
+        this._particleAddExtraPath.reset();
+        this._particleAddExtraPath.setPlay(true);
+
+        const duration: number = 0.32;
+        const ease: string = "power1.out";
+
+        const startPos: PIXI.Point = new PIXI.Point(0,0);
+        const endGPos: PIXI.Point = this._levelStarsProgressBar.toGlobal(new PIXI.Point(100));
+        const endLPos: PIXI.Point = this._particleAddExtraPath.toLocal(endGPos);
+        const anchors = [{x: startPos.x, y: startPos.y}, {x: endLPos.x/2, y: -120}, {x: endLPos.x, y: endLPos.y}];
+        gsap.to( startPos, {
+            duration: duration,
+            ease: ease,
+            motionPath: { path: anchors },
+            onUpdate: () => {
+                this._particleAddExtraPath.updateSpawnPos(startPos.x, startPos.y);
+            },
+            onComplete: complete
+        });
+
+        this._addExtraLight.visible = true;
+        this._addExtraLight.alpha = 0;
+        gsap.to(this._addExtraLight, {duration: 0.3, alpha: 1}).then(()=>{
+            gsap.to(this._addExtraLight, {duration: 0.3, alpha: 0});
         });
     }
 

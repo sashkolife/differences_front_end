@@ -1,0 +1,113 @@
+{
+	"lifetime": {
+		"min": 0.5,
+		"max": 1
+	},
+	"frequency": 0.001,
+	"emitterLifetime": 0.4,
+	"maxParticles": 300,
+	"addAtBack": false,
+	"pos": {
+		"x": 0,
+		"y": 0
+	},
+	"behaviors": [
+		{
+			"type": "alpha",
+			"config": {
+				"alpha": {
+					"list": [
+						{
+							"time": 0,
+							"value": 1
+						},
+						{
+							"time": 1,
+							"value": 0.9
+						}
+					]
+				}
+			}
+		},
+		{
+			"type": "moveSpeed",
+			"config": {
+				"speed": {
+					"list": [
+						{
+							"time": 0,
+							"value": 70
+						},
+						{
+							"time": 1,
+							"value": 40
+						}
+					]
+				}
+			}
+		},
+		{
+			"type": "scale",
+			"config": {
+				"scale": {
+					"list": [
+						{
+							"time": 0,
+							"value": 0.7
+						},
+						{
+							"time": 1,
+							"value": 0
+						}
+					]
+				},
+				"minMult": 1
+			}
+		},
+		{
+			"type": "color",
+			"config": {
+				"color": {
+					"list": [
+						{
+							"time": 0,
+							"value": "e9ffe3"
+						},
+						{
+							"time": 1,
+							"value": "71ff24"
+						}
+					]
+				}
+			}
+		},
+		{
+			"type": "rotationStatic",
+			"config": {
+				"min": 0,
+				"max": 360
+			}
+		},
+		{
+			"type": "textureRandom",
+			"config": {
+				"textures": [
+					"res/pixi/particles/particle.png"
+				]
+			}
+		},
+		{
+			"type": "spawnShape",
+			"config": {
+				"type": "torus",
+				"data": {
+					"radius": 30,
+					"x": 0,
+					"y": 0,
+					"innerRadius": 10,
+					"rotation": true
+				}
+			}
+		}
+	]
+}

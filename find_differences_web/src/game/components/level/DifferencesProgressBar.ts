@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import gsap from 'gsap';
 import CSprite from "../../../components/CSprite";
 import CContainer from "../../../components/CContainer";
 import CText from "../../../components/CText";
@@ -9,6 +10,7 @@ import PicturesProgressBar from "./PicturesProgressBar";
 import BalanceBar from "../common/BalanceBar";
 import LevelProgressDifference from "./LevelProgressDifference";
 import {ComponentModel, ContainerModel} from "../../../models/PropertiesModels";
+import {ParticleAnimation} from "../../../animations/ParticleAnimation";
 
 export default class DifferencesProgressBar extends CContainer {
 
@@ -26,6 +28,11 @@ export default class DifferencesProgressBar extends CContainer {
         this._differencesCountText = this.getComponentByName("differencesCountText");
 
         this._differences = this.getComponentsByType(constants.COMPONENT_LEVEL_PROGRESS_DIFFERENCE);
+
+        for ( let i : number = 0; i < this._differences.length; i++ ) {
+            const solveLight:CSprite = this._differences[i].getComponentByName("solveLight");
+            solveLight.blendMode = PIXI.BLEND_MODES.ADD;
+        }
     }
 
     getNewComponentByType( props: ComponentModel ): any {
@@ -55,10 +62,40 @@ export default class DifferencesProgressBar extends CContainer {
         this.updateCounter();
     }
 
-    setFound( idx: number ) : void {
+    setFound( idx: number, callback?: Function ) : void {
         const solve:CSprite = this._differences[idx].getComponentByName("solve");
-        solve.visible = true;
-        this.updateCounter();
+        const solveLight:CSprite = this._differences[idx].getComponentByName("solveLight");
+        const particleSolve:ParticleAnimation = this._differences[idx].getComponentByName("particleSolve");
+        solveLight.visible = solve.visible = true;
+        solveLight.alpha = 0;
+        const count: number = this.updateCounter();
+        const tl: gsap.core.Timeline = gsap.timeline({onComplete: () => {
+                if ( count === this._differencesCount ) {
+                    this.allSolvedAnimate( callback );
+                } else {
+                    if (callback) callback();
+                }
+            }
+        });
+        tl.to(solveLight, {duration: 0.2, alpha: 1});
+        tl.to(solveLight, {duration: 0.5, alpha: 0, ease: "circ.inOut"});
+        particleSolve.playOnce();
+    }
+
+    private allSolvedAnimate(callback: Function): void {
+        const tl: gsap.core.Timeline = gsap.timeline({onComplete: () => {
+                if (callback) callback();
+            }
+        });
+
+        for ( let i : number = 0; i < this._differences.length; i++ ) {
+            const particleSolve:ParticleAnimation = this._differences[i].getComponentByName("particleSolve");
+            const solveLight:CSprite = this._differences[i].getComponentByName("solveLight");
+            solveLight.visible = true;
+            solveLight.alpha = 0;
+            tl.to(solveLight, {duration: 0.2, pixi: {scaleX: 1.2, scaleY: 1.2}, alpha: 1, onStartParams: [particleSolve], onStart: (partSolve:ParticleAnimation) => partSolve.playOnce()}, "-=0.2");
+            tl.to(solveLight, {duration: 0.15, pixi: {scaleX: 1, scaleY: 1}, alpha: 0});
+        }
     }
 
     reset() : void {
@@ -69,7 +106,7 @@ export default class DifferencesProgressBar extends CContainer {
         this.updateCounter();
     }
 
-    updateCounter() : void {
+    updateCounter() : number {
         let count:number = 0;
         this._differences.forEach( (comp:CContainer) => {
             const solve:CSprite = comp.getComponentByName("solve");
@@ -78,5 +115,7 @@ export default class DifferencesProgressBar extends CContainer {
             }
         } );
         this._differencesCountText.text = count + "/" + this._differencesCount.toString();
+
+        return count;
     }
 }

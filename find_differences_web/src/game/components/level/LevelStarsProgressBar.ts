@@ -7,10 +7,11 @@ import ThreeStateStar from "../common/ThreeStateStar";
 import * as Constants from "constants";
 import {COMPONENT_THREE_STATE_STAR} from "../../../constants/constants";
 import Localization from "../../../data/Localization";
+import CSlice9 from "../../../components/CSlice9";
 
 export default class LevelStarsProgressBar extends CContainer {
 
-    private _progressLine: CSprite;
+    private _progressLine: CSlice9;
     private _levelTimerText : CBMText;
     private _stars: ThreeStateStar[];
 
@@ -73,17 +74,17 @@ export default class LevelStarsProgressBar extends CContainer {
     private updateStars( animate: boolean ): void {
         const spentTime: number = this._timersValues[0]-this._starsTimer;
         for ( let i: number = 0; i < this._timersValues.length; i++ ) {
-            if ( spentTime > this._timersValues[i] ) {
-                this._stars[i].setEmpty(animate);
-            } else {
+            if ( spentTime > 0 && spentTime < this._timersValues[i] ) {
                 this._stars[i].setFull(animate);
+            } else {
+                this._stars[i].setEmpty(animate);
             }
         }
     }
 
     private updateProgress(): void {
         const time: number = this._starsTimer < 0 ? 0 : this._starsTimer > this._timersValues[0] ? this._timersValues[0] : this._starsTimer;
-        this._progressLine.x = this._progressLine.width - this._progressLine.width*((this._timersValues[0]-time)/this._timersValues[0]);
+        this._progressLine.x = -this._progressLine.width*((this._timersValues[0]-time)/this._timersValues[0]);
     }
 
     private onStarsTimerTick() : void {

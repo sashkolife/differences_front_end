@@ -39,6 +39,16 @@ export default class CGraphics extends PIXI.Graphics {
                 this.drawRect( r.x, r.y, r.width, r.height );
             }
 
+            if ( this.properties.figure.rect ) {
+                const r:any = this.properties.figure.rect;
+                this.drawRect( r.x, r.y, r.width, r.height );
+            }
+
+            if ( this.properties.figure.roundRect ) {
+                const r:any = this.properties.figure.roundRect;
+                this.drawRoundedRect( r.x, r.y, r.width, r.height, r.radius );
+            }
+
             this.endFill();
         }
     }

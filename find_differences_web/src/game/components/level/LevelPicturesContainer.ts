@@ -61,6 +61,8 @@ export default class LevelPicturesContainer extends CContainer {
         this._picture1.setPicture(data.pictKey2);
         this._picture0.performPolygons(data.pictKeyJson);
         this._picture1.performPolygons(data.pictKeyJson);
+        this._picture0.moveToPosition();
+        this._picture1.moveToPosition();
 
 
         if ( foundDifferences && foundDifferences.length > 0 ) {
@@ -84,7 +86,7 @@ export default class LevelPicturesContainer extends CContainer {
 
         if ( data.foundIndex >= 0 ) {
             this._knownDiffsIds.push(data.foundIndex);
-            this.showDiff(data.foundIndex);
+            this.showDiff(data.foundIndex, true);
         }
 
         this.playTouch(data.screenPos, data.foundIndex);
@@ -92,7 +94,7 @@ export default class LevelPicturesContainer extends CContainer {
         EventBus.publish(events.EVENT_ON_FOUND_ON_TOUCH, data);
     }
 
-    public setNewPicture( data:LevelPictureModel ) : void {
+    public setNewPicture( data:LevelPictureModel, callback?:Function ) : void {
         this._knownDiffsIds.length = 0;
 
         this._picture0.moveToOut();
@@ -109,11 +111,13 @@ export default class LevelPicturesContainer extends CContainer {
         this._picture1next.setPicture(data.pictKey2);
         this._picture0next.performPolygons(data.pictKeyJson);
         this._picture1next.performPolygons(data.pictKeyJson);
+        this._picture0next.moveToPosition();
+        this._picture1next.moveToPosition(callback);
     }
 
-    private showDiff( diffId: number ) : void {
-        this._picture0.showDiff(diffId);
-        this._picture1.showDiff(diffId);
+    private showDiff( diffId: number, animate: boolean = false ) : void {
+        this._picture0.showDiff(diffId, animate);
+        this._picture1.showDiff(diffId, animate);
     }
 
     public showHelp(diffId: number, animate: boolean = false ) : void {

@@ -28,6 +28,13 @@ export interface GraphicsModel extends ComponentModel {
             y:number;
             width:number;
             height:number;
+        };
+        roundRect?:{
+            x:number;
+            y:number;
+            width:number;
+            height:number;
+            radius:number;
         }
     };
     textureFull?:string;
