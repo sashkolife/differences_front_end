@@ -39,7 +39,6 @@ export default class SceneController {
         this.removeSceneLevel();
         this._sceneLevel = new SceneLevel( levelData );
         this._stage.addChild( this._sceneLevel );
-        this._sceneLevel.init();
     }
 
     public removeSceneLevel() : void {
@@ -86,23 +85,21 @@ export default class SceneController {
         const startPictureId: number = parseInt(urlParams.get("startPictureId"));
 
         Api.request(URL_LEVEL_START+levelId+(startPictureId > 0 ? "&startPictureId="+startPictureId : "")).then( async ( loader: Response ) => {
+            ScreenBlock.hide();
+
             const obj: any = await loader.json();
             const data:StartModel = obj as StartModel;
 
             User.update(data.user);
             User.checkAddUserLevel({levelId:levelId, stars: 0});
 
-            this.loadPicture(data.playedLevel);
-        } );
-    }
-
-    private loadPicture( data:PlayedLevelModel ) {
-        Resource.loadPicture(data.picture, (p:number) => {}).then( () => {
             this.removeSceneLobby();
             this.removeSceneTrophyRoom();
-            this.showSceneLevel( data );
+            this.showSceneLevel( data.playedLevel );
+        } ).catch(()=>{
             ScreenBlock.hide();
-        } );
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
+        });
     }
 
     public gotoLobby() : void {
@@ -119,8 +116,7 @@ export default class SceneController {
 
     public gotoStartScene() : void {
         if ( User.playedLevel ) {
-            ScreenBlock.show();
-            this.loadPicture(User.playedLevel);
+            this.showSceneLevel(User.playedLevel);
         } else {
             this.showSceneLobby();
         }

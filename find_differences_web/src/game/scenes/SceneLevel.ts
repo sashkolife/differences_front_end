@@ -108,10 +108,19 @@ export class SceneLevel extends CContainer {
         this._btnBoosterAddExtraTime.setPrice(User.configExtraTimePrice);
         this.updateBoosterHelpButton();
 
-        this._levelPicturesContainer.init( playedLevelData.picture, playedLevelData.foundDifferences, playedLevelData.helpDifferences );
-        playedLevelData.foundDifferences?.forEach( (diffId:number) => {
-            this._differencesProgressBar.setFound( diffId );
-        } );
+        ScreenBlock.show();
+
+        Resource.loadPicture(playedLevelData.picture, (p:number) => {}).then( () => {
+            this._levelPicturesContainer.init( playedLevelData.picture, playedLevelData.foundDifferences, playedLevelData.helpDifferences );
+            playedLevelData.foundDifferences?.forEach( (diffId:number) => {
+                this._differencesProgressBar.setFound( diffId );
+            } );
+
+            ScreenBlock.hide();
+        } ).catch(()=>{
+            ScreenBlock.hide();
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
+        });
 
         if ( User.penaltySeconds > 0 ) {
             WindowsController.instance().show(LevelPenaltyWindow, User.user);
@@ -135,9 +144,6 @@ export class SceneLevel extends CContainer {
         this._pictureTouchSubscription = null;
         this._nextLevelSubscription.unsubscribe();
         this._nextLevelSubscription = null;
-    }
-
-    init() : void {
     }
 
     public getNewComponentByName( props: any ): any {
@@ -188,14 +194,16 @@ export class SceneLevel extends CContainer {
     }
 
     private onPictureTouch( data:PictureTouchEvent ): void {
-        ScreenBlock.show(15000);
+        ScreenBlock.show();
 
         Api.request(urls.URL_LEVEL_FIND+"x="+Math.ceil(data.touchPos.x)+"&y="+Math.ceil(data.touchPos.y)).then( async (loader: Response ) => {
+
+            ScreenBlock.hide();
 
             const obj: any = await loader.json();
 
             if ( !obj ) {
-                ScreenBlock.hide();
+                EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
                 return;
             }
 
@@ -211,18 +219,26 @@ export class SceneLevel extends CContainer {
                         WindowsController.instance().show(LevelPenaltyWindow, findData.user);
                     }
                 }
-                ScreenBlock.hide();
                 return;
+            }
+
+            if ( findData.picture || findData.levelFinish ) {
+                ScreenBlock.show(findData.picture ? 500 : 2000);
             }
 
             this._differencesProgressBar.setFound(findData.diffId, () => {
                 if ( findData.picture ) {
                     Resource.loadPicture(findData.picture, (p: number) => {}).then(() => {
+                        ScreenBlock.hide();
                         this._picturesProgressBar.setCurrent(findData.user.playedPictureNum);
                         this._differencesProgressBar.reset();
+                        ScreenBlock.show();
                         this._levelPicturesContainer.setNewPicture( findData.picture, () => {
                             ScreenBlock.hide();
                         } );
+                    }).catch(()=>{
+                        ScreenBlock.hide();
+                        EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
                     });
                 } else if ( findData.levelFinish ) {
                     ScreenBlock.hide();
@@ -236,6 +252,9 @@ export class SceneLevel extends CContainer {
                 }
             });
 
+        }).catch(()=>{
+            ScreenBlock.hide();
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
         });
     }
 
@@ -256,8 +275,14 @@ export class SceneLevel extends CContainer {
                 this._levelPicturesContainer.setNewPicture( data.playedLevel.picture, () => {
                     ScreenBlock.hide();
                 } );
+            }).catch(()=>{
+                ScreenBlock.hide();
+                EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
             });
-        } );
+        } ).catch(()=>{
+            ScreenBlock.hide();
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
+        });
     }
 
     private onUseHelpClick() : void {
@@ -291,6 +316,9 @@ export class SceneLevel extends CContainer {
                     this._levelPicturesContainer.showHelp(helpDiff.diffId, true);
                 });
             }
+        }).catch(()=>{
+            ScreenBlock.hide();
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
         });
     }
 
@@ -319,6 +347,9 @@ export class SceneLevel extends CContainer {
                 this._levelStarsProgressBar.addStarsTimer( addExtraTimeData.addExtraTime );
             });
 
+        }).catch(()=>{
+            ScreenBlock.hide();
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
         });
     }
 

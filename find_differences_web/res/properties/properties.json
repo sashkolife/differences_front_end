@@ -24715,7 +24715,8 @@
                 "topHeight": 15,
                 "bottomHeight": 15,
                 "x": -5,
-                "y": -5
+                "y": -5,
+                "visible": false
               }
             ]
           },
@@ -24739,7 +24740,8 @@
                 "topHeight": 15,
                 "bottomHeight": 15,
                 "x": -5,
-                "y": -5
+                "y": -5,
+                "visible": false
               }
             ]
           },
@@ -24764,7 +24766,8 @@
                 "topHeight": 15,
                 "bottomHeight": 15,
                 "x": -5,
-                "y": -5
+                "y": -5,
+                "visible": false
               }
             ]
           },
@@ -24789,7 +24792,8 @@
                 "topHeight": 15,
                 "bottomHeight": 15,
                 "x": -5,
-                "y": -5
+                "y": -5,
+                "visible": false
               }
             ]
           },

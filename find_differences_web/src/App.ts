@@ -6,6 +6,9 @@ import { gsap } from 'gsap';
 import { PixiPlugin } from 'gsap/PixiPlugin';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import { CustomEase } from 'gsap/CustomEase';
+import EventBus from "./utils/EventBus";
+import * as events from "./constants/events";
+import {EVENT_ON_NETWORK_ERROR} from "./constants/events";
 
 gsap.registerPlugin(MotionPathPlugin);
 gsap.registerPlugin(PixiPlugin);
@@ -54,5 +57,6 @@ function removePreloader() {
     gameContainer.style.display = "flex";
 }
 
-
 load().then( onResourcesLoadComplete ).catch( onResourcesLoadError );
+
+EventBus.subscribe(events.EVENT_ON_NETWORK_ERROR, showMessageError);

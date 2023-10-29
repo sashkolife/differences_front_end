@@ -56,14 +56,7 @@ export default class LevelPicturesContainer extends CContainer {
     }
 
     init( data:LevelPictureModel, foundDifferences?:number[], helpDifferences?:number[] ) : void {
-
-        this._picture0.setPicture(data.pictKey1);
-        this._picture1.setPicture(data.pictKey2);
-        this._picture0.performPolygons(data.pictKeyJson);
-        this._picture1.performPolygons(data.pictKeyJson);
-        this._picture0.moveToPosition();
-        this._picture1.moveToPosition();
-
+        this.initPictures(this._picture0, this._picture1, data, null);
 
         if ( foundDifferences && foundDifferences.length > 0 ) {
             this._knownDiffsIds = foundDifferences;
@@ -107,12 +100,7 @@ export default class LevelPicturesContainer extends CContainer {
             this._picture1next = p1;
         } );
 
-        this._picture0next.setPicture(data.pictKey1);
-        this._picture1next.setPicture(data.pictKey2);
-        this._picture0next.performPolygons(data.pictKeyJson);
-        this._picture1next.performPolygons(data.pictKeyJson);
-        this._picture0next.moveToPosition();
-        this._picture1next.moveToPosition(callback);
+        this.initPictures(this._picture0next, this._picture1next, data, callback);
     }
 
     private showDiff( diffId: number, animate: boolean = false ) : void {
@@ -155,5 +143,14 @@ export default class LevelPicturesContainer extends CContainer {
         const tl = gsap.timeline();
         tl.to(this, {duration: 0.02, x: Math.random() < 0.5 ? "-=5" : "+=5", y: "+=5"});
         tl.to(this, {duration: 0.02, x: currentX, y: currentY});
+    }
+
+    private initPictures( pic0: LevelPicture, pic1: LevelPicture, data: LevelPictureModel, callback: Function ): void {
+        pic0.setPicture(data.pictKey1);
+        pic1.setPicture(data.pictKey2);
+        pic0.performPolygons(data.pictKeyJson);
+        pic1.performPolygons(data.pictKeyJson);
+        pic0.moveToPosition();
+        pic1.moveToPosition(callback);
     }
 }

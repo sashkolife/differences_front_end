@@ -18,25 +18,27 @@
 </head>
 <body>
 
-    <div id="main-container">
+    <div id="fullscreen-container">
+        <div id="main-container">
 
-        <div id="game-container" class="main-container-child" style="display: none" hidden></div>
+            <div id="game-container" class="main-container-child" style="display: none" hidden></div>
 
-        <div id="preloader-container" class="main-container-child">
-            <div id="preloader-logo">
-                <img id="game-logo-img" src="res/web/images/logo.png">
+            <div id="preloader-container" class="main-container-child">
+                <div id="preloader-logo">
+                    <img id="game-logo-img" src="res/web/images/logo.png">
+                </div>
+                <div id="progress-box">
+                    <div id="progress-bar"></div>
+                </div>
             </div>
-            <div id="progress-box">
-                <div id="progress-bar"></div>
+
+            <div id="block-background" class="main-container-child" hidden></div>
+
+            <div class="message" id="message-error" hidden>
+                <p class="message-title" id="error-title-label">ERROR</p>
+                <p class="message-descriptor" id="error-descriptor-label">Something went wrong<br>Press ok to reload</p>
+                <button class="message-ok-button" onclick="window.location.reload()">OK</button>
             </div>
-        </div>
-
-        <div id="block-background" class="main-container-child" hidden></div>
-
-        <div class="message" id="message-error" hidden>
-            <p class="message-title" id="error-title-label">ERROR</p>
-            <p class="message-descriptor" id="error-descriptor-label">Something went wrong<br>Press ok to reload</p>
-            <button class="message-ok-button" onclick="window.location.reload()">OK</button>
         </div>
     </div>
 
@@ -44,6 +46,32 @@
         var APP_WIDTH = 1280;
         var APP_HEIGHT = 720;
         var mainContainer = document.getElementById("main-container");
+
+        function detectMob() {
+            const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i];
+
+            return toMatch.some( function(toMatchItem) {
+                return navigator.userAgent.match(toMatchItem);
+            });
+        }
+
+        console.log(navigator.userAgent);
+        if ( detectMob() ) {
+            var fullscreenContainer = document.getElementById("fullscreen-container");
+            fullscreenContainer.ontouchstart = function openFullscreen() {
+                if (fullscreenContainer.requestFullscreen) {
+                    fullscreenContainer.requestFullscreen();
+                } else if (fullscreenContainer.webkitRequestFullscreen) { /* Safari */
+                    fullscreenContainer.webkitRequestFullscreen();
+                } else if (fullscreenContainer.msRequestFullscreen) { /* IE11 */
+                    fullscreenContainer.msRequestFullscreen();
+                }
+            }
+
+            if ( screen && screen.orientation && screen.orientation.lock ) {
+                screen.orientation.lock("landscape");
+            }
+        }
 
         function onResize() {
             var ratio = Math.min(window.innerWidth / APP_WIDTH, window.innerHeight / APP_HEIGHT );

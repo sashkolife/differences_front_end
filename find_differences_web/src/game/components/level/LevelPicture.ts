@@ -56,6 +56,8 @@ export default class LevelPicture extends CContainer {
 
         this._border.width = this._picture.width + Math.abs(this._border.x*2);
         this._border.height = this._picture.height + Math.abs(this._border.y*2);
+
+        this._border.visible = true;
     }
 
     performPolygons(pictKeyJson:string) : void {
@@ -151,14 +153,14 @@ export default class LevelPicture extends CContainer {
     }
 
     moveToPosition(callback?:Function): void {
-        this.alpha = 0.5;
+        this.alpha = 0;
         this.visible = true;
-        gsap.to(this, {duration: 0.3, x: "-="+this._pictOrient.x, y: "-="+this._pictOrient.y, alpha: 1, ease: "circ.out", onComplete: () => {if (callback) callback()}});
+        gsap.to(this, {duration: 0.5, x: "-="+this._pictOrient.x, y: "-="+this._pictOrient.y, alpha: 1, ease: "power3.in", onComplete: () => {if (callback) callback()}});
     }
 
     moveToOut(callback?:Function): void {
         this.alpha = 1;
-        gsap.to(this, {duration: 0.5, x: "-="+(this._pictOrient.x*2), y: "-="+(this._pictOrient.y*2), alpha: 0, ease: "circ.out", onComplete: () => {
+        gsap.to(this, {duration: 0.5, x: "-="+(this._pictOrient.x*2), y: "-="+(this._pictOrient.y*2), alpha: 0, ease: "power3.in", onComplete: () => {
             if (callback) {
                 callback();
                 this.visible = false;
