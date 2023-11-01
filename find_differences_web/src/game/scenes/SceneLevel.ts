@@ -196,6 +196,7 @@ export class SceneLevel extends CContainer {
     private onPictureTouch( data:PictureTouchEvent ): void {
         ScreenBlock.show();
 
+        console.log("onPictureTouch pictureId =",this._levelPicturesContainer.getPictureId(),", foundIndex =",data.foundIndex);
         Api.request(urls.URL_LEVEL_FIND+"x="+Math.ceil(data.touchPos.x)+"&y="+Math.ceil(data.touchPos.y)).then( async (loader: Response ) => {
 
             ScreenBlock.hide();

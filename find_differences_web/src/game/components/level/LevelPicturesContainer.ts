@@ -26,6 +26,7 @@ export default class LevelPicturesContainer extends CContainer {
 
     private _knownDiffsIds: Array<number> = [];
     private _onPictureTouch: EventModel;
+    private _pictureData: LevelPictureModel;
 
     constructor( props: ContainerModel ) {
         super( props );
@@ -45,6 +46,10 @@ export default class LevelPicturesContainer extends CContainer {
         super.destroy(_options);
         this._onPictureTouch.unsubscribe();
         this._onPictureTouch = null;
+    }
+
+    public getPictureId(): number {
+        return this._pictureData.id;
     }
 
     public getNewComponentByType( props: any ) : any {
@@ -146,6 +151,8 @@ export default class LevelPicturesContainer extends CContainer {
     }
 
     private initPictures( pic0: LevelPicture, pic1: LevelPicture, data: LevelPictureModel, callback: Function ): void {
+        console.log("initPictures id =", data.id, "complexity =", data.c);
+        this._pictureData = data;
         pic0.setPicture(data.pictKey1);
         pic1.setPicture(data.pictKey2);
         pic0.performPolygons(data.pictKeyJson);

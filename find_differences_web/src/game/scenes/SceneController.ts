@@ -10,6 +10,7 @@ import ScreenBlock from "../components/common/ScreenBlock";
 import Resource from "../../data/Resource";
 import Api from "../../utils/Api";
 import {PlayedLevelModel, StartModel} from "../../models/ApiModels";
+import {debug} from "../../App";
 
 export default class SceneController {
 
@@ -78,11 +79,8 @@ export default class SceneController {
         }
     }
 
-    public gotoLevel( levelId : number ) : void {
+    public gotoLevel( levelId : number, startPictureId?:number ) : void {
         ScreenBlock.show();
-
-        const urlParams = new URLSearchParams( window.location.search);
-        const startPictureId: number = parseInt(urlParams.get("startPictureId"));
 
         Api.request(URL_LEVEL_START+levelId+(startPictureId > 0 ? "&startPictureId="+startPictureId : "")).then( async ( loader: Response ) => {
             ScreenBlock.hide();
@@ -115,6 +113,14 @@ export default class SceneController {
     }
 
     public gotoStartScene() : void {
+
+        const urlParams = new URLSearchParams( window.location.search);
+        const startPictureId: number = parseInt(urlParams.get("startPictureId"));
+        if ( debug && startPictureId ) {
+            this.gotoLevel(20, startPictureId);//5 - 1, 6 - 13, 7 - 20
+            return;
+        }
+
         if ( User.playedLevel ) {
             this.showSceneLevel(User.playedLevel);
         } else {

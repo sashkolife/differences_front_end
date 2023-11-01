@@ -8,6 +8,7 @@ import {FederatedPointerEvent, Point} from "pixi.js";
 import EventBus from "../../../utils/EventBus";
 import * as events from "../../../constants/events";
 import LevelPictureDifference from "./LevelPictureDifference";
+import {debug} from "../../../App";
 
 export default class LevelPicture extends CContainer {
     properties:PictureModel;
@@ -72,6 +73,16 @@ export default class LevelPicture extends CContainer {
                 jData[i].splice(1, 0, [jData[i][1][0], jData[i][0][1]]);
             }
             this._differences.push(new LevelPictureDifference(i, jData[i]));
+        }
+
+        if (debug) {
+            for ( let i : number = 0; i < this._differences.length; i++ ) {
+                const p: PIXI.Polygon = this.getScalePolygon(i);
+                const g:PIXI.Graphics = new PIXI.Graphics();
+                g.lineStyle(3, 0xffffff);
+                g.drawPolygon(p);
+                this.addChild(g);
+            }
         }
     }
 
