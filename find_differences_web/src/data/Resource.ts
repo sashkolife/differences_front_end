@@ -5,6 +5,7 @@ import User from "./User";
 import * as constants from "../constants/constants";
 import {LevelPictureModel} from "../models/ApiModels";
 import {URL_PICTURE_0_NAME} from "../constants/urls";
+import {COMPONENT_TEXTURE_WHITE} from "../constants/constants";
 
 export default class Resource {
 
@@ -56,6 +57,9 @@ export default class Resource {
     }
 
     public static getTexture( key: string ) : PIXI.Texture {
+        if ( key === constants.COMPONENT_TEXTURE_WHITE ) {
+            return PIXI.Texture.WHITE;
+        }
         return PIXI.Texture.from(key);
     }
 

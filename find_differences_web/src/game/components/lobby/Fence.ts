@@ -1,20 +1,12 @@
 import * as PIXI from 'pixi.js';
 import gsap from 'gsap';
 import CContainer from "../../../components/CContainer";
-import CText from "../../../components/CText";
 import CSprite from "../../../components/CSprite";
-import Resource from "../../../data/Resource";
-import * as constants from "../../../constants/constants";
 import {ContainerModel} from "../../../models/PropertiesModels";
-import {LocationModel, OpenLocationModel} from "../../../models/ApiModels";
+import {LocationModel} from "../../../models/ApiModels";
 import Locations from "../../../data/Locations";
 import WindowsController from "../../windows/WindowsController";
 import OpenLocationWindow from "../../windows/OpenLocationWindow";
-import Api from "../../../utils/Api";
-import * as urls from "../../../constants/urls";
-import EventBus from "../../../utils/EventBus";
-import * as events from "../../../constants/events";
-import {EVENT_ON_LOCATION_OPEN} from "../../../constants/events";
 import LocationClosedWindow from "../../windows/LocationClosedWindow";
 import User from "../../../data/User";
 

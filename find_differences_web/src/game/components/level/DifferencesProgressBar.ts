@@ -50,6 +50,8 @@ export default class DifferencesProgressBar extends CContainer {
     }
 
     setCount( num: number ) : void {
+        this.reset();
+
         this._differencesCount = num;
 
         for ( let i : number = 0; i < this._differences.length; i++ ) {
@@ -99,11 +101,10 @@ export default class DifferencesProgressBar extends CContainer {
     }
 
     reset() : void {
-        for ( let i : number = 0; i < this._differences.length && i < this._differencesCount; i++ ) {
+        for ( let i : number = 0; i < this._differences.length; i++ ) {
             const solve:CSprite = this._differences[i].getComponentByName("solve");
             solve.visible = false;
         }
-        this.updateCounter();
     }
 
     updateCounter() : number {

@@ -32,5 +32,15 @@
   "window_location_closed_stars_text": "Win {0} stars in chapter\nlevels to get a key.",
   "window_location_closed_wait_text": "Or just wait.\nThe new chapter will be\navailable through:",
   "window_location_closed_also_text": "You can also pay",
-  "window_location_closed_open_for_text": "OPEN FOR"
+  "window_location_closed_open_for_text": "OPEN FOR",
+  "campaign_name_magic_garden": "Magic\ngarden",
+  "campaign_name_basement": "Basement",
+  "campaign_name_grotto": "Grotto",
+  "campaign_name_back_door": "Back\ndoor",
+  "campaign_name_hidden_cave": "Hidden\ncave",
+  "campaign_name_secret_glade": "Secret\nglade",
+  "campaign_name_tropical_house": "Tropical\nhouse",
+  "campaign_name_underground_lake": "Underground\nlake",
+  "campaign_name_forest_maze": "Forest\nmaze",
+  "campaign_name_richmans_house": "Richman's\nhouse"
 }

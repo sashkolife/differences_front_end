@@ -7,12 +7,14 @@ import LocationBackground from "./LocationBackground";
 import Fence from "./Fence";
 import gsap from "gsap";
 import {ContainerModel} from "../../../models/PropertiesModels";
+import CampaignButton from "./CampaignButton";
 
 export default class MapLocation extends CContainer {
 
     private _background: LocationBackground;
     private _activeMarker: CSprite;
     private _mapLevels: Array<MapLevel>;
+    private _mapCampaigns: Array<CampaignButton>;
     private _fence: Fence;
 
     constructor( props: ContainerModel ) {
@@ -22,9 +24,10 @@ export default class MapLocation extends CContainer {
         this._activeMarker = this.getComponentByName("activeMarker");
 
         this._mapLevels = this.getComponentsByType( constants.COMPONENT_MAP_LEVEL );
+        this._mapCampaigns = this.getComponentsByType( constants.COMPONENT_MAP_CAMPAIGN );
 
         this._fence = this.getComponentByName("fence");
-        this._fence.setId(props.id);
+        this._fence?.setId(props.id);
     }
 
     public destroy(_options?: PIXI.IDestroyOptions | boolean) {
@@ -44,6 +47,9 @@ export default class MapLocation extends CContainer {
             }
             if ( type == constants.COMPONENT_MAP_LEVEL ) {
                 return new MapLevel( props );
+            }
+            if ( type == constants.COMPONENT_MAP_CAMPAIGN ) {
+                return new CampaignButton( props );
             }
             if ( type == constants.COMPONENT_FENCE ) {
                 return new Fence( props );
@@ -69,6 +75,10 @@ export default class MapLocation extends CContainer {
 
     getMapLevels(): Array<MapLevel> {
         return this._mapLevels;
+    }
+
+    getMapCampaigns(): Array<CampaignButton> {
+        return this._mapCampaigns;
     }
 
     getFence() : Fence {

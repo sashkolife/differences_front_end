@@ -5,7 +5,7 @@ import CBMText from "../../components/CBMText";
 import Localization from "../../data/Localization";
 import EventBus from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {LevelModel, UserLevelModel} from "../../models/ApiModels";
+import {LevelModel} from "../../models/ApiModels";
 
 export default class LevelStartWindow extends BaseWindow {
 
@@ -57,13 +57,12 @@ export default class LevelStartWindow extends BaseWindow {
     private onPlayClick() : void {
         this.hide();
         const levelData:LevelModel = this._params["levelData"];
-        EventBus.publish( events.EVENT_ON_LEVEL_START, levelData.id );
+        EventBus.publish( events.EVENT_ON_LEVEL_START, levelData );
     }
 
     public show(params?: any) {
         super.show(params);
         const levelData:LevelModel = this._params["levelData"];
-        const userLevelData:UserLevelModel = this._params["userLevelData"];
         this._headerText.text = Localization.get("window_play_header") + " " + levelData.id;
         this._picturesText.text = Localization.get("window_play_pictures") + " " + levelData.picturesCount;
         this._differencesText.text = Localization.get("window_play_differences") + " " + levelData.differencesCount;
@@ -72,8 +71,8 @@ export default class LevelStartWindow extends BaseWindow {
         this._needTime1.text = Localization.convertToHHMMSS(levelData.time2stars);
         this._needTime2.text = Localization.convertToHHMMSS(levelData.time1stars);
 
-        if ( userLevelData ) {
-            for (let i: number = 0; i < userLevelData.stars; i++) {
+        if ( levelData.stars ) {
+            for (let i: number = 0; i < levelData.stars; i++) {
                 this._fillStars[i].visible = true;
             }
         }

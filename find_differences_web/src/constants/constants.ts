@@ -29,14 +29,19 @@ export const COMPONENT_THREE_STATE_STAR : string = "three_state_star";
 
 export const COMPONENT_LOCATION : string = "location";
 export const COMPONENT_MAP_LEVEL : string = "map_level";
+export const COMPONENT_MAP_CAMPAIGN : string = "map_campaign";
 export const COMPONENT_MAP_LEVEL_TOOLTIP : string = "map_level_tooltip";
+export const COMPONENT_MAP_CAMPAIGN_TOOLTIP : string = "map_campaign_tooltip";
 export const COMPONENT_LOCATION_BACKGROUND : string = "location_background";
 export const COMPONENT_FENCE : string = "fence";
 export const COMPONENT_MAP_CLOUDS : string = "map_clouds";
 export const COMPONENT_LEVEL_PROGRESS_DIFFERENCE : string = "level_progress_differences";
+export const COMPONENT_ARROW_ANIMATION : string = "arrow_animation";
 
 export const COMPONENT_WINDOW_CONTENT : string = "window_content";
 export const COMPONENT_LEVEL_PICTURE : string = "levelPicture";
+
+export const COMPONENT_TEXTURE_WHITE : string = "texture_white";
 
 export const PICT_1 : string = "_1";
 export const PICT_2 : string = "_2";

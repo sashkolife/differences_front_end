@@ -63,6 +63,8 @@ export default class LevelPicturesContainer extends CContainer {
     init( data:LevelPictureModel, foundDifferences?:number[], helpDifferences?:number[] ) : void {
         this.initPictures(this._picture0, this._picture1, data, null);
 
+        this._knownDiffsIds.length = 0;
+
         if ( foundDifferences && foundDifferences.length > 0 ) {
             this._knownDiffsIds = foundDifferences;
             for ( let i : number = 0; i < foundDifferences.length; i++ ) {

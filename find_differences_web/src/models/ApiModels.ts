@@ -2,7 +2,9 @@ import {Errors} from "./Enums";
 
 export interface LevelModel {
     id: number;
+    levelId: number;
     location: number;
+    campaignId: number;
     picturesCount: number;
     differencesCount: number;
     complexity: number;
@@ -12,6 +14,9 @@ export interface LevelModel {
     coins3stars: number;
     coins2stars: number;
     coins1stars: number;
+    stars?: number;
+    newStars?: number;
+    isComplete?: number;
 }
 
 export interface LocationModel {
@@ -46,6 +51,7 @@ export interface LoginModel {
     playedLevel?: PlayedLevelModel;
     config: ConfigModel;
     locations: LocationModel[];
+    campaigns: CampaignModel[];
     levels: LevelModel[];
     shop: ShopModel[];
 }
@@ -68,6 +74,7 @@ export interface UserModel {
     coins?: number;
     helps?: number;
     playedLevelId?: number;
+    playedCampaignId?: number;
     playedTime?: number;
     playedPictureId?: number;
     playedPictureNum?: number;
@@ -80,16 +87,8 @@ export interface UserModel {
     lastBonusDate?: number;
     bonusDay?: number;
     deleted?: number;
-    levels?: UserLevelModel[];
     token?: string;
     nextLocationTimer?: number;
-}
-
-export interface UserLevelModel {
-    levelId: number;
-    stars: number;
-    newStars?: number;
-    isComplete?: number;
 }
 
 export interface LevelPictureModel {
@@ -115,7 +114,8 @@ export interface LevelFindDiffModel {
     helpDifferences: number[];
     user: UserModel;
     picture?: LevelPictureModel;
-    error?: Errors
+    error?: Errors;
+    campaign?: CampaignModel;
 }
 
 export interface HelpDiffModel {
@@ -137,9 +137,20 @@ export interface LevelFinishModel {
     coins?: number;
     helps?: number;
     userLevelId?: number;
+    campaignId?: number;
+    newCampaigns?: number[];
 }
 
 export interface PenaltySkipModel {
     user: UserModel;
     error?: Errors
+}
+
+export interface CampaignModel {
+    id: number;
+    name: string;
+    startLevelId: number;
+    level: number;
+    isComplete: number;
+    levels: LevelModel[];
 }

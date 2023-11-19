@@ -90,6 +90,10 @@ export const URL_ASSETS_MANIFEST : any = [
         "src": "./res/pixi/bmFonts/Russia_white_shadow.fnt"
     },
     {
+        "name": "Russia_limon_shadow",
+        "src": "./res/pixi/bmFonts/Russia_limon_shadow.fnt"
+    },
+    {
         "name": "Russia_cups_nums",
         "src": "./res/pixi/bmFonts/Russia_cups_nums.fnt"
     },
@@ -112,8 +116,8 @@ export const URL_ASSETS_MANIFEST : any = [
 ];
 export const URL_MAPS: string = "./res/pixi/maps/";
 
-export const URL_SERVER : string = "http://localhost:9002/";
-//export const URL_SERVER : string = "http://vps27605ua.hyperhost.name:9002/"; //remote
+//export const URL_SERVER : string = "http://localhost:9002/";
+export const URL_SERVER : string = "http://vps27605ua.hyperhost.name:9002/"; //remote
 export const URL_LEVELS : string = URL_SERVER+"user/levels";
 export const URL_SHOP : string = URL_SERVER+"user/shop";
 export const URL_LOGIN : string = URL_SERVER+"user/login/?id=";

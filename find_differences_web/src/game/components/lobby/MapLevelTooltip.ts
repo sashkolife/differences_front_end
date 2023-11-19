@@ -4,6 +4,7 @@ import CContainer from "../../../components/CContainer";
 import CText from "../../../components/CText";
 import CSprite from "../../../components/CSprite";
 import Localization from "../../../data/Localization";
+import {LevelModel} from "../../../models/ApiModels";
 
 export default class MapLevelTooltip extends CContainer {
     private _levelNumLabel: CText;
@@ -32,10 +33,12 @@ export default class MapLevelTooltip extends CContainer {
         super.destroy(_options);
     }
 
-    show( levelData: any ) : void {
-        this._levelNumLabel.text = Localization.get("lobby_level") + " " + levelData.id;
-        this._picturesNumLabel.text = levelData.picturesCount;
-        this._differencesNumLabel.text = levelData.differencesCount;
+    show( levelData: LevelModel ) : void {
+        if ( levelData ) {
+            this._levelNumLabel.text = Localization.get("lobby_level") + " " + levelData.id;
+            this._picturesNumLabel.text = levelData.picturesCount;
+            this._differencesNumLabel.text = levelData.differencesCount;
+        }
 
         this._scaleY = this.scale.y;
         this.scale.y = 0;
@@ -45,7 +48,7 @@ export default class MapLevelTooltip extends CContainer {
     }
 
     hide() : void {
-        gsap.killTweensOf(this);
+        gsap.killTweensOf(this.scale);
         this.visible = false;
     }
 }

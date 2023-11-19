@@ -6,7 +6,7 @@ import * as constants from "../../../constants/constants";
 import CButton from "../../../components/CButton";
 import EventBus from "../../../utils/EventBus";
 import * as events from "../../../constants/events";
-import {LevelModel, UserLevelModel} from "../../../models/ApiModels";
+import {LevelModel} from "../../../models/ApiModels";
 import {ParticleAnimation} from "../../../animations/ParticleAnimation";
 
 export default class MapLevel extends CContainer {
@@ -23,7 +23,6 @@ export default class MapLevel extends CContainer {
     private _isActive: boolean = false;
 
     private _levelData: LevelModel;
-    private _userLevelData: UserLevelModel;
 
     constructor( props: any ) {
         super( props );
@@ -53,24 +52,19 @@ export default class MapLevel extends CContainer {
 
     setLevelData( data: LevelModel ) : void {
         this._levelData = data;
-    }
 
-    setUserLevelData( data: UserLevelModel ) : void {
-        this._userLevelData = data;
-        if ( this._userLevelData ) {
-            this.setStars(this._userLevelData.stars);
+        if ( this._levelData?.stars > 0 ) {
+            this.setStars(this._levelData.stars);
         }
     }
 
     setNewStars() : void {
-        if ( !this._userLevelData ) {
-            return;
-        }
-        const newStars:number = this._userLevelData.newStars ? this._userLevelData.newStars : this._userLevelData.stars;
-        if ( newStars > this._userLevelData.stars ) {
+        const newStars:number = this._levelData.newStars ? this._levelData.newStars : this._levelData.stars;
+        const stars:number = this._levelData.stars||0;
+        if ( newStars > stars ) {
             this._starsWins = newStars;
             let counterI: number = 0;
-            for (let i: number = this._userLevelData.stars; i < newStars; i++) {
+            for (let i: number = stars; i < newStars; i++) {
                 setTimeout((si: number)=>{
                     this._stars[si].visible = true;
                     this._particles[si].playOnce(null);
@@ -78,15 +72,10 @@ export default class MapLevel extends CContainer {
                 counterI++;
             }
         }
-        this._userLevelData.stars = newStars;
     }
 
     getLevelData() : LevelModel {
         return this._levelData;
-    }
-
-    getUserLevelData() : UserLevelModel {
-        return this._userLevelData;
     }
 
     setAvailability( value: boolean ) : void {
@@ -149,7 +138,7 @@ export default class MapLevel extends CContainer {
 
         self.onmouseup = () => {
             self.parent.onmousemove = null;
-            // console.log(e);
+            console.log(this.position);
             isDrag = false;
             self.parent.interactive = false;
             self.parent.parent.interactive = true;

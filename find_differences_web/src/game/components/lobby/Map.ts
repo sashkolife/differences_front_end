@@ -10,20 +10,28 @@ import MapLevel from "./MapLevel";
 import User from "../../../data/User";
 import EventBus, {EventModel} from "../../../utils/EventBus";
 import * as events from "../../../constants/events";
-import Levels from "../../../data/Levels";
 import WindowsController from "../../windows/WindowsController";
 import LevelStartWindow from "../../windows/LevelStartWindow";
 import {MapModel} from "../../../models/PropertiesModels";
-import {LevelModel, LocationModel, UserLevelModel} from "../../../models/ApiModels";
+import {CampaignModel, LevelModel, LocationModel} from "../../../models/ApiModels";
 import Locations from "../../../data/Locations";
 import CSprite from "../../../components/CSprite";
 import CBase from "../../../components/CBase";
 import Fence from "./Fence";
+import {COMPONENT_ARROW_ANIMATION, COMPONENT_MAP_CAMPAIGN_TOOLTIP} from "../../../constants/constants";
+import MapCampaignTooltip from "./MapCampaignTooltip";
+import ArrowAnimation from "./ArrowAnimation";
+import Campaigns from "../../../data/Campaigns";
+import CampaignButton from "./CampaignButton";
+import SceneController from "../../scenes/SceneController";
+import * as levelUtils from "../../../utils/LevelsUtils";
 
 export default class Map extends CContainer {
 
-    private _tooltip: MapLevelTooltip;
-    private _arrow: CSprite;
+    private _mapLevelTooltip: MapLevelTooltip;
+    private _mapLevelArrow: ArrowAnimation;
+    private _mapCampaignTooltip: MapCampaignTooltip;
+    private _mapCampaignArrow: ArrowAnimation;
     private _clouds: MapClouds;
     private _locations: Array<MapLocation>;
 
@@ -46,11 +54,17 @@ export default class Map extends CContainer {
     private _levelOutSubscription:EventModel = null;
     private _levelClickSubscription:EventModel = null;
 
+    private _campaignOverSubscription:EventModel = null;
+    private _campaignOutSubscription:EventModel = null;
+    private _campaignClickSubscription:EventModel = null;
+
     constructor( props: MapModel ) {
         super( props );
 
-        this._tooltip = this.getComponentByName("tooltip");
-        this._arrow = this.getComponentByName("arrow");
+        this._mapLevelTooltip = this.getComponentByName("mapLevelTooltip");
+        this._mapLevelArrow = this.getComponentByName("mapLevelArrow");
+        this._mapCampaignTooltip = this.getComponentByName("mapCampaignTooltip");
+        this._mapCampaignArrow = this.getComponentByName("mapCampaignArrow");
         this._locations = this.getComponentsByType( constants.COMPONENT_LOCATION );
         this._clouds = this.getComponentByName("clouds");
 
@@ -60,8 +74,32 @@ export default class Map extends CContainer {
         this._locationWidth = props.locationWidth;
 
         this.scale.set(this._mapScale, this._mapScale);
-        this._tooltip.scale.set(1/this._mapScale);
+        this._mapLevelTooltip.scale.set(1/this._mapScale);
 
+        this.addMapDragging();
+
+        this._levelOverSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_OVER, this.onMapLevelOver.bind(this));
+        this._levelOutSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_OUT, this.onMapLevelOut.bind(this));
+        this._levelClickSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_CLICK, this.onMapLevelClick.bind(this));
+
+        this._campaignOverSubscription = EventBus.subscribe(events.EVENT_ON_MAP_CAMPAIGN_OVER, this.onMapCampaignOver.bind(this));
+        this._campaignOutSubscription = EventBus.subscribe(events.EVENT_ON_MAP_CAMPAIGN_OUT, this.onMapCampaignOut.bind(this));
+        this._campaignClickSubscription = EventBus.subscribe(events.EVENT_ON_MAP_CAMPAIGN_CLICK, this.onMapCampaignClick.bind(this));
+    }
+
+    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
+        this._levelOverSubscription.unsubscribe();
+        this._levelOutSubscription.unsubscribe();
+        this._levelClickSubscription.unsubscribe();
+
+        this._campaignOverSubscription.unsubscribe();
+        this._campaignOutSubscription.unsubscribe();
+        this._campaignClickSubscription.unsubscribe();
+
+        super.destroy(_options);
+    }
+
+    protected addMapDragging(): void {
         const self: any = this;
         self.interactive = true;
         self.on("mouseover", this.onOver.bind(this));
@@ -74,18 +112,6 @@ export default class Map extends CContainer {
         self.on("touchendoutside", this.onEndOutside.bind(this));
         self.on("touchmove", this.onMove.bind(this));
         self.on("wheel", this.onWheel.bind(this));
-
-        this._levelOverSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_OVER, this.onMapLevelOver.bind(this));
-        this._levelOutSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_OUT, this.onMapLevelOut.bind(this));
-        this._levelClickSubscription = EventBus.subscribe(events.EVENT_ON_MAP_LEVEL_CLICK, this.onMapLevelClick.bind(this));
-    }
-
-    public destroy(_options?: PIXI.IDestroyOptions | boolean) {
-        gsap.killTweensOf(this._arrow);
-        this._levelOverSubscription.unsubscribe();
-        this._levelOutSubscription.unsubscribe();
-        this._levelClickSubscription.unsubscribe();
-        super.destroy(_options);
     }
 
     public getNewComponentByType( props:any ) : any {
@@ -96,6 +122,12 @@ export default class Map extends CContainer {
             }
             if ( props[constants.KEY_TYPE] == constants.COMPONENT_MAP_LEVEL_TOOLTIP ) {
                 component = new MapLevelTooltip( props );
+            }
+            if ( props[constants.KEY_TYPE] == constants.COMPONENT_ARROW_ANIMATION ) {
+                component = new ArrowAnimation( props );
+            }
+            if ( props[constants.KEY_TYPE] == constants.COMPONENT_MAP_CAMPAIGN_TOOLTIP ) {
+                component = new MapCampaignTooltip( props );
             }
             if ( props[constants.KEY_TYPE] == constants.COMPONENT_MAP_CLOUDS ) {
                 component = new MapClouds( props );
@@ -118,7 +150,7 @@ export default class Map extends CContainer {
         this._isDrag = false;
     }
 
-    private onMove(e:any): void {
+    protected onMove(e:any): void {
 
         if ( this._isDrag ) {
 
@@ -183,7 +215,7 @@ export default class Map extends CContainer {
 
     public initMap() : void {
 
-        const userLevel:number = User.level;
+        const userLevel:number = this.getCurrentUserLevel();
 
         let i: number = 0;
 
@@ -192,8 +224,7 @@ export default class Map extends CContainer {
             for (let j: number = 0; j < mapLevels.length; j++) {
                 const mapLevel: MapLevel = mapLevels[j];
                 const levelId:number = mapLevel.getId();
-                mapLevel.setLevelData( Levels.getLevelByID( levelId ) );
-                mapLevel.setUserLevelData( User.getUserLevelByID( levelId ) );
+                mapLevel.setLevelData( this.getLevelData(levelId) );
                 if (mapLevel.getId() < userLevel) {
                     mapLevel.setAvailability(true);
                 } else if (mapLevel.getId() == userLevel) {
@@ -222,6 +253,14 @@ export default class Map extends CContainer {
         this.updateVisibleLocations();
     }
 
+    protected getCurrentUserLevel(): number {
+        return User.level;
+    }
+
+    protected getLevelData(levelId:number): LevelModel {
+        return levelUtils.getLevelByID( User.levels, levelId );
+    }
+
     private setMaxDrag() : void {
         this._nextLocationId = this._currentLocationId+1;
         if ( this._nextLocationId >= this._locations.length ) {
@@ -231,7 +270,7 @@ export default class Map extends CContainer {
         this._dragMax = Math.abs(maxLocation.y*this._mapScale );
     }
 
-    private scrollMapToCurrentLevel(animate?: boolean) : void {
+    protected scrollMapToCurrentLevel(animate?: boolean) : void {
         const currentLevelGL : PIXI.Point = this._currentLevel.toGlobal({"x":0,"y":0});
         const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
 
@@ -253,7 +292,7 @@ export default class Map extends CContainer {
 
     }
 
-    private setFences() {
+    protected setFences() {
         for ( let i = 0; i < this._currentLocationId; i++ ) {
             this._locations[i].getFence().setOpened();
         }
@@ -264,12 +303,21 @@ export default class Map extends CContainer {
 
         const currentLevelGL : PIXI.Point = mapLevel.toGlobal({"x":0,"y":0});
         const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
-        this._tooltip.x = currentLevelMapLoc.x;
-        this._tooltip.y = currentLevelMapLoc.y + this._tooltip.properties.y;
-        this._tooltip.show(mapLevel.getLevelData());
+        this._mapLevelTooltip.x = currentLevelMapLoc.x;
+        this._mapLevelTooltip.y = currentLevelMapLoc.y + this._mapLevelTooltip.properties.y;
+        this._mapLevelTooltip.show(mapLevel.getLevelData());
     }
 
-    private addClouds() : void {
+    private showTooltipOnCampaign( campaign:CampaignButton ) {
+
+        const currentLevelGL : PIXI.Point = campaign.toGlobal({"x":0,"y":0});
+        const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
+        this._mapCampaignTooltip.x = currentLevelMapLoc.x;
+        this._mapCampaignTooltip.y = currentLevelMapLoc.y + this._mapLevelTooltip.properties.y;
+        this._mapCampaignTooltip.show(campaign.getCampaignData());
+    }
+
+    protected addClouds() : void {
         if ( this._nextLocationId > this._currentLocationId ) {
             this._clouds.visible = true;
             this._clouds.y = this._locations[this._nextLocationId].y;
@@ -280,12 +328,26 @@ export default class Map extends CContainer {
         this.showTooltipOnLevel(mapLevel);
     }
 
-    private onMapLevelOut(mapLevel:MapLevel):void {
-        this._tooltip.hide();
+    private onMapLevelOut():void {
+        this._mapLevelTooltip.hide();
+        this._mapCampaignTooltip?.hide();
     }
 
     private onMapLevelClick( mapLevel:MapLevel ): void {
-        WindowsController.instance().show(LevelStartWindow, {"levelData": mapLevel.getLevelData(), "userLevelData": mapLevel.getUserLevelData()});
+        WindowsController.instance().show(LevelStartWindow, {"levelData": mapLevel.getLevelData()});
+    }
+
+    private onMapCampaignOver(mapCampaign:CampaignButton):void {
+        this.showTooltipOnCampaign(mapCampaign);
+    }
+
+    private onMapCampaignOut():void {
+        this._mapLevelTooltip.hide();
+        this._mapCampaignTooltip?.hide();
+    }
+
+    private onMapCampaignClick( mapCampaign:CampaignButton ): void {
+        SceneController.instance().gotoCampaign(mapCampaign.getCampaignData());
     }
 
     private getMapLevelById(levelId: number): MapLevel {
@@ -298,9 +360,9 @@ export default class Map extends CContainer {
         return null;
     }
 
-    public setNewLevelsStars(levelsToUpdate: UserLevelModel[]) : void {
-        levelsToUpdate.forEach( (uLevel: UserLevelModel) => {
-           const mapLevel: MapLevel = this.getMapLevelById( uLevel.levelId );
+    public setNewLevelsStars(levelsToUpdate: LevelModel[]) : void {
+        levelsToUpdate.forEach( (uLevel: LevelModel) => {
+           const mapLevel: MapLevel = this.getMapLevelById( uLevel.id );
            if ( mapLevel ) {
                mapLevel.setNewStars();
            }
@@ -358,13 +420,11 @@ export default class Map extends CContainer {
     }
 
     public showArrow(obj: PIXI.DisplayObject): void {
-        this._arrow.visible = true;
-        gsap.killTweensOf(this._arrow.position);
-        const gl: PIXI.Point = obj.toGlobal(new PIXI.Point(0,0));
-        const loc: PIXI.Point = this.toLocal(gl);
-        this._arrow.x = loc.x;
-        this._arrow.y = loc.y + this._arrow.properties.y;
-        gsap.to( this._arrow.position, { duration:0.5, "y": "+=10", yoyo: true, repeat: -1 } );
+        this._mapLevelArrow.show(obj);
+    }
+
+    public showCampaignArrow(obj: PIXI.DisplayObject): void {
+        this._mapCampaignArrow.show(obj);
     }
 
     public setActiveFence(starsCount: number): void {
@@ -380,8 +440,7 @@ export default class Map extends CContainer {
         fence.open();
 
         const mapLevel: MapLevel = this.getMapLevelById(User.level);
-        mapLevel.setLevelData( Levels.getLevelByID( User.level ) );
-        mapLevel.setUserLevelData( User.getUserLevelByID( User.level ) );
+        mapLevel.setLevelData( levelUtils.getLevelByID( User.levels, User.level ) );
         mapLevel.setAvailability(true);
         mapLevel.setActive(true);
         this._locations[User.location].setMarkerToLevel(mapLevel);
@@ -401,5 +460,50 @@ export default class Map extends CContainer {
             this._clouds.alignClouds();
             this._clouds.y = this._locations[this._nextLocationId].y;
         });
+    }
+
+    public initCampaigns(): void {
+        for ( let i: number = 0; i < this._locations.length && i <= User.location; i++ ) {
+            const mapCampaigns: CampaignButton[] = this._locations[i].getMapCampaigns();
+
+            for (let j: number = 0; j < mapCampaigns.length; j++) {
+                const campData: CampaignModel = Campaigns.getCampaignById(mapCampaigns[j].properties.id);
+                mapCampaigns[j].setCampaignData(campData);
+                if ( campData && campData.startLevelId < User.level && campData.isComplete !== 1 ) {
+                    this.showCampaignArrow(mapCampaigns[j]);
+                }
+            }
+        }
+    }
+
+    private getMapCampaignButton(id: number): CampaignButton {
+        for ( let i: number = 0; i < this._locations.length && i <= User.location; i++ ) {
+            const mapCampaigns: CampaignButton[] = this._locations[i].getMapCampaigns();
+            for (let j: number = 0; j < mapCampaigns.length; j++) {
+                const campData: CampaignModel = Campaigns.getCampaignById(mapCampaigns[j].properties.id);
+                if ( campData && campData.id == id ) {
+                    return mapCampaigns[j];
+                }
+            }
+        }
+    }
+
+    public scrollMapToCampaign(campaignId: number, callback: Function) : void {
+        const campaignButton:CampaignButton = this.getMapCampaignButton(campaignId);
+        const keyGL : PIXI.Point = campaignButton.toGlobal({"x":0,"y":0});
+        const keyLoc : PIXI.Point = (this as any).toLocal(keyGL);
+
+        let newY:number = Math.abs(keyLoc.y*this._mapScale)+(this._screenRect.height>>1);
+
+        if ( newY < this._dragMin ) {
+            newY = this._dragMin;
+        } else if ( newY > this._dragMax ) {
+            newY = this._dragMax;
+        }
+
+        gsap.to(this, {duration: 0.5, "y": newY, onComplete: () => callback()});
+
+        this.updateVisibleLocations();
+
     }
 }

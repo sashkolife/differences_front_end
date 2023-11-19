@@ -38,13 +38,15 @@ export default class PicturesProgressBar extends CContainer {
         this._currentPictureFlag.x = this._pictureNumTexts[0].x;
     }
 
-    setCount( num: number ) : void {
+    setCount( num: number, current: number ) : void {
         this._picturesCount = num;
 
         for ( let i : number = 0; i < 10; i++ ) {
             this._pictureNumTexts[i].visible = i < this._pictureNumTexts.length && i < this._picturesCount;
         }
         this._bg.width = this._pictureNumTexts[this._picturesCount-1].x + 30;
+
+        this.setCurrent(current);
     }
 
     setCurrent( num: number ) : void {

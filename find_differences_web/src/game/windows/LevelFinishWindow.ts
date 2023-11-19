@@ -6,9 +6,8 @@ import CBMText from "../../components/CBMText";
 import Localization from "../../data/Localization";
 import EventBus from "../../utils/EventBus";
 import * as events from "../../constants/events";
-import {LevelFinishModel, LevelModel, UserLevelModel} from "../../models/ApiModels";
+import {LevelFinishModel, LevelModel} from "../../models/ApiModels";
 import CContainer from "../../components/CContainer";
-import Levels from "../../data/Levels";
 import ThreeStateStar from "../components/common/ThreeStateStar";
 import {ComponentModel, ContentWindowModel} from "../../models/PropertiesModels";
 import {COMPONENT_THREE_STATE_STAR} from "../../constants/constants";
@@ -90,19 +89,19 @@ export default class LevelFinishWindow extends BaseWindow {
 
     private onPlayAgainClick() : void {
         this.hide();
-        EventBus.publish( events.EVENT_ON_NEXT_LEVEL, this._levelData );
+        EventBus.publish( events.EVENT_ON_LEVEL_START, this._levelData );
     }
 
     private onPlayNextClick() : void {
         this.hide();
-        EventBus.publish( events.EVENT_ON_NEXT_LEVEL, this._nextLevelData );
+        EventBus.publish( events.EVENT_ON_LEVEL_START, this._nextLevelData );
     }
 
     public show(params?: any) {
         super.show(params);
         this._levelData = this._params["levelData"];
         this._levelFinish = this._params["levelFinish"];
-        this._nextLevelData = Levels.getNextLevel(this._levelData);
+        this._nextLevelData = this._params["nextLevelData"];
 
         this.setPlayNextButton();
 
@@ -138,7 +137,7 @@ export default class LevelFinishWindow extends BaseWindow {
     }
 
     private setPlayNextButton(): void {
-        if ( this._levelData.id === this._nextLevelData.id ) {
+        if ( this._levelData.id === this._nextLevelData.id || this._params.levelFinish.newCampaigns ) {
             this._playNextBtn.visible = false;
         }
     }
@@ -146,7 +145,7 @@ export default class LevelFinishWindow extends BaseWindow {
     protected onHideComplete():void {
         super.onHideComplete();
         if ( this._isCloseClick ) {
-            EventBus.publish( events.EVENT_ON_LEVEL_LEAVE );
+            EventBus.publish(events.EVENT_ON_LEVEL_LEAVE);
         }
     }
 

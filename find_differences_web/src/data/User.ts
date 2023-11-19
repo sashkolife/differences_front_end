@@ -1,23 +1,21 @@
 import * as urls from "../constants/urls";
 import {
-    StartModel,
-    PlayedLevelModel,
-    UserLevelModel,
     UserModel,
     ConfigModel,
     LoginModel,
     OpenLocationModel, LevelModel
 } from "../models/ApiModels";
 import Api from "../utils/Api";
-import Levels from "./Levels";
 import Shop from "./Shop";
 import Locations from "./Locations";
 import EventBus from "../utils/EventBus";
 import * as events from "../constants/events";
+import Campaigns from "./Campaigns";
+import * as levelUtils from "../utils/LevelsUtils";
 
 export default class User {
     private static _user : UserModel = {};
-    private static _playedLevel : PlayedLevelModel;
+    private static _levels : LevelModel[] = null;
     private static _config : ConfigModel;
 
     private static _nextLocationInterval: any = null;
@@ -34,11 +32,12 @@ export default class User {
         const loader: Response = await Api.request(urls.URL_LOGIN+(id||""));
         const loginData : LoginModel = await loader.json() as LoginModel;
 
-        Levels.load(loginData.levels);
+        this._levels = loginData.levels;
+
         Shop.load(loginData.shop);
         Locations.load(loginData.locations);
+        Campaigns.load(loginData.campaigns);
 
-        this._playedLevel = loginData.playedLevel;
         this._config = loginData.config;
 
         this.update( loginData.user );
@@ -76,6 +75,10 @@ export default class User {
         return this._user.level;
     }
 
+    public static get levels(): LevelModel[] {
+        return this._levels;
+    }
+
     public static get location() : number {
         return this._user.location;
     }
@@ -105,57 +108,19 @@ export default class User {
     }
 
     public static setCurrentLocation() : void {
-        const level: LevelModel = Levels.getLevelByID(this.level);
+        const level: LevelModel = levelUtils.getLevelByID(this.levels, this.level);
         this._user.location = level.location;
-    }
-
-    public static isLastLocationLevelComplete() : boolean {
-        const locationLevels: LevelModel[] = Levels.getLocationLevels(this._user.location);
-        const lastLevel: LevelModel = locationLevels[locationLevels.length-1];
-        const userLevel: UserLevelModel = this.getUserLevelByID(lastLevel.id);
-        return userLevel?.isComplete === 1;
-    }
-
-    public static getLocationStars(): number {
-        const locationLevels: LevelModel[] = Levels.getLocationLevels(this._user.location);
-        let stars: number = 0;
-        locationLevels.forEach( (locLevel: LevelModel) => {
-            const uLevel: UserLevelModel = this.getUserLevelByID(locLevel.id);
-            if ( uLevel ) {
-                stars += uLevel.stars;
-            }
-        } );
-        return stars;
-    }
-
-    public static getUserLevelByID( levelId: number ) : UserLevelModel {
-        return this._user.levels ? this._user.levels.find( (level: UserLevelModel) => level.levelId === levelId ) : null;
-    }
-
-    public static getUpdatedLevels() : UserLevelModel[] {
-        return this._user.levels ? this._user.levels.filter( (level: UserLevelModel) => level.newStars > 0 ) : null;
-    }
-
-    public static checkAddUserLevel( level: UserLevelModel ) : void {
-        if ( !this.getUserLevelByID(level.levelId) ) {
-            this._user.levels.push(level);
-        }
-    }
-
-    public static updateWinLevel(levelId: number, stars: number ) : void {
-        const userLevel: UserLevelModel = this.getUserLevelByID(levelId);
-        if (!userLevel.stars || stars > userLevel.stars) {
-            userLevel.newStars = stars;
-        }
-        userLevel.isComplete = 1;
     }
 
     public static get playedPictureNum() : number {
         return this._user.playedPictureNum;
     }
 
-    public static get playedLevel() : PlayedLevelModel {
-        return this._playedLevel;
+    public static get playedLevelId() : number {
+        return this._user.playedLevelId;
+    }
+    public static get playedCampaignId() : number {
+        return this._user.playedCampaignId;
     }
 
     public static get penaltySeconds() : number {

@@ -12,7 +12,7 @@ import CBMText from "../../components/CBMText";
 import EventBus, {EventModel} from "../../utils/EventBus";
 import * as events from "../../constants/events";
 import {
-    AddExtraTimeModel,
+    AddExtraTimeModel, CampaignModel,
     HelpDiffModel,
     LevelFindDiffModel,
     LevelModel,
@@ -38,6 +38,10 @@ import CSprite from "../../components/CSprite";
 import {PictureTouchEvent} from "../../models/EventModels";
 import {ParticleAnimation} from "../../animations/ParticleAnimation";
 import CBase from "../../components/CBase";
+import Campaigns from "../../data/Campaigns";
+import * as levelUtils from "../../utils/LevelsUtils";
+import {URL_LEVEL_START} from "../../constants/urls";
+import {debug} from "../../App";
 
 export class SceneLevel extends CContainer {
 
@@ -61,11 +65,10 @@ export class SceneLevel extends CContainer {
     private _particleAddExtraPath: ParticleAnimation;
 
     private _pictureTouchSubscription:EventModel;
-    private _nextLevelSubscription:EventModel;
 
     private _levelData:LevelModel;
 
-    constructor( playedLevelData: PlayedLevelModel ) {
+    constructor() {
 
         super(Properties.get("sceneLevel"));
 
@@ -95,20 +98,54 @@ export class SceneLevel extends CContainer {
         this._particleAddExtraTime = this.getComponentByName("particleAddExtraTime");
         this._addExtraLight = this.getComponentByName("addExtraLight");
 
-        this.setInitialViews(playedLevelData);
-
         this._pictureTouchSubscription = EventBus.subscribe(events.EVENT_ON_FOUND_ON_TOUCH, this.onPictureTouch.bind(this));
-        this._nextLevelSubscription = EventBus.subscribe(events.EVENT_ON_NEXT_LEVEL, this.onNextLevel.bind(this));
+    }
+
+    public startLevel(levelData: LevelModel): void {
+
+        this._levelData = levelData;
+
+        let startLeveUrl: string = URL_LEVEL_START+levelData.id;
+        if (levelData.campaignId > 0) {
+            startLeveUrl += "&campaignId="+levelData.campaignId;
+        }
+
+        const urlParams = new URLSearchParams( window.location.search);
+        const startPictureId: number = parseInt(urlParams.get("startPictureId"));
+        if ( debug && startPictureId ) {
+            startLeveUrl = "&startPictureId="+startPictureId
+        }
+
+        if ( User.penaltySeconds > 0 ) {
+            WindowsController.instance().show(LevelPenaltyWindow, User.user);
+        }
+
+        ScreenBlock.show();
+
+        Api.request(startLeveUrl).then( async ( loader: Response ) => {
+
+            const obj: any = await loader.json();
+            const data:StartModel = obj as StartModel;
+
+            User.update(data.user);
+
+            this.setInitialViews(data.playedLevel);
+
+        } ).catch(()=>{
+            ScreenBlock.hide();
+            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
+        });
     }
 
     private setInitialViews( playedLevelData: PlayedLevelModel ) : void {
+        this._levelText.text = Localization.get(this._levelText.textKey) + " " + this._levelData.id;
 
-        this.setLevelDataViews( playedLevelData.level, playedLevelData.starsTime );
-        this._picturesProgressBar.setCurrent(User.playedPictureNum);
+        this._differencesProgressBar.setCount(this._levelData.differencesCount);
+        this._levelStarsProgressBar.setTimers([this._levelData.time1stars, this._levelData.time2stars, this._levelData.time3stars], playedLevelData.starsTime);
+        this._picturesProgressBar.setCount(this._levelData.picturesCount, User.playedPictureNum);
         this._btnBoosterAddExtraTime.setPrice(User.configExtraTimePrice);
-        this.updateBoosterHelpButton();
 
-        ScreenBlock.show();
+        this.updateBoosterHelpButton();
 
         Resource.loadPicture(playedLevelData.picture, (p:number) => {}).then( () => {
             this._levelPicturesContainer.init( playedLevelData.picture, playedLevelData.foundDifferences, playedLevelData.helpDifferences );
@@ -121,29 +158,12 @@ export class SceneLevel extends CContainer {
             ScreenBlock.hide();
             EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
         });
-
-        if ( User.penaltySeconds > 0 ) {
-            WindowsController.instance().show(LevelPenaltyWindow, User.user);
-        }
-    }
-
-    private setLevelDataViews( levelModel: LevelModel, starsTime: number ) : void {
-
-        this._levelData = levelModel;
-        this._levelText.text = Localization.get(this._levelText.textKey) + " " + this._levelData.id;
-
-        this._differencesProgressBar.setCount(this._levelData.differencesCount);
-        this._picturesProgressBar.setCount(this._levelData.picturesCount);
-        this._levelStarsProgressBar.setTimers([this._levelData.time1stars, this._levelData.time2stars, this._levelData.time3stars], starsTime);
-
     }
 
     destroy(_options?: PIXI.IDestroyOptions | boolean) {
         super.destroy(_options);
         this._pictureTouchSubscription.unsubscribe();
         this._pictureTouchSubscription = null;
-        this._nextLevelSubscription.unsubscribe();
-        this._nextLevelSubscription = null;
     }
 
     public getNewComponentByName( props: any ): any {
@@ -190,7 +210,7 @@ export class SceneLevel extends CContainer {
 
             User.update(data);
         });
-        EventBus.publish( events.EVENT_ON_LEVEL_LEAVE );
+        EventBus.publish(events.EVENT_ON_LEVEL_LEAVE);
     }
 
     private onPictureTouch( data:PictureTouchEvent ): void {
@@ -208,7 +228,7 @@ export class SceneLevel extends CContainer {
                 return;
             }
 
-            const findData:LevelFindDiffModel = obj as LevelFindDiffModel;
+            const findData: LevelFindDiffModel = obj as LevelFindDiffModel;
 
             if ( findData.user && Object.keys(findData.user).length > 0 ) {
                 User.update(findData.user);
@@ -245,42 +265,32 @@ export class SceneLevel extends CContainer {
                     ScreenBlock.hide();
 
                     this._levelStarsProgressBar.stopTimer();
-                    User.updateWinLevel( this._levelData.id, findData.levelFinish.stars );
+                    let nextLevelData: LevelModel = null;
+                    if (findData.campaign) {
+                        const campaign: CampaignModel = Campaigns.getCampaignById(findData.campaign.id);
+                        campaign.isComplete = findData.campaign.isComplete;
+                        campaign.level = findData.campaign.level;
+                        levelUtils.updateWinLevel(campaign.levels, this._levelData.id, findData.levelFinish.stars);
+                        nextLevelData = levelUtils.getNextLevel(campaign.levels, this._levelData);
+                    } else {
+                        levelUtils.updateWinLevel(User.levels, this._levelData.id, findData.levelFinish.stars);
+                        nextLevelData = levelUtils.getNextLevel(User.levels, this._levelData);
+                    }
+                    if ( findData.levelFinish.newCampaigns ) {
+                        Campaigns.initNewCampaigns(findData.levelFinish.newCampaigns);
+                    }
 
-                    WindowsController.instance().show(LevelFinishWindow, {"levelData": this._levelData, "levelFinish": findData.levelFinish});
+                    WindowsController.instance().show(LevelFinishWindow, {
+                        "levelData": this._levelData,
+                        "levelFinish": findData.levelFinish,
+                        "nextLevelData": nextLevelData
+                    });
                 } else {
                     ScreenBlock.hide();
                 }
             });
 
         }).catch(()=>{
-            ScreenBlock.hide();
-            EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
-        });
-    }
-
-    private onNextLevel( levelData: LevelModel) : void {
-        ScreenBlock.show(10000);
-
-        this.setLevelDataViews(levelData, levelData.time1stars);
-        this._picturesProgressBar.setCurrent(1);
-
-        Api.request(urls.URL_LEVEL_START+levelData.id).then( async ( loader: Response ) => {
-            const data:StartModel = await loader.json();
-
-            User.update(data.user);
-            User.checkAddUserLevel({levelId:levelData.id, stars: 0});
-
-            Resource.loadPicture(data.playedLevel.picture, (p: number) => {}).then(() => {
-                this._differencesProgressBar.reset();
-                this._levelPicturesContainer.setNewPicture( data.playedLevel.picture, () => {
-                    ScreenBlock.hide();
-                } );
-            }).catch(()=>{
-                ScreenBlock.hide();
-                EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
-            });
-        } ).catch(()=>{
             ScreenBlock.hide();
             EventBus.publish( events.EVENT_ON_NETWORK_ERROR );
         });
