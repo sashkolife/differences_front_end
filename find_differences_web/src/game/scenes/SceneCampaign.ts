@@ -17,6 +17,8 @@ import KeyReceivedWindow from "../windows/KeyReceivedWindow";
 import CSprite from "../../components/CSprite";
 import * as levelUtils from "../../utils/LevelsUtils";
 import Campaigns from "../../data/Campaigns";
+import TrophyReceivedWindow from "../windows/TrophyReceivedWindow";
+import gsap from "gsap";
 
 export class SceneCampaign extends SceneLobby {
     private _leaveBtn: CButton;
@@ -30,6 +32,8 @@ export class SceneCampaign extends SceneLobby {
         this._leaveBtn = this.getComponentByName("leaveBtn");
         this._leaveBtn.setActionUp( this.onLeaveTouch.bind(this) );
     }
+
+    show(): void {}
 
     public getNewComponentByName( props: any ): any {
 
@@ -57,6 +61,11 @@ export class SceneCampaign extends SceneLobby {
 
     protected startUpdateLobby(): void {
 
+        const locationMaxStars: number = this._campaignData.trophyStars;
+        const locationStars: number = levelUtils.getLocationStars(this._campaignData.levels);
+
+        this._lobbyStarsProgressBar.setStarsMax(locationMaxStars, locationStars);
+
         const levelsToUpdate: LevelModel[] = levelUtils.getUpdatedLevels(this._campaignData.levels);
 
         if ( levelsToUpdate && levelsToUpdate.length > 0 ) {
@@ -69,7 +78,14 @@ export class SceneCampaign extends SceneLobby {
                 const newStarsCount: number = levelUtils.getLocationStars(this._campaignData.levels);
                 this._lobbyStarsProgressBar.setStars(newStarsCount);
 
-                this.onUpdateLobbyComplete();
+                if (locationStars < locationMaxStars && newStarsCount >= locationMaxStars) {
+                    WindowsController.instance().show(TrophyReceivedWindow, {campaignData: this._campaignData, onCloseCallback: () => {
+                            this.onUpdateLobbyComplete();
+                        }
+                    });
+                } else {
+                    this.onUpdateLobbyComplete();
+                }
             }, 1000);
         } else {
             this.onUpdateLobbyComplete();

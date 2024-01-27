@@ -8,4 +8,8 @@ export default class Shop {
         // this._shop = await loader.json() as Array<ShopModel>;
         this._shop = shop;
     }
+
+    public static getShop(): ShopModel[] {
+        return this._shop;
+    }
 }

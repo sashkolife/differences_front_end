@@ -136,6 +136,10 @@ export default class CButton extends PIXI.Sprite {
         }
     }
 
+    setBtnText(text: string):void {
+        this._btnText.text = text;
+    }
+
     setActionUp(fn:Function):void {
         this._actionUp = fn;
     }

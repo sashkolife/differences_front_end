@@ -12,7 +12,6 @@ import {DifferencesColors} from "../../../models/Enums";
 import LevelPicture from "./LevelPicture";
 import * as constants from "../../../constants/constants";
 import {PictureTouchEvent} from "../../../models/EventModels";
-import {EVENT_ON_FOUND_ON_TOUCH} from "../../../constants/events";
 
 export default class LevelPicturesContainer extends CContainer {
 
@@ -84,14 +83,20 @@ export default class LevelPicturesContainer extends CContainer {
             return;
         }
 
-        if ( data.foundIndex >= 0 ) {
-            this._knownDiffsIds.push(data.foundIndex);
-            this.showDiff(data.foundIndex, true);
+        EventBus.publish(events.EVENT_ON_FOUND_ON_TOUCH, data);
+    }
+
+    public findDiff(diffId: number, screenPos: PIXI.Point): void {
+        if (this._knownDiffsIds.indexOf(diffId) !== -1) {
+            return;
         }
 
-        this.playTouch(data.screenPos, data.foundIndex);
+        if (diffId >= 0) {
+            this._knownDiffsIds.push(diffId);
+            this.showDiff(diffId, true);
+        }
 
-        EventBus.publish(events.EVENT_ON_FOUND_ON_TOUCH, data);
+        this.playTouch(screenPos, diffId);
     }
 
     public setNewPicture( data:LevelPictureModel, callback?:Function ) : void {

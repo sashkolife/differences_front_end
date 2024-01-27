@@ -1,12 +1,15 @@
+import * as PIXI from 'pixi.js';
 import CSprite from "../../../components/CSprite";
 import Resource from "../../../data/Resource";
 import * as animate from "@pixi/animate";
 import {LocationBackgroundModel} from "../../../models/PropertiesModels";
+import gsap from "gsap";
 
 export default class LocationBackground extends CSprite {
     properties:LocationBackgroundModel;
 
     private static readonly _scene: animate.Scene = new animate.Scene();
+    private static readonly _texturesCache: any = {};
     private static readonly _animationsData: any = {};
 
     private _isLoading: boolean = false;
@@ -14,7 +17,7 @@ export default class LocationBackground extends CSprite {
 
     private _isAnimationPlayed: boolean = true;
 
-    constructor( props: LocationBackgroundModel ) {
+    constructor( props: LocationBackgroundModel, private _onLoaded: Function) {
         super( props );
     }
 
@@ -24,9 +27,9 @@ export default class LocationBackground extends CSprite {
 
             const animName: string = this.properties.animation;
 
-            const loadMovieClip: Function = () => {
-                if ( LocationBackground._animationsData[animName] ) {
-                    LocationBackground._scene.load(LocationBackground._animationsData[animName], (a: animate.MovieClip) => {
+            const loadMovieClip: Function = (aName: string) => {
+                if ( LocationBackground._animationsData[aName] ) {
+                    LocationBackground._scene.load(LocationBackground._animationsData[aName], (a: animate.MovieClip) => {
                         this._animation = a;
                         this.addChild(this._animation);
                         if ( !this._isAnimationPlayed ) {
@@ -36,23 +39,34 @@ export default class LocationBackground extends CSprite {
                 }
             }
 
-            Resource.loadLocations([this.properties.textureFull], null).then(async () => {
-                this.texture = Resource.getTexture(this.properties.textureFull);
-
+            const loadAnimation: Function = async (aName: string) => {
                 try {
-                    if ( !LocationBackground._animationsData[animName] ) {
-                        const animationData: any = await import("../../../flash/locations/" + animName + ".js");
+                    if ( !LocationBackground._animationsData[aName] ) {
+                        const animationData: any = await import("../../../flash/locations/" + aName + ".js");
                         animationData.default.setup(animate);
-                        LocationBackground._animationsData[animName] = animationData.default;
+                        LocationBackground._animationsData[aName] = animationData.default;
                     }
-                    loadMovieClip();
+                    loadMovieClip(aName);
                 } catch (err) {
                     console.log(err);
                 }
+            };
 
-            }).catch(() => {
-                this._isLoading = false;
-            });
+            const texture: PIXI.Texture = LocationBackground._texturesCache[this.properties.textureFull];
+            if (texture) {
+                this.texture = texture;
+                loadAnimation(animName);
+            } else {
+                Resource.loadList([this.properties.textureFull], null).then(async () => {
+                    LocationBackground._texturesCache[this.properties.textureFull] =
+                        this.texture = Resource.getTexture(this.properties.textureFull);
+                    loadAnimation(animName);
+                    this.alpha = 0;
+                    gsap.to(this, {duration: 1.2, alpha: 1, onComplete: () => this._onLoaded()});
+                }).catch(() => {
+                    this._isLoading = false;
+                });
+            }
         }
         this.play();
     }

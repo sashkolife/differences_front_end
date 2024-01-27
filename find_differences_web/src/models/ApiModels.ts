@@ -29,8 +29,13 @@ export interface LocationModel {
 }
 
 export interface ShopModel {
+    id: number;
     androidProductId: string;
     coins: number;
+    bonusPercentage: number;
+    bonusValue: number;
+    price: number;
+    platformPrice: string;
 }
 
 export interface PlayedLevelModel {
@@ -58,6 +63,12 @@ export interface LoginModel {
 
 export interface OpenLocationModel {
     user: UserModel;
+    error?: Errors;
+}
+
+export interface SellTrophyModel {
+    user: UserModel;
+    campaign: CampaignModel;
     error?: Errors;
 }
 
@@ -152,5 +163,17 @@ export interface CampaignModel {
     startLevelId: number;
     level: number;
     isComplete: number;
+    trophyId: number;
+    trophyCoins: number;
+    trophyHelps: number;
+    trophyStars: number;
+    trophySellCoins: number;
+    isTrophy: number;
+    isSold: number;
     levels: LevelModel[];
+}
+
+export interface TrophyTooltipModel {
+    name: string;
+    description: string;
 }

@@ -137,7 +137,7 @@ export default class LevelFinishWindow extends BaseWindow {
     }
 
     private setPlayNextButton(): void {
-        if ( this._levelData.id === this._nextLevelData.id || this._params.levelFinish.newCampaigns ) {
+        if ( this._levelData.id === this._nextLevelData.id || this._params.levelFinish.newCampaigns || this._params.isCampaignTrophy === true ) {
             this._playNextBtn.visible = false;
         }
     }

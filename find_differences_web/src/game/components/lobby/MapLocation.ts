@@ -11,6 +11,7 @@ import CampaignButton from "./CampaignButton";
 
 export default class MapLocation extends CContainer {
 
+    private _ghost: CSprite;
     private _background: LocationBackground;
     private _activeMarker: CSprite;
     private _mapLevels: Array<MapLevel>;
@@ -20,6 +21,7 @@ export default class MapLocation extends CContainer {
     constructor( props: ContainerModel ) {
         super( props );
 
+        this._ghost = this.getComponentByName("ghost");
         this._background = this.getComponentByName("background");
         this._activeMarker = this.getComponentByName("activeMarker");
 
@@ -43,7 +45,7 @@ export default class MapLocation extends CContainer {
             }
 
             if ( type == constants.COMPONENT_LOCATION_BACKGROUND ) {
-                return new LocationBackground( props );
+                return new LocationBackground( props, this.onBackLoaded.bind(this) );
             }
             if ( type == constants.COMPONENT_MAP_LEVEL ) {
                 return new MapLevel( props );
@@ -87,6 +89,10 @@ export default class MapLocation extends CContainer {
 
     getMapLevelById(levelId: number): MapLevel {
         return this._mapLevels.find( (mLevel:MapLevel) => mLevel.getId() == levelId );
+    }
+
+    private onBackLoaded(): void {
+        this._ghost.visible = false;
     }
 
 }

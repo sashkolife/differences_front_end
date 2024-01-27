@@ -1,13 +1,14 @@
 import {URL_JSON_PROPERTIES} from "../constants/urls";
-import * as PIXI from "pixi.js";
-import * as constants from "../constants/constants";
 
 export default class Properties {
-    private static _data : any = null;
+    private static _data : any = {};
 
     public static async load() {
-        const loader: any = await fetch(URL_JSON_PROPERTIES);
-        this._data = await loader.json();
+        for (let i: number = 0; i < URL_JSON_PROPERTIES.length; i++) {
+            const props: any = URL_JSON_PROPERTIES[i];
+            const loader: any = await fetch(props.src);
+            this._data[props.name] = await loader.json();
+        }
     }
 
     public static get( key: string ) : any {
@@ -47,30 +48,16 @@ export default class Properties {
         return objects;
     }
 
-    public static findByName( name: string, obj?: any ) : any {
-        let fObj : any = null;
-        const findRecursively:Function = ( o: any ) => {
-            if ( o.children ) {
-                for (let i: number = 0; i < o.children.length; i++) {
-                    if ( o.children[i].name == name) {
-                        fObj = o.children[i];
-                        break;
-                    }
-                    if ( !fObj ) {
-                        findRecursively(o.children[i]);
-                    }
-                }
-            } else {
-                for (let key in o) {
-                    if ( !fObj ) {
-                        findRecursively(o[key]);
-                    }
-                }
+    public static findByProperty( property: string, value: string, obj?: any ) : any {
+        if (obj[property] && obj[property] == value) {
+            return obj;
+        } else if (obj.children) {
+            for (let i: number = 0; i < obj.children.length; i++) {
+                const fObj: any = this.findByProperty(property, value, obj.children[i]);
+                if (fObj) return fObj;
             }
         }
 
-        findRecursively( obj||this._data );
-
-        return fObj;
+        return null;
     }
 }

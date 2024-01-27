@@ -1,0 +1,1581 @@
+{
+    "name": "sceneLevel",
+    "children": [
+        {
+            "name": "levelBg",
+            "type": "sprite",
+            "texture": "game_bg",
+            "x": 0,
+            "y": 0,
+            "width": 1280,
+            "height": 720
+        },
+        {
+            "name": "levelPicturesContainer",
+            "type": "levelPicturesContainer",
+            "x": 640,
+            "y": 360,
+            "children": [
+                {
+                    "name": "picture0",
+                    "type": "levelPicture",
+                    "horizontalProps": {
+                        "x": 0,
+                        "y": -150,
+                        "height": 295,
+                        "width": 0,
+                        "hideX": 0,
+                        "hideY": -800
+                    },
+                    "verticalProps": {
+                        "x": -215,
+                        "y": 0,
+                        "height": 0,
+                        "width": 420,
+                        "hideX": -1000,
+                        "hideY": 0
+                    },
+                    "children": [
+                        {
+                            "name": "picture",
+                            "type": "sprite",
+                            "texture": null
+                        },
+                        {
+                            "name": "border",
+                            "type": "slice_9",
+                            "texture": "pict_border",
+                            "leftWidth": 15,
+                            "rightWidth": 15,
+                            "topHeight": 15,
+                            "bottomHeight": 15,
+                            "x": -5,
+                            "y": -5,
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "name": "picture1",
+                    "type": "levelPicture",
+                    "horizontalProps": {
+                        "x": 0,
+                        "y": 153,
+                        "height": 295,
+                        "width": 0,
+                        "hideX": 0,
+                        "hideY": 800
+                    },
+                    "verticalProps": {
+                        "x": 215,
+                        "y": 0,
+                        "height": 0,
+                        "width": 420,
+                        "hideX": 1000,
+                        "hideY": 0
+                    },
+                    "children": [
+                        {
+                            "name": "picture",
+                            "type": "sprite",
+                            "texture": null
+                        },
+                        {
+                            "name": "border",
+                            "type": "slice_9",
+                            "texture": "pict_border",
+                            "leftWidth": 15,
+                            "rightWidth": 15,
+                            "topHeight": 15,
+                            "bottomHeight": 15,
+                            "x": -5,
+                            "y": -5,
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "name": "picture0next",
+                    "type": "levelPicture",
+                    "visible": false,
+                    "horizontalProps": {
+                        "x": 0,
+                        "y": -150,
+                        "height": 295,
+                        "width": 0,
+                        "hideX": 0,
+                        "hideY": -800
+                    },
+                    "verticalProps": {
+                        "x": -215,
+                        "y": 0,
+                        "height": 0,
+                        "width": 420,
+                        "hideX": -1000,
+                        "hideY": 0
+                    },
+                    "children": [
+                        {
+                            "name": "picture",
+                            "type": "sprite",
+                            "texture": null
+                        },
+                        {
+                            "name": "border",
+                            "type": "slice_9",
+                            "texture": "pict_border",
+                            "leftWidth": 15,
+                            "rightWidth": 15,
+                            "topHeight": 15,
+                            "bottomHeight": 15,
+                            "x": -5,
+                            "y": -5,
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "name": "picture1next",
+                    "type": "levelPicture",
+                    "visible": false,
+                    "horizontalProps": {
+                        "x": 0,
+                        "y": 153,
+                        "height": 295,
+                        "width": 0,
+                        "hideX": 0,
+                        "hideY": 800
+                    },
+                    "verticalProps": {
+                        "x": 215,
+                        "y": 0,
+                        "height": 0,
+                        "width": 420,
+                        "hideX": 1000,
+                        "hideY": 0
+                    },
+                    "children": [
+                        {
+                            "name": "picture",
+                            "type": "sprite",
+                            "texture": null
+                        },
+                        {
+                            "name": "border",
+                            "type": "slice_9",
+                            "texture": "pict_border",
+                            "leftWidth": 15,
+                            "rightWidth": 15,
+                            "topHeight": 15,
+                            "bottomHeight": 15,
+                            "x": -5,
+                            "y": -5,
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "name": "missImage",
+                    "type": "sprite",
+                    "texture": "missclick",
+                    "visible": false,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "scale": {
+                        "x": 0.7,
+                        "y": 0.7
+                    }
+                },
+                {
+                    "name": "hitImage",
+                    "type": "sprite",
+                    "texture": "hitclick",
+                    "visible": false,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.7
+                    }
+                }
+            ]
+        },
+        {
+            "name": "topBar",
+            "type": "slice_9",
+            "texture": "lobby_top_line",
+            "leftWidth": 80,
+            "rightWidth": 800,
+            "topHeight": 0,
+            "bottomHeight": 0,
+            "width": 1280,
+            "height": 90
+        },
+        {
+            "type": "button",
+            "name": "leaveBtn",
+            "states": {
+                "normal": {
+                    "texture": "btn_back_normal"
+                },
+                "over": {
+                    "texture": "btn_back_over"
+                },
+                "down": {
+                    "texture": "btn_back_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 0.7,
+                "y": 0.7
+            },
+            "x": 50,
+            "y": 27
+        },
+        {
+            "name": "levelTextBg",
+            "type": "sprite",
+            "texture": "ingame_tape",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 0.7,
+                "y": 0.7
+            },
+            "x": 200,
+            "y": 23
+        },
+        {
+            "type": "bm_text",
+            "name": "levelText",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "textKey": "level_current_level",
+            "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 26
+            },
+            "x": 200,
+            "y": 20
+        },
+        {
+            "type": "levelStarsProgressBar",
+            "name": "levelStarsProgressBar",
+            "x": 500,
+            "y": 19,
+            "children": [
+                {
+                    "name": "bg",
+                    "type": "slice_9",
+                    "texture": "lobby_progress_bg",
+                    "leftWidth": 30,
+                    "rightWidth": 30,
+                    "topHeight": 0,
+                    "bottomHeight": 0,
+                    "width": 320,
+                    "height": 28,
+                    "y": -14
+                },
+                {
+                    "type": "container",
+                    "name": "maskContainer",
+                    "mask": "progressMask",
+                    "children": [
+                        {
+                            "type": "graphics",
+                            "name": "progressMask",
+                            "figure": {
+                                "fillColor": "0x000000",
+                                "roundRect": {
+                                    "x": 0,
+                                    "y": -14,
+                                    "width": 322,
+                                    "height": 28,
+                                    "radius": 14
+                                }
+                            }
+                        },
+                        {
+                            "name": "progressLine",
+                            "type": "slice_9",
+                            "texture": "lobby_exp_progress_line",
+                            "leftWidth": 30,
+                            "rightWidth": 30,
+                            "topHeight": 0,
+                            "bottomHeight": 0,
+                            "width": 320,
+                            "height": 26,
+                            "y": -14,
+                            "x": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "three_state_star",
+                    "name": "star0",
+                    "scale": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": 6,
+                    "children": [
+                        {
+                            "type": "sprite",
+                            "name": "starEmpty",
+                            "texture": "star_empty",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starFull",
+                            "texture": "star_full_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starBlick",
+                            "texture": "star_fill_blick",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starLight",
+                            "texture": "star_light_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "type": "three_state_star",
+                    "name": "star1",
+                    "scale": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "position": {
+                        "x": 72,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "type": "sprite",
+                            "name": "starEmpty",
+                            "texture": "star_empty",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starFull",
+                            "texture": "star_full_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starBlick",
+                            "texture": "star_fill_blick",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starLight",
+                            "texture": "star_light_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "type": "three_state_star",
+                    "name": "star2",
+                    "scale": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "position": {
+                        "x": 145,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "type": "sprite",
+                            "name": "starEmpty",
+                            "texture": "star_empty",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starFull",
+                            "texture": "star_full_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starBlick",
+                            "texture": "star_fill_blick",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starLight",
+                            "texture": "star_light_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "type": "bm_text",
+                    "name": "levelTimerText",
+                    "anchor": {
+                        "x": 0,
+                        "y": 0.5
+                    },
+                    "textKey": "00:00",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 22,
+                        "align": "left"
+                    },
+                    "x": -90,
+                    "y": 0
+                }
+            ]
+        },
+        {
+            "type": "balance_bar",
+            "name": "balanceBar",
+            "x": 1080,
+            "y": 19,
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "bg",
+                    "texture": "lobby_progress_bg",
+                    "width": 120,
+                    "height": 30,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "coinImg",
+                    "texture": "lobby6",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": -60,
+                    "scale": {
+                        "x": 0.9,
+                        "y": 0.9
+                    }
+                },
+                {
+                    "type": "button",
+                    "name": "plusButton",
+                    "states": {
+                        "normal": {
+                            "texture": "lobby_btn_plus_normal"
+                        },
+                        "over": {
+                            "texture": "lobby_btn_plus_over"
+                        },
+                        "down": {
+                            "texture": "lobby_btn_plus_down"
+                        }
+                    },
+                    "enabled": true,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": 60
+                },
+                {
+                    "type": "bm_text",
+                    "name": "balanceValue",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "center"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "name": "soundOnBtn",
+            "states": {
+                "normal": {
+                    "texture": "lobby_sound_normal"
+                },
+                "over": {
+                    "texture": "lobby_sound_over"
+                },
+                "down": {
+                    "texture": "lobby_sound_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": 1200,
+            "y": 19
+        },
+        {
+            "type": "button",
+            "name": "soundOffBtn",
+            "states": {
+                "normal": {
+                    "texture": "lobby_sound_off_normal"
+                },
+                "over": {
+                    "texture": "lobby_sound_off_over"
+                },
+                "down": {
+                    "texture": "lobby_sound_off_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": 1200,
+            "y": 19
+        },
+        {
+            "name": "bottomBg",
+            "type": "slice_9",
+            "texture": "level_bottom_bar",
+            "leftWidth": 110,
+            "rightWidth": 110,
+            "topHeight": 0,
+            "bottomHeight": 0,
+            "width": 1280,
+            "y": 660
+        },
+        {
+            "type": "picturesProgressBar",
+            "name": "picturesProgressBar",
+            "x": 100,
+            "y": 688,
+            "children": [
+                {
+                    "type": "slice_9",
+                    "name": "bg",
+                    "texture": "ingame_pictures_change_bg",
+                    "leftWidth": 120,
+                    "rightWidth": 40,
+                    "topHeight": 0,
+                    "bottomHeight": 0,
+                    "width": 430,
+                    "height": 30
+                },
+                {
+                    "type": "bm_text",
+                    "name": "picturesText",
+                    "anchor": {
+                        "x": 0,
+                        "y": 0.5
+                    },
+                    "textKey": "level_picture",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 20,
+                        "align": "left"
+                    },
+                    "x": 20,
+                    "y": 14
+                },
+                {
+                    "name": "currentPictureFlag",
+                    "type": "sprite",
+                    "texture": "ingame_pictures_change_flag",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "scale": {
+                        "x": 0.8,
+                        "y": 0.8
+                    },
+                    "x": 120,
+                    "y": 15
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum0Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "1",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 120,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum1Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "2",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 150,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum2Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "3",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 180,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum3Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "4",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 210,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum4Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "5",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 240,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum5Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "6",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 270,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum6Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "7",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 300,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum7Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "8",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 330,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum8Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "9",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 360,
+                    "y": 14,
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "pictureNum9Text",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "textKey": "10",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "left"
+                    },
+                    "x": 390,
+                    "y": 14,
+                    "visible": false
+                }
+            ]
+        },
+        {
+            "type": "differencesProgressBar",
+            "name": "differencesProgressBar",
+            "x": 230,
+            "y": 700,
+            "children": [
+                {
+                    "type": "bm_text",
+                    "name": "differencesText",
+                    "anchor": {
+                        "x": 0,
+                        "y": 0.5
+                    },
+                    "textKey": "level_differences",
+                    "style": {
+                        "fontName": "Russia_brown",
+                        "fontSize": 20,
+                        "align": "left"
+                    },
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "name": "progressDiff0",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 140,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff1",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 170,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff2",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 200,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff3",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 230,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff4",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 260,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff5",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 290,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff6",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 320,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff7",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 350,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff8",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 380,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "name": "progressDiff9",
+                    "type": "level_progress_differences",
+                    "scale": {
+                        "x": 0.65,
+                        "y": 0.65
+                    },
+                    "position": {
+                        "x": 410,
+                        "y": 0
+                    },
+                    "children": [
+                        {
+                            "name": "particleSolve",
+                            "type": "particle_animation",
+                            "resourceName": "./res/pixi/particles/particle_green_win.json",
+                            "autoplay": false
+                        },
+                        {
+                            "name": "none",
+                            "type": "sprite",
+                            "texture": "rect_yellow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "name": "solve",
+                            "type": "sprite",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "solveLight",
+                            "texture": "rect_green",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ],
+                    "visible": false
+                },
+                {
+                    "type": "bm_text",
+                    "name": "differencesCountText",
+                    "anchor": {
+                        "x": 0,
+                        "y": 0.5
+                    },
+                    "textKey": "0",
+                    "style": {
+                        "fontName": "Russia_brown",
+                        "fontSize": 20,
+                        "align": "left"
+                    },
+                    "x": 500,
+                    "y": 0
+                }
+            ]
+        },
+        {
+            "type": "sprite",
+            "name": "addExtraLight",
+            "texture": "dot",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 5.5,
+                "y": 5.5
+            },
+            "position": {
+                "x": 100,
+                "y": 160
+            },
+            "visible": false
+        },
+        {
+            "name": "particleAddExtraTime",
+            "type": "particle_animation",
+            "resourceName": "./res/pixi/particles/particle_wheel_blue.json",
+            "position": {
+                "x": 100,
+                "y": 170
+            },
+            "autoplay": false
+        },
+        {
+            "name": "particleAddExtraPath",
+            "type": "particle_animation",
+            "resourceName": "./res/pixi/particles/particle_blue.json",
+            "position": {
+                "x": 100,
+                "y": 170
+            },
+            "autoplay": false
+        },
+        {
+            "name": "btnBoosterAddExtraTime",
+            "type": "button_pay",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "position": {
+                "x": 100,
+                "y": 170
+            },
+            "enabled": true,
+            "states": {
+                "normal": {
+                    "texture": "btn_booster_time_normal"
+                },
+                "over": {
+                    "texture": "btn_booster_time_over"
+                },
+                "down": {
+                    "texture": "btn_booster_time_down"
+                }
+            },
+            "priceImage": {
+                "name": "priceImage",
+                "type": "sprite",
+                "texture": "lobby6",
+                "anchor": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.7
+                },
+                "position": {
+                    "x": -18,
+                    "y": 41
+                }
+            },
+            "priceText": {
+                "type": "bm_text",
+                "name": "priceText",
+                "textKey": "20",
+                "style": {
+                    "fontName": "Astachov_green",
+                    "align": "left",
+                    "fontSize": 20
+                },
+                "anchor": {
+                    "x": 0,
+                    "y": 0.5
+                },
+                "position": {
+                    "x": 0,
+                    "y": 28
+                }
+            }
+        },
+        {
+            "type": "sprite",
+            "name": "useHelpLight",
+            "texture": "dot",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 5.5,
+                "y": 5.5
+            },
+            "position": {
+                "x": 1180,
+                "y": 160
+            },
+            "visible": false
+        },
+        {
+            "name": "particleUseHelpWheel",
+            "type": "particle_animation",
+            "resourceName": "./res/pixi/particles/particle_wheel_blue.json",
+            "position": {
+                "x": 1180,
+                "y": 170
+            },
+            "autoplay": false
+        },
+        {
+            "name": "particleUseHelpPath0",
+            "type": "particle_animation",
+            "resourceName": "./res/pixi/particles/particle_blue.json",
+            "position": {
+                "x": 1180,
+                "y": 170
+            },
+            "autoplay": false
+        },
+        {
+            "name": "particleUseHelpPath1",
+            "type": "particle_animation",
+            "resourceName": "./res/pixi/particles/particle_blue.json",
+            "position": {
+                "x": 1180,
+                "y": 170
+            },
+            "autoplay": false
+        },
+        {
+            "name": "btnBoosterUseHelp",
+            "type": "button_pay",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "position": {
+                "x": 1180,
+                "y": 170
+            },
+            "enabled": true,
+            "states": {
+                "normal": {
+                    "texture": "btn_booster_help_normal"
+                },
+                "over": {
+                    "texture": "btn_booster_help_over"
+                },
+                "down": {
+                    "texture": "btn_booster_help_down"
+                }
+            },
+            "priceImage": {
+                "name": "priceImage",
+                "type": "sprite",
+                "texture": "lobby6",
+                "anchor": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.7
+                },
+                "position": {
+                    "x": -18,
+                    "y": 41
+                }
+            },
+            "priceText": {
+                "type": "bm_text",
+                "name": "priceText",
+                "textKey": "30",
+                "style": {
+                    "fontName": "Astachov_green",
+                    "align": "left",
+                    "fontSize": 20
+                },
+                "anchor": {
+                    "x": 0,
+                    "y": 0.5
+                },
+                "position": {
+                    "x": 0,
+                    "y": 28
+                }
+            }
+        }
+    ]
+}

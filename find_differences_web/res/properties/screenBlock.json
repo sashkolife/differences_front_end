@@ -1,0 +1,66 @@
+{
+    "name": "screenBlock",
+    "type": "screenBlock",
+    "children": [
+        {
+            "name": "background",
+            "type": "sprite",
+            "texture": "win_bottom",
+            "width": 1280,
+            "height": 720
+        },
+        {
+            "name": "spinner",
+            "type": "container",
+            "x": 640,
+            "y": 360,
+            "children": [
+                {
+                    "name": "box0",
+                    "type": "sprite",
+                    "texture": "dialog_text_box",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "scale": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "x": -50,
+                    "alpha": 0.2
+                },
+                {
+                    "name": "box1",
+                    "type": "sprite",
+                    "texture": "dialog_text_box",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "scale": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "x": 0,
+                    "alpha": 0.2
+                },
+                {
+                    "name": "box2",
+                    "type": "sprite",
+                    "texture": "dialog_text_box",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "scale": {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    "x": 50,
+                    "alpha": 0.2
+                }
+            ]
+        }
+    ]
+}

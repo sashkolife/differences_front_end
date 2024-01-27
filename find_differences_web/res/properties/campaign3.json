@@ -1,0 +1,1505 @@
+{
+    "id": 3,
+    "name": "campaign3",
+    "children": [
+        {
+            "name": "campaign_map",
+            "type": "map",
+            "locationHeight": 1099,
+            "locationWidth": 2048,
+            "children": [
+                {
+                    "name": "location_0",
+                    "type": "location",
+                    "id": 0,
+                    "y": -1099,
+                    "visible": false,
+                    "children": [
+                        {
+                            "name": "ghost",
+                            "type": "sprite",
+                            "texture": "campaign_iceland_grotto_mini",
+                            "x": -2,
+                            "y": -2,
+                            "height": 1103,
+                            "width": 2052
+                        },
+                        {
+                            "name": "background",
+                            "type": "location_background",
+                            "textureFull": "campaign_iceland_grotto",
+                            "texture": null,
+                            "animation": "campaign_iceland_grotto",
+                            "height": 1099,
+                            "width": 2048
+                        },
+                        {
+                            "name": "activeMarker",
+                            "type": "sprite",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "texture": "active_level",
+                            "visible": false
+                        },
+                        {
+                            "name": "mapLevel1",
+                            "type": "map_level",
+                            "id": 1,
+                            "x": 1255,
+                            "y": 306,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "1",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "mapLevel2",
+                            "type": "map_level",
+                            "id": 2,
+                            "x": 1192,
+                            "y": 475,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "2",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "mapLevel3",
+                            "type": "map_level",
+                            "id": 3,
+                            "x": 1000,
+                            "y": 550,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "3",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "mapLevel4",
+                            "type": "map_level",
+                            "id": 4,
+                            "x": 842,
+                            "y": 659,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "4",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "mapLevel5",
+                            "type": "map_level",
+                            "id": 5,
+                            "x": 681,
+                            "y": 733,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "5",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "mapLevel6",
+                            "type": "map_level",
+                            "id": 6,
+                            "x": 551,
+                            "y": 872,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "6",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        },
+                        {
+                            "name": "mapLevel7",
+                            "type": "map_level",
+                            "id": 7,
+                            "x": 701,
+                            "y": 974,
+                            "children": [
+                                {
+                                    "name": "availableMarker",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "type": "button",
+                                    "states": {
+                                        "normal": {
+                                            "texture": "cup_best4"
+                                        },
+                                        "over": {
+                                            "texture": "map_level_over"
+                                        },
+                                        "down": {
+                                            "texture": "map_level_down"
+                                        },
+                                        "disable": {
+                                            "texture": "cup_disable"
+                                        }
+                                    },
+                                    "enabled": false,
+                                    "state": "disable"
+                                },
+                                {
+                                    "name": "numBg",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "sub",
+                                    "textureFull": "num_bg",
+                                    "y": 55
+                                },
+                                {
+                                    "name": "numLabel",
+                                    "type": "bm_text",
+                                    "textKey": "7",
+                                    "style": {
+                                        "fontName": "Russia_cups_nums",
+                                        "align": "center"
+                                    },
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "y": 58
+                                },
+                                {
+                                    "name": "ribbon",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "texture": "lenta",
+                                    "y": -60,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "particle0",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": -31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle1",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 0,
+                                        "y": -68
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "particle2",
+                                    "type": "particle_animation",
+                                    "resourceName": "./res/pixi/particles/win_lobby_star.json",
+                                    "position": {
+                                        "x": 31,
+                                        "y": -65
+                                    },
+                                    "autoplay": false
+                                },
+                                {
+                                    "name": "star0",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_1",
+                                    "y": -65,
+                                    "x": -31,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star1",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.8,
+                                        "y": 0.8
+                                    },
+                                    "texture": "star_2",
+                                    "y": -68,
+                                    "x": 0,
+                                    "visible": false
+                                },
+                                {
+                                    "name": "star2",
+                                    "type": "sprite",
+                                    "anchor": {
+                                        "x": 0.5,
+                                        "y": 0.5
+                                    },
+                                    "scale": {
+                                        "x": 0.9,
+                                        "y": 0.9
+                                    },
+                                    "texture": "star_3",
+                                    "y": -65,
+                                    "x": 31,
+                                    "visible": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "mapLevelTooltip",
+                    "type": "map_level_tooltip",
+                    "visible": false,
+                    "children": [
+                        {
+                            "name": "background",
+                            "type": "sprite",
+                            "texture": "map_user_bg",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 1
+                            }
+                        },
+                        {
+                            "name": "levelNumLabel",
+                            "type": "text",
+                            "textKey": "lobby_level",
+                            "style": {
+                                "fontFamily": "MyriadPro-Regular",
+                                "fontSize": 20,
+                                "fill": "0x005D6C",
+                                "align": "center"
+                            },
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "y": -103
+                        },
+                        {
+                            "name": "picturesLabel",
+                            "type": "text",
+                            "textKey": "lobby_pictures",
+                            "style": {
+                                "fontFamily": "MyriadPro-Regular",
+                                "fontSize": 18,
+                                "fill": "0x005D6C",
+                                "align": "left"
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0.5
+                            },
+                            "x": -50,
+                            "y": -70
+                        },
+                        {
+                            "name": "picturesNumLabel",
+                            "type": "text",
+                            "textKey": "0",
+                            "style": {
+                                "fontFamily": "MyriadPro-Regular",
+                                "fontSize": 18,
+                                "fill": "0xffffff",
+                                "align": "center"
+                            },
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "x": 45,
+                            "y": -70
+                        },
+                        {
+                            "name": "differencesLabel",
+                            "type": "text",
+                            "textKey": "lobby_differences",
+                            "style": {
+                                "fontFamily": "MyriadPro-Regular",
+                                "fontSize": 18,
+                                "fill": "0x005D6C",
+                                "align": "left"
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0.5
+                            },
+                            "x": -50,
+                            "y": -40
+                        },
+                        {
+                            "name": "differencesNumLabel",
+                            "type": "text",
+                            "textKey": "0",
+                            "style": {
+                                "fontFamily": "MyriadPro-Regular",
+                                "fontSize": 18,
+                                "fill": "0xffffff",
+                                "align": "center"
+                            },
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "x": 45,
+                            "y": -40
+                        }
+                    ],
+                    "y": -105
+                },
+                {
+                    "name": "mapLevelArrow",
+                    "type": "arrow_animation",
+                    "y": -100,
+                    "children": [
+                        {
+                            "type": "sprite",
+                            "name": "arrow",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "texture": "arrow",
+                            "visible": false
+                        }
+                    ]
+                }
+            ],
+            "y": 720
+        },
+        {
+            "name": "topBar",
+            "type": "slice_9",
+            "texture": "lobby_top_line",
+            "leftWidth": 80,
+            "rightWidth": 800,
+            "topHeight": 0,
+            "bottomHeight": 0,
+            "width": 1280,
+            "height": 90
+        },
+        {
+            "type": "button",
+            "name": "leaveBtn",
+            "states": {
+                "normal": {
+                    "texture": "btn_back_normal"
+                },
+                "over": {
+                    "texture": "btn_back_over"
+                },
+                "down": {
+                    "texture": "btn_back_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 0.7,
+                "y": 0.7
+            },
+            "x": 50,
+            "y": 27
+        },
+        {
+            "name": "mapNameTextBg",
+            "type": "sprite",
+            "texture": "win_header_bg",
+            "anchor": {"x": 0.5, "y":  0.5},
+            "scale": {
+                "x": 0.8,
+                "y": 0.8
+            },
+            "x": 270,
+            "y": 30
+        },
+        {
+            "type": "bm_text",
+            "name": "mapNameText",
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "textKey": "campaign_name_3",
+            "style": {
+                "fontName": "Astachov_blue_shadow",
+                "align": "center",
+                "fontSize": 24
+            },
+            "x": 270,
+            "y": 16
+        },
+        {
+            "type": "lobbyStarsProgressBar",
+            "name": "lobbyStarsProgressBar",
+            "x": 500,
+            "y": 19,
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "bg",
+                    "texture": "lobby_progress_bg",
+                    "anchor": {
+                        "x": 0,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "container",
+                    "name": "maskContainer",
+                    "mask": "progressMask",
+                    "children": [
+                        {
+                            "type": "graphics",
+                            "name": "progressMask",
+                            "figure": {
+                                "fillColor": "0x000000",
+                                "rect": {
+                                    "x": 0,
+                                    "y": -14,
+                                    "width": 263,
+                                    "height": 28
+                                }
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "progressLine",
+                            "texture": "lobby_exp_progress_line",
+                            "anchor": {
+                                "x": 1,
+                                "y": 0.5
+                            },
+                            "y": -1,
+                            "x": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "three_state_star",
+                    "name": "star",
+                    "scale": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "children": [
+                        {
+                            "type": "sprite",
+                            "name": "starEmpty",
+                            "texture": "star_empty",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starFull",
+                            "texture": "star_full_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            }
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starBlick",
+                            "texture": "star_fill_blick",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        },
+                        {
+                            "type": "sprite",
+                            "name": "starLight",
+                            "texture": "star_light_1",
+                            "anchor": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "visible": false
+                        }
+                    ]
+                },
+                {
+                    "type": "bm_text",
+                    "name": "starsValue",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "center"
+                    },
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "position": {
+                        "x": 125,
+                        "y": 0
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "trophy",
+                    "texture": "3_evergreen_flower",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "scale": {
+                        "x": 0.1,
+                        "y": 0.1
+                    },
+                    "position": {
+                        "x": 245,
+                        "y": 0
+                    }
+                }
+            ]
+        },
+        {
+            "type": "balance_bar",
+            "name": "balanceBar",
+            "x": 1080,
+            "y": 19,
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "bg",
+                    "texture": "lobby_progress_bg",
+                    "width": 120,
+                    "height": 30,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "coinImg",
+                    "texture": "lobby6",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": -60,
+                    "scale": {
+                        "x": 0.9,
+                        "y": 0.9
+                    }
+                },
+                {
+                    "type": "button",
+                    "name": "plusButton",
+                    "states": {
+                        "normal": {
+                            "texture": "lobby_btn_plus_normal"
+                        },
+                        "over": {
+                            "texture": "lobby_btn_plus_over"
+                        },
+                        "down": {
+                            "texture": "lobby_btn_plus_down"
+                        }
+                    },
+                    "enabled": true,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": 60
+                },
+                {
+                    "type": "bm_text",
+                    "name": "balanceValue",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "center"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "name": "soundOnBtn",
+            "states": {
+                "normal": {
+                    "texture": "lobby_sound_normal"
+                },
+                "over": {
+                    "texture": "lobby_sound_over"
+                },
+                "down": {
+                    "texture": "lobby_sound_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": 1200,
+            "y": 19
+        },
+        {
+            "type": "button",
+            "name": "soundOffBtn",
+            "states": {
+                "normal": {
+                    "texture": "lobby_sound_off_normal"
+                },
+                "over": {
+                    "texture": "lobby_sound_off_over"
+                },
+                "down": {
+                    "texture": "lobby_sound_off_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": 1200,
+            "y": 19
+        }
+    ]
+}

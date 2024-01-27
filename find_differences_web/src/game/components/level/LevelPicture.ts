@@ -202,7 +202,7 @@ export default class LevelPicture extends CContainer {
 
         let foundIndex:number = this.getDifferenceIDByPos(touchPos);
 
-        EventBus.publish(events.EVENT_ON_PICTURE_TOUCH, {touchPos:touchPos, screenPos: e.screen, foundIndex:foundIndex});
+        EventBus.publish(events.EVENT_ON_PICTURE_TOUCH, {touchPos:touchPos.clone(), screenPos: e.screen.clone(), foundIndex:foundIndex});
     }
 
     private getDifferenceIDByPos( pos: PIXI.Point ): number {

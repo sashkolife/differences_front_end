@@ -8,6 +8,7 @@ import {ContainerModel} from "../../../models/PropertiesModels";
 import EventBus, {EventModel} from "../../../utils/EventBus";
 import * as events from "../../../constants/events";
 import {BalanceUpdateEvent} from "../../../models/EventModels";
+import ShopWindow from "../../windows/ShopWindow";
 
 export default class BalanceBar extends CContainer {
     private _balanceValue: CBMText;
@@ -27,7 +28,7 @@ export default class BalanceBar extends CContainer {
     }
 
     private onPlusClick() : void {
-        //WindowsController.instance().show();
+        WindowsController.instance().show(ShopWindow);
     }
 
     private onBalanceUpdate( event:BalanceUpdateEvent ) : void {

@@ -1,0 +1,792 @@
+{
+    "name": "sceneTrophyRoom",
+    "type": "sceneTrophyRoom",
+    "children": [
+        {
+            "name": "background",
+            "type": "sprite",
+            "textureFull": "trophy_room",
+            "width": 1280,
+            "height": 720
+        },
+        {
+            "name": "trophy1",
+            "id": 1,
+            "type": "trophy",
+            "position": {
+                "x": 550,
+                "y": 280
+            },
+            "scale": {"x": 0.5, "y": 0.5},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "1_magnifying_glass_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "1_magnifying_glass",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy2",
+            "id": 2,
+            "type": "trophy",
+            "position": {
+                "x": 200,
+                "y": 420
+            },
+            "scale": {"x": 0.44, "y": 0.44},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "2_glowing_shell_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "2_glowing_shell",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy3",
+            "id": 3,
+            "type": "trophy",
+            "position": {
+                "x": 460,
+                "y": 390
+            },
+            "scale": {"x": 0.4, "y": 0.4},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "3_evergreen_flower_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "3_evergreen_flower",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy4",
+            "id": 4,
+            "type": "trophy",
+            "position": {
+                "x": 920,
+                "y": 490
+            },
+            "scale": {"x": 0.5, "y": 0.5},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "4_ancient_crystal_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "4_ancient_crystal",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy5",
+            "id": 5,
+            "type": "trophy",
+            "position": {
+                "x": 550,
+                "y": 493
+            },
+            "scale": {"x": 0.5, "y": 0.5},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "5_golden_bunch_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "5_golden_bunch",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy6",
+            "id": 6,
+            "type": "trophy",
+            "position": {
+                "x": 1180,
+                "y": 220
+            },
+            "scale": {"x": 0.5, "y": 0.5},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "6_figurine_basta_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "6_figurine_basta",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy7",
+            "id": 7,
+            "type": "trophy",
+            "position": {
+                "x": 650,
+                "y": 390
+            },
+            "scale": {"x": 0.4, "y": 0.4},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "7_iron_fish_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "7_iron_fish",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy8",
+            "id": 8,
+            "type": "trophy",
+            "position": {
+                "x": 1130,
+                "y": 630
+            },
+            "scale": {"x": 0.4, "y": 0.4},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "8_picture_a_cat_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "8_picture_a_cat",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy9",
+            "id": 9,
+            "type": "trophy",
+            "position": {
+                "x": 600,
+                "y": 610
+            },
+            "scale": {"x": 0.4, "y": 0.4},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "9_giant_strawberrie_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "9_giant_strawberrie",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "trophy10",
+            "id": 10,
+            "type": "trophy",
+            "position": {
+                "x": 1150,
+                "y": 365
+            },
+            "scale": {"x": 0.5, "y": 0.5},
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "notReceived",
+                    "texture": "10_lost_diary_preview",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "received",
+                    "texture": "10_lost_diary",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible":  false
+                },
+                {
+                    "type": "sprite",
+                    "name": "sold",
+                    "texture": "sold",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "visible": false
+                },
+                {
+                    "name": "button",
+                    "type": "button",
+                    "states": {
+                        "normal": {
+                            "texture": "texture_white"
+                        }
+                    },
+                    "enabled": true,
+                    "alpha": 0.01,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "width": 200,
+                    "height": 200
+                }
+            ]
+        },
+        {
+            "name": "topBar",
+            "type": "slice_9",
+            "texture": "lobby_top_line",
+            "leftWidth": 80,
+            "rightWidth": 800,
+            "topHeight": 0,
+            "bottomHeight": 0,
+            "width": 1280,
+            "height": 90
+        },
+        {
+            "type": "button",
+            "name": "leaveBtn",
+            "states": {
+                "normal": {
+                    "texture": "btn_back_normal"
+                },
+                "over": {
+                    "texture": "btn_back_over"
+                },
+                "down": {
+                    "texture": "btn_back_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "scale": {
+                "x": 0.7,
+                "y": 0.7
+            },
+            "x": 50,
+            "y": 27
+        },
+        {
+            "type": "balance_bar",
+            "name": "balanceBar",
+            "x": 1080,
+            "y": 19,
+            "children": [
+                {
+                    "type": "sprite",
+                    "name": "bg",
+                    "texture": "lobby_progress_bg",
+                    "width": 120,
+                    "height": 30,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
+                {
+                    "type": "sprite",
+                    "name": "coinImg",
+                    "texture": "lobby6",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": -60,
+                    "scale": {
+                        "x": 0.9,
+                        "y": 0.9
+                    }
+                },
+                {
+                    "type": "button",
+                    "name": "plusButton",
+                    "states": {
+                        "normal": {
+                            "texture": "lobby_btn_plus_normal"
+                        },
+                        "over": {
+                            "texture": "lobby_btn_plus_over"
+                        },
+                        "down": {
+                            "texture": "lobby_btn_plus_down"
+                        }
+                    },
+                    "enabled": true,
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "x": 60
+                },
+                {
+                    "type": "bm_text",
+                    "name": "balanceValue",
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "fontSize": 18,
+                        "align": "center"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "button",
+            "name": "soundOnBtn",
+            "states": {
+                "normal": {
+                    "texture": "lobby_sound_normal"
+                },
+                "over": {
+                    "texture": "lobby_sound_over"
+                },
+                "down": {
+                    "texture": "lobby_sound_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": 1200,
+            "y": 19
+        },
+        {
+            "type": "button",
+            "name": "soundOffBtn",
+            "states": {
+                "normal": {
+                    "texture": "lobby_sound_off_normal"
+                },
+                "over": {
+                    "texture": "lobby_sound_off_over"
+                },
+                "down": {
+                    "texture": "lobby_sound_off_down"
+                }
+            },
+            "enabled": true,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": 1200,
+            "y": 19
+        },
+        {
+            "name": "trophyTooltip",
+            "type": "trophy_tooltip",
+            "visible": false,
+            "children": [
+                {
+                    "name": "background",
+                    "type": "slice_9",
+                    "texture": "map_user_bg",
+                    "leftWidth": 30,
+                    "rightWidth": 30,
+                    "topHeight": 10,
+                    "bottomHeight": 30,
+                    "width": 200,
+                    "height": 150,
+                    "x": -100,
+                    "y": -75
+                },
+                {
+                    "name": "trophyNameLabel",
+                    "type": "bm_text",
+                    "textKey": "text",
+                    "style": {
+                        "fontName": "Russia_blue",
+                        "align": "center",
+                        "fontSize": 20
+                    },
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "y": -58
+                },
+                {
+                    "name": "trophyDescriptorLabel",
+                    "type": "bm_text",
+                    "textKey": "",
+                    "style": {
+                        "fontName": "Russia_white_shadow",
+                        "align": "center",
+                        "fontSize": 18
+                    },
+                    "anchor": {
+                        "x": 0.5,
+                        "y": 0.5
+                    },
+                    "y": 5
+                }
+            ],
+            "y": -115
+        }
+    ]
+}

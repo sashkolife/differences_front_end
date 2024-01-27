@@ -38,7 +38,7 @@ export default class LobbyStarsProgressBar extends CContainer {
     private updateView( animate: boolean = false ): void {
         this._starsValue.text = this._starsNum + "/" + this._starsMax;
         this._progressLine.x = this._progressLine.width*this._starsNum/this._starsMax;
-        if (this._starsNum === this._starsMax) {
+        if (this._key && this._starsNum === this._starsMax) {
             this._key.visible = false;
         }
     }

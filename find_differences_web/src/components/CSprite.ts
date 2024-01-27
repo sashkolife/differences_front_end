@@ -20,6 +20,16 @@ export default class CSprite extends PIXI.Sprite {
         this.setProperties( props );
     }
 
+    load() : void {
+        if (this.properties.textureFull) {
+            Resource.loadList([this.properties.textureFull], null).then(async () => {
+                if (!this.destroyed) {
+                    this.texture = Resource.getTexture(this.properties.textureFull);
+                }
+            });
+        }
+    }
+
     destroy(_options?: PIXI.IDestroyOptions | boolean) {
 
         this.removeOrientationEvent();

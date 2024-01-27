@@ -3,7 +3,7 @@ import {
     UserModel,
     ConfigModel,
     LoginModel,
-    OpenLocationModel, LevelModel
+    OpenLocationModel, LevelModel, SellTrophyModel
 } from "../models/ApiModels";
 import Api from "../utils/Api";
 import Shop from "./Shop";
@@ -56,6 +56,17 @@ export default class User {
             this.update(openLocData.user);
             EventBus.publish(events.EVENT_ON_LOCATION_OPEN, openLocData);
         }
+    }
+
+    public static async sellTrophy(trophyId: number): Promise<SellTrophyModel> {
+        const loader: Response = await Api.request(urls.URL_SELL_TROPHY+trophyId);
+        const sellData : SellTrophyModel = await loader.json() as SellTrophyModel;
+        if ( !sellData.error ) {
+            this.update(sellData.user);
+            EventBus.publish(events.EVENT_ON_TROPHY_SOLD, sellData);
+            return sellData;
+        }
+        return null;
     }
 
     public static update( data: UserModel ) : void {

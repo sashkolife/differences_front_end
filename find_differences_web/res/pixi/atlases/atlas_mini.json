@@ -1,170 +1,175 @@
 {
 "frames": {
 	"antarktida_map_mini": {
-		"frame": {"x":129, "y":70, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":514, "y":276, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"australia_map_mini": {
-		"frame": {"x":258, "y":140, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":1028, "y":414, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"brasil_map_mini": {
-		"frame": {"x":258, "y":70, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":1028, "y":276, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2010_map_mini": {
-		"frame": {"x":258, "y":0, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign1_map_mini": {
+		"frame": {"x":514, "y":690, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2110_map_mini": {
-		"frame": {"x":129, "y":910, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_canada_forest_maze_mini": {
+		"frame": {"x":1028, "y":138, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2210_map_mini": {
-		"frame": {"x":129, "y":840, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_coast_underground_lake_mini": {
+		"frame": {"x":1028, "y":0, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2310_map_mini": {
-		"frame": {"x":129, "y":770, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_england_magic_garden_mini": {
+		"frame": {"x":771, "y":828, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2410_map_mini": {
-		"frame": {"x":129, "y":700, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_forest_secret_glade_mini": {
+		"frame": {"x":771, "y":690, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2510_map_mini": {
-		"frame": {"x":129, "y":630, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_germany_hidden_cave_mini": {
+		"frame": {"x":771, "y":552, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2610_map_mini": {
-		"frame": {"x":129, "y":560, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_hawaii_tropic_house_mini": {
+		"frame": {"x":771, "y":414, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2710_map_mini": {
-		"frame": {"x":129, "y":490, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_iceland_grotto_mini": {
+		"frame": {"x":771, "y":276, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2810_map_mini": {
-		"frame": {"x":129, "y":420, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_italy_back_door_mini": {
+		"frame": {"x":771, "y":138, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
-	"campaign2910_map_mini": {
-		"frame": {"x":129, "y":350, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+	"campaign_peru_door_mini": {
+		"frame": {"x":771, "y":0, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
+	},
+	"campaign_spain_cellar_mini": {
+		"frame": {"x":514, "y":828, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"canada_map_mini": {
-		"frame": {"x":129, "y":280, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":514, "y":552, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"canyon_map_mini": {
-		"frame": {"x":129, "y":210, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":514, "y":414, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"china_map_mini": {
-		"frame": {"x":129, "y":140, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":0, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"coast_map_mini": {
-		"frame": {"x":258, "y":210, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":514, "y":138, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"england_map_mini": {
-		"frame": {"x":129, "y":0, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":514, "y":0, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"forest_map_mini": {
-		"frame": {"x":0, "y":920, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":828, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"france_map_mini": {
-		"frame": {"x":0, "y":850, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":690, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"germany_map_mini": {
-		"frame": {"x":0, "y":780, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":552, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"greenland_map_mini": {
-		"frame": {"x":0, "y":710, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":414, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"hawaii_map_mini": {
-		"frame": {"x":0, "y":640, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":276, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"iceland_map_mini": {
-		"frame": {"x":0, "y":570, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":138, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"islands_map_mini": {
-		"frame": {"x":0, "y":500, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":257, "y":0, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"italy_map_mini": {
-		"frame": {"x":0, "y":430, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":828, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"mexiko_map_mini": {
-		"frame": {"x":0, "y":360, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":690, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"norway_map_mini": {
-		"frame": {"x":0, "y":290, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":552, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"peru_map_mini": {
-		"frame": {"x":0, "y":220, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":414, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"prairies_map_mini": {
-		"frame": {"x":0, "y":150, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":276, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"spain_map_mini": {
-		"frame": {"x":0, "y":80, "w":128, "h":69},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":69},
-		"sourceSize": {"w":128,"h":69}
+		"frame": {"x":0, "y":138, "w":256, "h":137},
+		"spriteSourceSize": {"x":0,"y":0,"w":256,"h":137},
+		"sourceSize": {"w":256,"h":137}
 	},
 	"trophy_room_mini": {
-		"frame": {"x":0, "y":0, "w":128, "h":79},
-		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":79},
-		"sourceSize": {"w":128,"h":79}
+		"frame": {"x":1028, "y":552, "w":128, "h":78},
+		"spriteSourceSize": {"x":0,"y":0,"w":128,"h":78},
+		"sourceSize": {"w":128,"h":78}
 	}
 
 },
 "meta": {
 	"image": "atlas_mini.png",
-	"size": {"w": 1024, "h": 1024},
+	"size": {"w": 2048, "h": 1024},
 	"scale": "1"
 }
 }

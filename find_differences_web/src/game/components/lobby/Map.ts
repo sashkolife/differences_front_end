@@ -37,6 +37,7 @@ export default class Map extends CContainer {
 
     private _currentLevel:MapLevel = null;
 
+    private _currentViewedLocationId:number = 0;
     private _currentLocationId:number = 0;
     private _nextLocationId:number = 0;
 
@@ -191,6 +192,9 @@ export default class Map extends CContainer {
     }
 
     private updateVisibleLocations() : void {
+        const clonR: PIXI.Rectangle = this._screenRect.clone();
+        let maxRectH: number = 0;
+        let currentLocViewId: number = 0;
         for ( let i:number = 0; i < this._locations.length; i++) {
             const location:MapLocation = this._locations[i];
             const bottomPos:PIXI.Point = new PIXI.Point(location.x+this._locationWidth, location.y+this._locationHeight);
@@ -205,11 +209,20 @@ export default class Map extends CContainer {
 
             location.visible = this._screenRect.intersects(globalRect);
 
+            const rectFit: PIXI.Rectangle = globalRect.fit(clonR);
+            if (rectFit.height > maxRectH) {
+                maxRectH = rectFit.height;
+                currentLocViewId = i;
+            }
             if ( location.visible ) {
                 location.load();
             } else {
                 location.stop();
             }
+        }
+        if (this._currentViewedLocationId != currentLocViewId) {
+            this._currentViewedLocationId = currentLocViewId;
+            EventBus.publish(events.EVENT_ON_LOCATION_CHANGE, this._currentViewedLocationId);
         }
     }
 
@@ -300,7 +313,6 @@ export default class Map extends CContainer {
     }
 
     private showTooltipOnLevel( mapLevel:MapLevel ) {
-
         const currentLevelGL : PIXI.Point = mapLevel.toGlobal({"x":0,"y":0});
         const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
         this._mapLevelTooltip.x = currentLevelMapLoc.x;
@@ -309,7 +321,6 @@ export default class Map extends CContainer {
     }
 
     private showTooltipOnCampaign( campaign:CampaignButton ) {
-
         const currentLevelGL : PIXI.Point = campaign.toGlobal({"x":0,"y":0});
         const currentLevelMapLoc : PIXI.Point = (this as any).toLocal(currentLevelGL);
         this._mapCampaignTooltip.x = currentLevelMapLoc.x;

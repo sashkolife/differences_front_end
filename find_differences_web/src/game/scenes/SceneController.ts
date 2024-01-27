@@ -44,15 +44,15 @@ export default class SceneController {
     public showSceneLevel() : void {
         if (!this._sceneLevel) {
             this._sceneLevel = new SceneLevel();
-            this._stage.addChild(this._sceneLevel);
+            this._stage.addChildAt(this._sceneLevel, 0);
+            this._sceneLevel.show();
         }
         this._sceneLevel.startLevel(this._currentLevelData)
     }
 
     public removeSceneLevel() : void {
         if ( this._sceneLevel ) {
-            this._sceneLevel.removeFromParent();
-            this._sceneLevel.destroy( {children:true}  );
+            this._sceneLevel.hide();
             this._sceneLevel = null;
         }
     }
@@ -60,29 +60,29 @@ export default class SceneController {
     public showSceneLobby() : void {
         this.removeSceneLobby();
         this._sceneLobby = new SceneLobby(Properties.get("sceneLobby"));
-        this._stage.addChild( this._sceneLobby );
+        this._stage.addChildAt( this._sceneLobby, 0 );
         this._sceneLobby.init(this._currentLevelData != null);
+        this._sceneLobby.show();
     }
 
     public showSceneCampaign() : void {
         this.removeSceneCampaign();
         this._sceneCampaign = new SceneCampaign(Properties.get("campaign"+this._currentCampaignData.id), this._currentCampaignData);
-        this._stage.addChild( this._sceneCampaign );
+        this._stage.addChildAt( this._sceneCampaign, 0 );
         this._sceneCampaign.init(this._currentLevelData != null);
+        this._sceneCampaign.show();
     }
 
     private removeSceneLobby() : void {
         if ( this._sceneLobby ) {
-            this._sceneLobby.removeFromParent();
-            this._sceneLobby.destroy( {children:true}  );
+            this._sceneLobby.hide();
             this._sceneLobby = null;
         }
     }
 
     private removeSceneCampaign() : void {
         if ( this._sceneCampaign ) {
-            this._sceneCampaign.removeFromParent();
-            this._sceneCampaign.destroy( {children:true}  );
+            this._sceneCampaign.hide();
             this._sceneCampaign = null;
         }
     }
@@ -90,13 +90,13 @@ export default class SceneController {
     public showSceneTrophyRoom() : void {
         this.removeSceneTrophyRoom();
         this._sceneTrophyRoom = new SceneTrophyRoom();
-        this._stage.addChild( this._sceneTrophyRoom );
-        this._sceneTrophyRoom.init();
+        this._stage.addChildAt( this._sceneTrophyRoom, 0 );
+        this._sceneTrophyRoom.show();
     }
 
     private removeSceneTrophyRoom() : void {
         if ( this._sceneTrophyRoom ) {
-            this._sceneTrophyRoom.destroy( { children : true } );
+            this._sceneTrophyRoom.hide();
             this._sceneTrophyRoom = null;
         }
     }

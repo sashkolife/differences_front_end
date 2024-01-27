@@ -1,8 +1,6 @@
 import * as PIXI from 'pixi.js';
 import LobbyStarsProgressBar from "../components/lobby/LobbyStarsProgressBar";
 import Map from "../components/lobby/Map";
-import Properties from "../../data/Properties";
-import CSlice9 from "../../components/CSlice9";
 import CContainer from "../../components/CContainer";
 import * as constants from "../../constants/constants";
 import BalanceBar from "../components/common/BalanceBar";
@@ -16,25 +14,27 @@ import Locations from "../../data/Locations";
 import WindowsController from "../windows/WindowsController";
 import KeyReceivedWindow from "../windows/KeyReceivedWindow";
 import CSprite from "../../components/CSprite";
-import OpenLocationWindow from "../windows/OpenLocationWindow";
-import Api from "../../utils/Api";
-import * as urls from "../../constants/urls";
-import LocationClosedWindow from "../windows/LocationClosedWindow";
 import ScreenBlock from "../components/common/ScreenBlock";
-import LevelFinishWindow from "../windows/LevelFinishWindow";
 import {ContainerModel} from "../../models/PropertiesModels";
 import Campaigns from "../../data/Campaigns";
 import * as levelUtils from "../../utils/LevelsUtils";
+import SceneController from "./SceneController";
+import CBMText from "../../components/CBMText";
+import Localization from "../../data/Localization";
+import {SceneBase} from "./SceneBase";
 
-export class SceneLobby extends CContainer {
+export class SceneLobby extends SceneBase {
     protected _lobbyStarsProgressBar : LobbyStarsProgressBar;
+    protected _mapNameText : CBMText;
     private _balanceBar : BalanceBar;
     private _soundOnBtn : CButton;
     private _soundOffBtn : CButton;
     private _playNowBtn : CButton;
+    private _trophyRoomBtn : CButton;
     protected _map : Map;
 
     private _openLocationEvent: EventModel = null;
+    private _locationChangeEvent: EventModel = null;
 
     constructor(props:ContainerModel) {
         super(props);
@@ -42,14 +42,22 @@ export class SceneLobby extends CContainer {
         this._soundOnBtn = this.getComponentByName("soundOnBtn");
         this._soundOffBtn = this.getComponentByName("soundOffBtn");
         this._playNowBtn = this.getComponentByName("playNowBtn");
+        this._trophyRoomBtn = this.getComponentByName("trophyRoomBtn");
+        this._mapNameText = this.getComponentByName("mapNameText");
 
         this._soundOnBtn.setActionUp( this.onSoundSwitch.bind(this) );
         this._soundOffBtn.setActionUp( this.onSoundSwitch.bind(this) );
-
-        this._playNowBtn?.setActionUp( this.onPlayNowClick.bind(this) );
         this.updateSoundBtn();
 
+        this._balanceBar = this.getComponentByName("balanceBar");
+
+        this._playNowBtn?.setActionUp( this.onPlayNowClick.bind(this) );
+
+        this._trophyRoomBtn?.setActionUp( this.onTrophyRoomClick.bind(this) );
+
         this._openLocationEvent = EventBus.subscribe(events.EVENT_ON_LOCATION_OPEN, this.onOpenLocation.bind(this));
+
+        this._locationChangeEvent = EventBus.subscribe(events.EVENT_ON_LOCATION_CHANGE, this.onChangeLocation.bind(this));
     }
 
     init(afterLevel: boolean = false) : void {
@@ -66,6 +74,15 @@ export class SceneLobby extends CContainer {
         super.destroy(_options);
         this._openLocationEvent.unsubscribe();
         this._openLocationEvent = null;
+        this._locationChangeEvent.unsubscribe();
+        this._locationChangeEvent = null;
+    }
+
+    public getNewComponentByType( props: any ) : any {
+        if (props.type == constants.COMPONENT_BALANCE_BAR) {
+            return new BalanceBar(props);
+        }
+        return super.getNewComponentByType(props);
     }
 
     public getNewComponentByName( props: any ): any {
@@ -80,9 +97,6 @@ export class SceneLobby extends CContainer {
                 case "lobbyStarsProgressBar":
                     this._lobbyStarsProgressBar = new LobbyStarsProgressBar(props);
                     return this._lobbyStarsProgressBar;
-                case "balanceBar":
-                    this._balanceBar = new BalanceBar(props);
-                    return this._balanceBar;
             }
         }
 
@@ -119,6 +133,8 @@ export class SceneLobby extends CContainer {
         //     }
         // });
 
+        // WindowsController.instance().show(TrophyReceivedWindow, {campaignData:Campaigns.getCampaignById(10), onCloseCallback: () => {}});
+
         // WindowsController.instance().show(OpenLocationWindow, {onCloseCallback: async () => {
         //     const loader: Response = await Api.request(urls.URL_OPEN_LOCATION);
         //     const openLocData : OpenLocationModel = await loader.json() as OpenLocationModel;
@@ -128,6 +144,10 @@ export class SceneLobby extends CContainer {
         //     const loader: Response = await Api.request(urls.URL_OPEN_LOCATION);
         //     const openLocData : OpenLocationModel = await loader.json() as OpenLocationModel;
         // }});
+    }
+
+    private onTrophyRoomClick(): void {
+        SceneController.instance().gotoTrophyRoom();
     }
 
     protected setCurrentStars(): void {
@@ -204,5 +224,9 @@ export class SceneLobby extends CContainer {
 
     protected onUpdateLobbyComplete(): void {
         Campaigns.resetNewCampaigns();
+    }
+
+    protected onChangeLocation(locationId: number): void {
+        this._mapNameText.text = Localization.get("map_name_"+locationId).toUpperCase();
     }
 }

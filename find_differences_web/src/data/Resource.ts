@@ -13,7 +13,7 @@ export default class Resource {
         await PIXI.Assets.load( urls.URL_ASSETS_MANIFEST as PIXI.LoadAsset[], onProgress as PIXI.ProgressCallback );
     }
 
-    public static async loadLocations(textureNames:Array<string>, onProgress?: Function ) {
+    public static async loadList(textureNames:Array<string>, onProgress?: Function ) {
         textureNames.forEach( (tName:string) => {
             PIXI.Assets.add(tName, urls.URL_MAPS+tName+urls.MAP_EXTENSION);
         } );
@@ -41,7 +41,7 @@ export default class Resource {
         const uLock: number = getUserLocationByLevelId( uLevel );
 
         const getLocationName: Function = (loc:any) => {
-            const backgProps: any = Properties.findByName(constants.KEY_BACKGROUND, loc );
+            const backgProps: any = Properties.findByProperty(constants.KEY_TYPE, constants.COMPONENT_LOCATION_BACKGROUND, loc );
             return backgProps[constants.KEY_TEXTURE_FULL];
         };
 
@@ -53,7 +53,7 @@ export default class Resource {
             locationsToLoad.push(getLocationName(locations[uLock+1]));
         }
 
-        await this.loadLocations( locationsToLoad, onProgress );
+        await this.loadList( locationsToLoad, onProgress );
     }
 
     public static getTexture( key: string ) : PIXI.Texture {

@@ -1,4 +1,4 @@
-import {URL_JSON_LOCALIZATION_EN, URL_JSON_LOCALIZATION_UK, URL_JSON_PROPERTIES} from "../constants/urls";
+import {URL_JSON_LOCALIZATION_EN} from "../constants/urls";
 import Api from "../utils/Api";
 
 export default class Localization {

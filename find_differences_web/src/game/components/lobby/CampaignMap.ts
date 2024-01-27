@@ -1,8 +1,6 @@
 import Map from "./Map";
 import {MapModel} from "../../../models/PropertiesModels";
-import User from "../../../data/User";
 import {CampaignModel, LevelModel} from "../../../models/ApiModels";
-import Campaigns from "../../../data/Campaigns";
 import * as levelUtils from "../../../utils/LevelsUtils";
 
 export default class CampaignMap extends Map {
